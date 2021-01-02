@@ -1,0 +1,12 @@
+{
+  "name": "SeegmaV2",
+  "displayName": "SeegmaV2",
+  "expo": {
+    "name": "SeegmaV2",
+    "slug": "SeegmaV2",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

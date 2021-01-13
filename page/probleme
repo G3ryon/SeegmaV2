@@ -1,0 +1,16 @@
+-jest probleme de mock de certaines lib tel que animated, reanim,
+
+answer:
+utilisation d'un setup.js pour jest
+
+-jest import after destroying jest
+
+answer:
+jest.useFakeTimers()
+With above it's extremely important to understand this
+
+jest.useFakeTimers() mocks out setTimeout and other timer functions with mock functions.
+
+If running multiple tests inside of one file or describe block, jest.useFakeTimers(); can be called before each test manually or with a setup function such as beforeEach.
+
+Not doing so will result in the internal usage counter not being reset.

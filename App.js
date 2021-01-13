@@ -1,21 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import * as eva from '@eva-design/eva';
+import { ApplicationProvider, Layout, Button, Text } from '@ui-kitten/components';
+import { default as theme } from './theme.json'; // <-- Import app theme
+import { default as mapping } from './mapping.json';
+import Nav from "./page/nav.js";
+import Login from "./page/non-auth/login.js";
+import { NavigationContainer } from '@react-navigation/native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+export default function App(){
+  const [isLoggin, setLoggin] = useState(false);
+  const [token, setToken] = useState(undefined);
+  const [notif, setNotif] = useState(false);
+  const [site, setSite] = useState(undefined);
+
+  return(  
+  <ApplicationProvider {...eva} theme={{ ...eva.light, ...theme }} customMapping={mapping}>
+    <NavigationContainer>
+      <Nav isSignIn={isLoggin} signIn={setLoggin} authToken={token} setAuth={setToken} setNotif={setNotif} notif={notif} site={site} setSite={setSite}/>
+    </NavigationContainer>
+  </ApplicationProvider>
+  
+);
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

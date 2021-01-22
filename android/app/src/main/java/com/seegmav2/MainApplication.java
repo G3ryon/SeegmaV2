@@ -1,5 +1,8 @@
 package com.seegmav2;
 
+// com.myapp should be your package name
+import com.seegmav2.generated.BasePackageList;
+
 import android.app.Application;
 import android.content.Context;
 import android.net.Uri;
@@ -30,7 +33,7 @@ import javax.annotation.Nullable;
 
 public class MainApplication extends Application implements ReactApplication {
   private final ReactModuleRegistryProvider mModuleRegistryProvider = new ReactModuleRegistryProvider(
-    new BasePackageList().getPackageList()
+    new BasePackageList().getPackageList(), null
   );
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {

@@ -1,4 +1,12 @@
 import 'react-native-gesture-handler/jestSetup';
+const {defaults} = require('jest-config');
+module.exports = {
+  // ...
+  moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'tsx'],
+  preset: "jest-expo",
+  
+  // ...
+};
 
 jest.mock('react-native-reanimated', () => {
   const Reanimated = require('react-native-reanimated/mock');

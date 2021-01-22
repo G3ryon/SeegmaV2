@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { View, Image, TextInput } from 'react-native';
 import { Button, Layout, Text } from '@ui-kitten/components';
+import logo from '../../assets/logo.png';
 
 class Signup extends Component{
     constructor(props){
@@ -13,10 +14,9 @@ class Signup extends Component{
     render(){
         return(
         <View>
+            <Image source={logo}/>
            <Text>Signup</Text>
-           <Button onPress={() => this.props.navigation.navigate('login')}>1</Button>
-           <Button onPress={() => this.props.navigation.navigate('signup')}>2</Button>
-           <Button onPress={() => this.props.navigation.navigate('reset')}>3</Button>
+           <Button onPress={() => this.props.navigation.navigate('login')}>I already have an account</Button>
         </View>)
     }
     

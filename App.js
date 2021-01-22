@@ -3,7 +3,7 @@ import * as eva from '@eva-design/eva';
 import { ApplicationProvider, Layout, Button, Text } from '@ui-kitten/components';
 import { default as theme } from './theme.json'; // <-- Import app theme
 import { default as mapping } from './mapping.json';
-import Nav from "./page/nav.js";
+import Nav from "./src/navigation/nav.js";
 import Login from "./page/non-auth/login.js";
 import { NavigationContainer } from '@react-navigation/native';
 

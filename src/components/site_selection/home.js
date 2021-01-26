@@ -2,6 +2,15 @@ import React, {Component} from 'react';
 import { View, Image, TextInput } from 'react-native';
 import { Button, Layout, Text } from '@ui-kitten/components';
 
+/*
+PROPS:  other.isSignIn  : bool displaying if the user is authenticated
+        other.signIn    : method to set the isSignIn
+        other.authToken : string with the token of the user
+        other.setAuth   : method to set the authToken
+       
+RETURN: a view of the different site of the user
+*/
+
 class Home extends Component{
     constructor(props){
         super(props);
@@ -13,8 +22,7 @@ class Home extends Component{
     render(){
         return(
         <View>
-           <Button onPress={() => this.props.other.signIn(false)}>DISCONNECT</Button>
-           <Button onPress={() => this.props.other.setNotif(true)}>NOTIFICATION</Button>
+           
            <Text>{this.props.other.isSignIn}</Text>
            <Button onPress={() => this.props.navigation.navigate('home')}>1</Button>
            <Button onPress={() => this.props.navigation.navigate('notification')}>notif</Button>

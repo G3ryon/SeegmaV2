@@ -4,14 +4,16 @@ import { Input } from '@ui-kitten/components';
 
 
 /*
-PROPS: onChange : function qui change le state correspondant a l'input
-       type : type d'input (text,...)
-       value : valeur du champ soit le state correpondant
-       placeHolder : valeur dans le champs indiquant la signification de l'input
+PROPS: onChange : function to change the value of the input
+       type : type of input text or password
+       value : the display value of the input
+       placeHolder : Value seen if there is no value in the input
        required : true or false
        readonly : true or false
+       status : success,danger,..
+       caption : string display under the input
        
-RETURN: un input controlé
+RETURN: a  modified input
 */
 
 
@@ -38,6 +40,8 @@ class TxtInput extends Component {
                 required={this.props.required}
                 placeholder={this.props.placeHolder}
                 size={this.props.size}
+                caption={this.props.caption}
+                status={this.props.status}
                 secureTextEntry={this.props.type === 'password'}
                 placeholder={this.props.placeHolder}
                  />

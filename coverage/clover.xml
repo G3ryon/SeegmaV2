@@ -1,105 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1611043209952" clover="3.2.0">
-  <project timestamp="1611043209952" name="All files">
-    <metrics statements="131" coveredstatements="31" conditionals="2" coveredconditionals="1" methods="96" coveredmethods="11" elements="229" coveredelements="43" complexity="0" loc="131" ncloc="131" packages="9" files="17" classes="17"/>
+<coverage generated="1611569176235" clover="3.2.0">
+  <project timestamp="1611569176235" name="All files">
+    <metrics statements="161" coveredstatements="30" conditionals="6" coveredconditionals="1" methods="102" coveredmethods="11" elements="269" coveredelements="42" complexity="0" loc="161" ncloc="161" packages="11" files="18" classes="18"/>
     <package name="SeegmaV2">
-      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="App.js" path="C:\Users\Geryon\SeegmaV2\App.js">
-        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="SeegmaV2.components">
-      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
-      <file name="input.js" path="C:\Users\Geryon\SeegmaV2\components\input.js">
-        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
-        <line num="20" count="6" type="stmt"/>
-        <line num="21" count="6" type="stmt"/>
-        <line num="25" count="2" type="stmt"/>
-        <line num="32" count="10" type="stmt"/>
-        <line num="37" count="2" type="stmt"/>
-      </file>
-    </package>
-    <package name="SeegmaV2.page">
-      <metrics statements="53" coveredstatements="13" conditionals="2" coveredconditionals="1" methods="40" coveredmethods="2"/>
-      <file name="details_view.js" path="C:\Users\Geryon\SeegmaV2\page\details_view.js">
-        <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+    <package name="SeegmaV2.src.api">
+      <metrics statements="29" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="0"/>
+      <file name="api.js" path="C:\Users\Geryon\SeegmaV2\src\api\api.js">
+        <metrics statements="29" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
         <line num="7" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
-      </file>
-      <file name="nav.js" path="C:\Users\Geryon\SeegmaV2\page\nav.js">
-        <metrics statements="49" coveredstatements="13" conditionals="2" coveredconditionals="1" methods="37" coveredmethods="2"/>
-        <line num="28" count="1" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="35" count="1" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
-        <line num="44" count="1" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
         <line num="45" count="0" type="stmt"/>
         <line num="47" count="0" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
-        <line num="53" count="1" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
         <line num="54" count="0" type="stmt"/>
-        <line num="56" count="0" type="stmt"/>
-        <line num="57" count="0" type="stmt"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
-        <line num="60" count="0" type="stmt"/>
-        <line num="65" count="1" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="68" count="0" type="stmt"/>
-        <line num="69" count="0" type="stmt"/>
-        <line num="74" count="1" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
-        <line num="77" count="0" type="stmt"/>
-        <line num="78" count="0" type="stmt"/>
-        <line num="79" count="0" type="stmt"/>
-        <line num="86" count="1" type="stmt"/>
-        <line num="87" count="0" type="stmt"/>
-        <line num="89" count="0" type="stmt"/>
-        <line num="91" count="0" type="stmt"/>
-        <line num="92" count="0" type="stmt"/>
-        <line num="94" count="0" type="stmt"/>
-        <line num="96" count="0" type="stmt"/>
-        <line num="101" count="1" type="stmt"/>
-        <line num="102" count="0" type="stmt"/>
-        <line num="114" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="115" count="0" type="stmt"/>
-        <line num="117" count="0" type="stmt"/>
-        <line num="119" count="0" type="stmt"/>
-        <line num="120" count="0" type="stmt"/>
-        <line num="122" count="0" type="stmt"/>
-        <line num="125" count="0" type="stmt"/>
-        <line num="126" count="0" type="stmt"/>
-        <line num="128" count="0" type="stmt"/>
-        <line num="137" count="1" type="stmt"/>
-        <line num="139" count="1" type="stmt"/>
-        <line num="140" count="0" type="stmt"/>
-        <line num="141" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="SeegmaV2.page.Notification_center">
-      <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
-      <file name="notif_center.js" path="C:\Users\Geryon\SeegmaV2\page\Notification_center\notif_center.js">
-        <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="SeegmaV2.page.auth_site.alarm">
+    <package name="SeegmaV2.src.components.alarm">
       <metrics statements="17" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="0"/>
-      <file name="alarm_info.js" path="C:\Users\Geryon\SeegmaV2\page\auth_site\alarm\alarm_info.js">
+      <file name="alarm_info.js" path="C:\Users\Geryon\SeegmaV2\src\components\alarm\alarm_info.js">
         <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="7" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
@@ -107,13 +57,13 @@
         <line num="16" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
       </file>
-      <file name="alarm_occ.js" path="C:\Users\Geryon\SeegmaV2\page\auth_site\alarm\alarm_occ.js">
+      <file name="alarm_occ.js" path="C:\Users\Geryon\SeegmaV2\src\components\alarm\alarm_occ.js">
         <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="7" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
       </file>
-      <file name="alarms.js" path="C:\Users\Geryon\SeegmaV2\page\auth_site\alarm\alarms.js">
+      <file name="alarms.js" path="C:\Users\Geryon\SeegmaV2\src\components\alarm\alarms.js">
         <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="7" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
@@ -121,7 +71,7 @@
         <line num="16" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
       </file>
-      <file name="alarms_history.js" path="C:\Users\Geryon\SeegmaV2\page\auth_site\alarm\alarms_history.js">
+      <file name="alarms_history.js" path="C:\Users\Geryon\SeegmaV2\src\components\alarm\alarms_history.js">
         <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="7" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
@@ -129,9 +79,9 @@
         <line num="16" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="SeegmaV2.page.auth_site.dashboard">
+    <package name="SeegmaV2.src.components.dashboard">
       <metrics statements="8" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
-      <file name="dashboard.js" path="C:\Users\Geryon\SeegmaV2\page\auth_site\dashboard\dashboard.js">
+      <file name="dashboard.js" path="C:\Users\Geryon\SeegmaV2\src\components\dashboard\dashboard.js">
         <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="7" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
@@ -139,23 +89,33 @@
         <line num="16" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
       </file>
-      <file name="widget.js" path="C:\Users\Geryon\SeegmaV2\page\auth_site\dashboard\widget.js">
+      <file name="widget.js" path="C:\Users\Geryon\SeegmaV2\src\components\dashboard\widget.js">
         <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="7" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="SeegmaV2.page.auth_site.graph">
-      <metrics statements="9" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
-      <file name="graph.js" path="C:\Users\Geryon\SeegmaV2\page\auth_site\graph\graph.js">
+    <package name="SeegmaV2.src.components.general">
+      <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+      <file name="details_view.js" path="C:\Users\Geryon\SeegmaV2\src\components\general\details_view.js">
         <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="7" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
       </file>
-      <file name="graph_disp.js" path="C:\Users\Geryon\SeegmaV2\page\auth_site\graph\graph_disp.js">
+    </package>
+    <package name="SeegmaV2.src.components.graph">
+      <metrics statements="9" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
+      <file name="graph.js" path="C:\Users\Geryon\SeegmaV2\src\components\graph\graph.js">
+        <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+      </file>
+      <file name="graph_disp.js" path="C:\Users\Geryon\SeegmaV2\src\components\graph\graph_disp.js">
         <metrics statements="5" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="5" count="1" type="stmt"/>
         <line num="7" count="0" type="stmt"/>
@@ -164,22 +124,31 @@
         <line num="17" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="SeegmaV2.page.non-auth">
-      <metrics statements="20" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="14" coveredmethods="4"/>
-      <file name="login.js" path="C:\Users\Geryon\SeegmaV2\page\non-auth\login.js">
-        <metrics statements="10" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="4"/>
-        <line num="9" count="3" type="stmt"/>
+    <package name="SeegmaV2.src.components.non-auth">
+      <metrics statements="29" coveredstatements="7" conditionals="4" coveredconditionals="0" methods="16" coveredmethods="4"/>
+      <file name="login.js" path="C:\Users\Geryon\SeegmaV2\src\components\non-auth\login.js">
+        <metrics statements="19" coveredstatements="7" conditionals="4" coveredconditionals="0" methods="9" coveredmethods="4"/>
         <line num="10" count="3" type="stmt"/>
-        <line num="14" count="3" type="stmt"/>
-        <line num="15" count="3" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="27" count="5" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="30" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="31" count="0" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
+        <line num="37" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="52" count="5" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
       </file>
-      <file name="reset.js" path="C:\Users\Geryon\SeegmaV2\page\non-auth\reset.js">
+      <file name="reset.js" path="C:\Users\Geryon\SeegmaV2\src\components\non-auth\reset.js">
         <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="9" count="0" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
@@ -188,7 +157,7 @@
         <line num="22" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
       </file>
-      <file name="signup.js" path="C:\Users\Geryon\SeegmaV2\page\non-auth\signup.js">
+      <file name="signup.js" path="C:\Users\Geryon\SeegmaV2\src\components\non-auth\signup.js">
         <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="8" count="0" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
@@ -196,19 +165,89 @@
         <line num="19" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="SeegmaV2.page.site_selection">
-      <metrics statements="9" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="0"/>
-      <file name="home.js" path="C:\Users\Geryon\SeegmaV2\page\site_selection\home.js">
-        <metrics statements="9" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="0"/>
+    <package name="SeegmaV2.src.components.notification_center">
+      <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <file name="notif_center.js" path="C:\Users\Geryon\SeegmaV2\src\components\notification_center\notif_center.js">
+        <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="7" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="SeegmaV2.src.components.pratical">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <file name="input.js" path="C:\Users\Geryon\SeegmaV2\src\components\pratical\input.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="22" count="7" type="stmt"/>
+        <line num="23" count="7" type="stmt"/>
+        <line num="27" count="3" type="stmt"/>
+        <line num="34" count="12" type="stmt"/>
+        <line num="39" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="SeegmaV2.src.components.site_selection">
+      <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
+      <file name="home.js" path="C:\Users\Geryon\SeegmaV2\src\components\site_selection\home.js">
+        <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="SeegmaV2.src.navigation">
+      <metrics statements="44" coveredstatements="12" conditionals="2" coveredconditionals="1" methods="33" coveredmethods="2"/>
+      <file name="nav.js" path="C:\Users\Geryon\SeegmaV2\src\navigation\nav.js">
+        <metrics statements="44" coveredstatements="12" conditionals="2" coveredconditionals="1" methods="33" coveredmethods="2"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="75" count="1" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="78" count="0" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="85" count="1" type="stmt"/>
+        <line num="86" count="0" type="stmt"/>
+        <line num="88" count="0" type="stmt"/>
+        <line num="89" count="0" type="stmt"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="96" count="1" type="stmt"/>
+        <line num="97" count="0" type="stmt"/>
+        <line num="109" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="112" count="0" type="stmt"/>
+        <line num="115" count="0" type="stmt"/>
+        <line num="119" count="0" type="stmt"/>
+        <line num="123" count="0" type="stmt"/>
+        <line num="125" count="0" type="stmt"/>
+        <line num="126" count="0" type="stmt"/>
+        <line num="128" count="0" type="stmt"/>
+        <line num="131" count="0" type="stmt"/>
+        <line num="132" count="0" type="stmt"/>
+        <line num="134" count="0" type="stmt"/>
+        <line num="143" count="1" type="stmt"/>
+        <line num="145" count="1" type="stmt"/>
+        <line num="146" count="0" type="stmt"/>
+        <line num="147" count="0" type="stmt"/>
       </file>
     </package>
   </project>

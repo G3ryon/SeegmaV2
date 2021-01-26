@@ -228,7 +228,6 @@ exports[`renders correctly App 1`] = `
                               rejectResponderTermination={true}
                               required={true}
                               secureTextEntry={false}
-                              status="basic"
                               style={
                                 Array [
                                   Object {
@@ -303,7 +302,6 @@ exports[`renders correctly App 1`] = `
                               rejectResponderTermination={true}
                               required={true}
                               secureTextEntry={true}
-                              status="basic"
                               style={
                                 Array [
                                   Object {

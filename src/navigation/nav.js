@@ -1,16 +1,21 @@
 import React, {Component} from 'react';
 import { View, Image, TextInput } from 'react-native';
 import { Button, Layout, Text } from '@ui-kitten/components';
-import Login from './non-auth/login.js';
-import Signup from './non-auth/signup.js';
-import Reset from './non-auth/reset.js';
+import Login from '../components/non-auth/login.js';
+import Signup from '../components/non-auth/signup.js';
+import Reset from '../components/non-auth/reset.js';
 import Home from '../components/site_selection/home.js';
 import Notif_center from '../components/notification_center/notif_center.js';
 import Details_view from '../components/general/details_view.js';
 import Dashboard from '../components/dashboard/dashboard.js';
 import Widget from '../components/dashboard/widget.js';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { 
+    createDrawerNavigator,
+    DrawerContentScrollView,
+    DrawerItemList,
+    DrawerItem, 
+} from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Alarms from '../components/alarm/alarms.js';
 import Graph from '../components/graph/graph.js';
@@ -18,6 +23,7 @@ import Alarms_info from '../components/alarm/alarm_info.js';
 import Alarms_history from '../components/alarm/alarms_history.js';
 import Alarms_occ from '../components/alarm/alarm_occ.js';
 import { Graph_disp } from '../components/graph/graph_disp.js';
+import {authentification} from '../api/api.js';
 
 //PROPS
 // isSignIn  : bool displaying if the user is authenticated
@@ -104,21 +110,44 @@ class Nav extends Component{
             //Part of the navigation concerning the authentified part of the app
             //The base of this part is the drawer accessible in each authentified screen
                 return(
-                    <Drawer.Navigator initialRouteName="home">
+                        <Drawer.Navigator
+                        drawerContentOptions={{
+                          activeTintColor: '#e91e63',
+                          itemStyle: {padding: 0},
+                        }}
+                        //Part to add DrawerItem and to hide routes contained into the drawer drom the user
+                        drawerContent={(props) => {
+                          const filteredProps = {
+                            ...props,
+                            state: {
+                              ...props.state,
+                              routeNames: props.state.routeNames.filter(
+                                // To hide multiple options you can add & condition
+                                (routeName) => {
+                                  routeName !== 'notification'
+                                  && routeName !== 'bottomNav';
+                                },
+                              ),
+                              routes: props.state.routes.filter(
+                                (route) =>
+                                  route.name !== 'notification'
+                                  && route.name !== 'bottomNav',
+                              ),
+                            },
+                          };
+                          return (
+                            <DrawerContentScrollView {...filteredProps}>
+                              <DrawerItemList {...filteredProps} />
+                              <DrawerItem
+                                label="Disconnect"
+                                onPress={() => { this.props.setAuth(undefined); this.props.signIn(false); }}
+                            />
+                            </DrawerContentScrollView>
+                          );
+                        }}>
                         <Drawer.Screen name="home">{props => <Home {...props} other={this.props} setNotif={this.handleNotification} setSite={this.props.setSite}/>}</Drawer.Screen>
-                        <Drawer.Screen name="notification" component={this.notifNav}
-                        options={() => ({
-                            drawerLabel: () => null,
-                            title: undefined,
-                            drawerIcon: () => null,
-                        })}/>
-                        <Drawer.Screen name="bottomNav" component={this.authBottomNav}
-                        options={() => ({
-                            drawerLabel: () => null,
-                            title: undefined,
-                            drawerIcon: () => null,
-                        })}/>
-                            
+                        <Drawer.Screen name="notification" component={this.notifNav} />
+                        <Drawer.Screen name="bottomNav" component={this.authBottomNav}/>
                     </Drawer.Navigator>
             
                     ) 

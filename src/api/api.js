@@ -1,7 +1,7 @@
 var url = "https://36e69cb8-cc8f-49fe-b48b-8ed4b2a2d9e9.mock.pstmn.io/"
 import React, { Component } from 'react';
 
-export function getInstallations(load, instalList, token) {
+/*export function getInstallations(load, instalList, token) {
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + token);
     const installations = new Map();
@@ -33,7 +33,7 @@ export function getInstallations(load, instalList, token) {
         .catch(error => console.log('error', error));
 
     return installations;
-}
+}*/
 
 export async function authentification(login,password) {
 
@@ -52,7 +52,21 @@ export async function authentification(login,password) {
         .then(result => {data = JSON.parse(result); console.log(data)})
         .catch(error => console.log('error', error));
     return data
+}
 
+export async function reset(mail) {
 
+    var formdata = new FormData();
+    formdata.append("email", mail);
 
+    let data = {};
+
+    await fetch(url + "reset", {
+        method: 'POST',
+        body: formdata,
+
+    }).then(response => response.text())
+        .then(result => {data = JSON.parse(result); console.log(data)})
+        .catch(error => console.log('error', error));
+    return data
 }

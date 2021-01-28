@@ -64,15 +64,25 @@ class Login extends Component{
     }}
 
     render(){
+
         return(
         <View>
            <Image source={logo}/>
            <Input type={"text"} required={true} status={this.state.statusLog} caption={this.state.captionLog} readonly={false} value={this.state.login} onChange={this.handleLogin} placeHolder={"Login"}></Input>
-           <Input type={"password"} required={true} status={this.state.statusPass} caption={this.state.captionPass} readonly={false} value={this.state.password} onChange={this.handlePassword} placeHolder={"Password"}></Input>
+           <Input 
+            type={"password"} 
+            required={true} 
+            status={this.state.statusPass} 
+            caption={this.state.captionPass} 
+            readonly={false} 
+            value={this.state.password} 
+            onChange={this.handlePassword} 
+            placeholder={"Password"}/>
+            <View>
            <Button onPress={() => this.handleSignin(this.state.login, this.state.password)}>Login</Button>
            <Button onPress={() => this.props.navigation.navigate('signup')}>SignUp</Button>
            <Button onPress={() => this.props.navigation.navigate('reset')}>Forgot your password?</Button>
-           
+           </View>
         </View>)
     }
     

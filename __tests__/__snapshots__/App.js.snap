@@ -218,16 +218,18 @@ exports[`renders correctly App 1`] = `
                               appearance="default"
                               editable={true}
                               onBlur={[Function]}
+                              onChange={[Function]}
                               onChangeText={[Function]}
                               onFocus={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
-                              placeholder="Login"
+                              placeHolder="Login"
                               placeholderTextColor="#A3A4D4"
-                              readOnly={false}
+                              readonly={false}
                               rejectResponderTermination={true}
                               required={true}
                               secureTextEntry={false}
+                              size="medium"
                               style={
                                 Array [
                                   Object {
@@ -246,6 +248,7 @@ exports[`renders correctly App 1`] = `
                                   undefined,
                                 ]
                               }
+                              type="text"
                               underlineColorAndroid="transparent"
                               value="juju_beber"
                             />
@@ -292,16 +295,18 @@ exports[`renders correctly App 1`] = `
                               appearance="default"
                               editable={true}
                               onBlur={[Function]}
+                              onChange={[Function]}
                               onChangeText={[Function]}
                               onFocus={[Function]}
                               onMouseEnter={[Function]}
                               onMouseLeave={[Function]}
                               placeholder="Password"
                               placeholderTextColor="#A3A4D4"
-                              readOnly={false}
+                              readonly={false}
                               rejectResponderTermination={true}
                               required={true}
                               secureTextEntry={true}
+                              size="medium"
                               style={
                                 Array [
                                   Object {
@@ -320,6 +325,7 @@ exports[`renders correctly App 1`] = `
                                   undefined,
                                 ]
                               }
+                              type="password"
                               underlineColorAndroid="transparent"
                               value="jujubeberhot"
                             />
@@ -338,158 +344,160 @@ exports[`renders correctly App 1`] = `
                             }
                           />
                         </View>
-                        <View
-                          accessible={true}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          style={
-                            Object {
-                              "alignItems": "center",
-                              "backgroundColor": "#2A2C76",
-                              "borderColor": "#DFE0F7",
-                              "borderRadius": 4,
-                              "borderWidth": 1,
-                              "flexDirection": "row",
-                              "justifyContent": "center",
-                              "minHeight": 40,
-                              "minWidth": 40,
-                              "opacity": 1,
-                              "paddingHorizontal": 10,
-                              "paddingVertical": 12,
-                            }
-                          }
-                        >
-                          <Text
-                            appearance="default"
-                            category="p1"
+                        <View>
+                          <View
+                            accessible={true}
+                            focusable={true}
+                            onClick={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
                             style={
-                              Array [
-                                Object {
-                                  "color": "#2A2C76",
-                                  "fontFamily": "System",
-                                  "fontSize": 15,
-                                  "fontWeight": "400",
-                                },
-                                Object {
-                                  "color": "#F9F9FE",
-                                  "fontFamily": "System",
-                                  "fontSize": 14,
-                                  "fontWeight": "bold",
-                                  "marginHorizontal": 10,
-                                },
-                              ]
+                              Object {
+                                "alignItems": "center",
+                                "backgroundColor": "#2A2C76",
+                                "borderColor": "#DFE0F7",
+                                "borderRadius": 4,
+                                "borderWidth": 1,
+                                "flexDirection": "row",
+                                "justifyContent": "center",
+                                "minHeight": 40,
+                                "minWidth": 40,
+                                "opacity": 1,
+                                "paddingHorizontal": 10,
+                                "paddingVertical": 12,
+                              }
                             }
                           >
-                            Login
-                          </Text>
-                        </View>
-                        <View
-                          accessible={true}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          style={
-                            Object {
-                              "alignItems": "center",
-                              "backgroundColor": "#2A2C76",
-                              "borderColor": "#DFE0F7",
-                              "borderRadius": 4,
-                              "borderWidth": 1,
-                              "flexDirection": "row",
-                              "justifyContent": "center",
-                              "minHeight": 40,
-                              "minWidth": 40,
-                              "opacity": 1,
-                              "paddingHorizontal": 10,
-                              "paddingVertical": 12,
-                            }
-                          }
-                        >
-                          <Text
-                            appearance="default"
-                            category="p1"
+                            <Text
+                              appearance="default"
+                              category="p1"
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#2A2C76",
+                                    "fontFamily": "System",
+                                    "fontSize": 15,
+                                    "fontWeight": "400",
+                                  },
+                                  Object {
+                                    "color": "#F9F9FE",
+                                    "fontFamily": "System",
+                                    "fontSize": 14,
+                                    "fontWeight": "bold",
+                                    "marginHorizontal": 10,
+                                  },
+                                ]
+                              }
+                            >
+                              Login
+                            </Text>
+                          </View>
+                          <View
+                            accessible={true}
+                            focusable={true}
+                            onClick={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
                             style={
-                              Array [
-                                Object {
-                                  "color": "#2A2C76",
-                                  "fontFamily": "System",
-                                  "fontSize": 15,
-                                  "fontWeight": "400",
-                                },
-                                Object {
-                                  "color": "#F9F9FE",
-                                  "fontFamily": "System",
-                                  "fontSize": 14,
-                                  "fontWeight": "bold",
-                                  "marginHorizontal": 10,
-                                },
-                              ]
+                              Object {
+                                "alignItems": "center",
+                                "backgroundColor": "#2A2C76",
+                                "borderColor": "#DFE0F7",
+                                "borderRadius": 4,
+                                "borderWidth": 1,
+                                "flexDirection": "row",
+                                "justifyContent": "center",
+                                "minHeight": 40,
+                                "minWidth": 40,
+                                "opacity": 1,
+                                "paddingHorizontal": 10,
+                                "paddingVertical": 12,
+                              }
                             }
                           >
-                            SignUp
-                          </Text>
-                        </View>
-                        <View
-                          accessible={true}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          style={
-                            Object {
-                              "alignItems": "center",
-                              "backgroundColor": "#2A2C76",
-                              "borderColor": "#DFE0F7",
-                              "borderRadius": 4,
-                              "borderWidth": 1,
-                              "flexDirection": "row",
-                              "justifyContent": "center",
-                              "minHeight": 40,
-                              "minWidth": 40,
-                              "opacity": 1,
-                              "paddingHorizontal": 10,
-                              "paddingVertical": 12,
-                            }
-                          }
-                        >
-                          <Text
-                            appearance="default"
-                            category="p1"
+                            <Text
+                              appearance="default"
+                              category="p1"
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#2A2C76",
+                                    "fontFamily": "System",
+                                    "fontSize": 15,
+                                    "fontWeight": "400",
+                                  },
+                                  Object {
+                                    "color": "#F9F9FE",
+                                    "fontFamily": "System",
+                                    "fontSize": 14,
+                                    "fontWeight": "bold",
+                                    "marginHorizontal": 10,
+                                  },
+                                ]
+                              }
+                            >
+                              SignUp
+                            </Text>
+                          </View>
+                          <View
+                            accessible={true}
+                            focusable={true}
+                            onClick={[Function]}
+                            onResponderGrant={[Function]}
+                            onResponderMove={[Function]}
+                            onResponderRelease={[Function]}
+                            onResponderTerminate={[Function]}
+                            onResponderTerminationRequest={[Function]}
+                            onStartShouldSetResponder={[Function]}
                             style={
-                              Array [
-                                Object {
-                                  "color": "#2A2C76",
-                                  "fontFamily": "System",
-                                  "fontSize": 15,
-                                  "fontWeight": "400",
-                                },
-                                Object {
-                                  "color": "#F9F9FE",
-                                  "fontFamily": "System",
-                                  "fontSize": 14,
-                                  "fontWeight": "bold",
-                                  "marginHorizontal": 10,
-                                },
-                              ]
+                              Object {
+                                "alignItems": "center",
+                                "backgroundColor": "#2A2C76",
+                                "borderColor": "#DFE0F7",
+                                "borderRadius": 4,
+                                "borderWidth": 1,
+                                "flexDirection": "row",
+                                "justifyContent": "center",
+                                "minHeight": 40,
+                                "minWidth": 40,
+                                "opacity": 1,
+                                "paddingHorizontal": 10,
+                                "paddingVertical": 12,
+                              }
                             }
                           >
-                            Forgot your password?
-                          </Text>
+                            <Text
+                              appearance="default"
+                              category="p1"
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#2A2C76",
+                                    "fontFamily": "System",
+                                    "fontSize": 15,
+                                    "fontWeight": "400",
+                                  },
+                                  Object {
+                                    "color": "#F9F9FE",
+                                    "fontFamily": "System",
+                                    "fontSize": 14,
+                                    "fontWeight": "bold",
+                                    "marginHorizontal": 10,
+                                  },
+                                ]
+                              }
+                            >
+                              Forgot your password?
+                            </Text>
+                          </View>
                         </View>
                       </View>
                     </View>

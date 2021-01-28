@@ -27,24 +27,49 @@ class TxtInput extends Component {
         this.props.onChange(event)
     }
 
+    handleValidation(value) {
+        const { pattern } = this.props;
+        if (!pattern) return true;
+    
+        // string pattern, one validation rule
+        if (typeof pattern === 'string') {
+          const condition = new RegExp(pattern, 'g');
+          return condition.test(value);
+        }
+    
+        // array patterns, multiple validation rules
+        if (typeof pattern === 'object') {
+          const conditions = pattern.map(rule => new RegExp(rule, 'g'));
+          return conditions.map(condition => condition.test(value));
+        }
+      }
+
+      onChange(value) {
+        const { onChangeText, onValidation } = this.props;
+        const isValid = this.handleValidation(value);
+    
+        onValidation && onValidation(isValid);
+        onChangeText && onChangeText(value);
+      }
     
 
     render() {
+        const {
+            pattern,
+            onChangeText,
+            children,
+            ...props
+        } =this.props;
         
         return (
             
             <Input
-                readOnly={this.props.readonly}
-                value={this.props.value}
-                onChangeText={text => this.handleChange(text)}
-                required={this.props.required}
-                placeholder={this.props.placeHolder}
-                size={this.props.size}
-                caption={this.props.caption}
-                status={this.props.status}
+                onChangeText={value => {this.onChange(value); this.handleChange(value)}}
                 secureTextEntry={this.props.type === 'password'}
-                placeholder={this.props.placeHolder}
-                 />
+                {...props}
+                >
+                {children} 
+            </Input>
                 
             
         );

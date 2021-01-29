@@ -36,7 +36,7 @@ class Login extends Component{
 
     //function for checking the sign in
     handleSignin(login, password) {
-        //checking for the password length
+        //checking for the user length
         if(login.length == 0){
             this.setState({statusLog:"danger", captionLog: "You need to enter your username"})
         }

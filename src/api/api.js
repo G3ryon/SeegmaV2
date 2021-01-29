@@ -70,3 +70,22 @@ export async function reset(mail) {
         .catch(error => console.log('error', error));
     return data
 }
+
+export async function signup(mail, username, password) {
+
+    var formdata = new FormData();
+    formdata.append("email", mail);
+    formdata.append("username", username);
+    formdata.append("password", password);
+
+    let data = {};
+
+    await fetch(url + "signup", {
+        method: 'POST',
+        body: formdata,
+
+    }).then(response => response.text())
+        .then(result => {data = JSON.parse(result); console.log(data)})
+        .catch(error => console.log('error', error));
+    return data
+}

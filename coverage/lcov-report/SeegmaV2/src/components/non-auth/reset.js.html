@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">40% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/16</span>
+                <span class='fraction'>6/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">42.86% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/14</span>
+                <span class='fraction'>6/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">22.22% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>2/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">40% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/16</span>
+                <span class='fraction'>6/15</span>
             </div>
         
             
@@ -144,8 +144,7 @@
 <a name='L85'></a><a href='#L85'>85</a>
 <a name='L86'></a><a href='#L86'>86</a>
 <a name='L87'></a><a href='#L87'>87</a>
-<a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L88'></a><a href='#L88'>88</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -165,23 +164,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -205,10 +203,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -252,16 +250,16 @@ RETURN: a view to handle the reset of a password
 */
 &nbsp;
 class Reset extends Component{
-<span class="fstat-no" title="function not covered" >    co</span>nstructor(props){
-<span class="cstat-no" title="statement not covered" >        super(props);</span>
-<span class="cstat-no" title="statement not covered" >        this.state = {</span>
+    constructor(props){
+        super(props);
+        this.state = {
             mail: "juju_beber@gmail.com",
             isValid: null,
             visible: false,
             msg: "",
         }
-<span class="cstat-no" title="statement not covered" >        this.handleMail = this.handleMail.bind(this);</span>
-<span class="cstat-no" title="statement not covered" >        this.handleVisibility = this.handleVisibility.bind(this);</span>
+        this.handleMail = this.handleMail.bind(this);
+        this.handleVisibility = this.handleVisibility.bind(this);
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    ha</span>ndleMail(text) {
@@ -269,8 +267,7 @@ class Reset extends Component{
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    ha</span>ndleVisibility(value) {
-<span class="cstat-no" title="statement not covered" >        this.setState({ visible: false });</span>
-<span class="cstat-no" title="statement not covered" >        console.log(value)</span>
+<span class="cstat-no" title="statement not covered" >        this.setState({ visible: value });</span>
     }
 &nbsp;
 &nbsp;
@@ -292,11 +289,11 @@ class Reset extends Component{
             });
     }
     
-<span class="fstat-no" title="function not covered" >    re</span>nder(){
-        const { isValid } = <span class="cstat-no" title="statement not covered" >this.state;</span>
+    render(){
+        const { isValid } = this.state;
         
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        return(</span>
+        return(
         &lt;View&gt;
            &lt;Image source={logo}/&gt;
            &lt;Input 
@@ -304,18 +301,18 @@ class Reset extends Component{
            required={true} 
            readonly={false} 
            value={this.state.mail} 
-           caption={isValid &amp;&amp; isValid[0] ? "" : "It's not a valid e-mail" }
-           status={isValid &amp;&amp; isValid[0] ? "" : "danger" }
+           caption={isValid &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >isValid[0] </span>? <span class="branch-0 cbranch-no" title="branch not covered" >"" </span>: "It's not a valid e-mail" }
+           status={isValid &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >isValid[0] </span>? <span class="branch-0 cbranch-no" title="branch not covered" >"" </span>: "danger" }
            onChange={this.handleMail} 
            pattern={[
             '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$', // email regex
           ]}
            onValidation={<span class="fstat-no" title="function not covered" >is</span>Valid =&gt; <span class="cstat-no" title="statement not covered" >this.setState({ isValid })}</span>
            placeHolder={"Mail"}/&gt;
-           &lt;Button disabled={isValid &amp;&amp; isValid[0] ? false : true} onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.handleReset(this.state.mail)}</span>&gt;Submit&lt;/Button&gt;
+           &lt;Button disabled={isValid &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >isValid[0] </span>? <span class="branch-0 cbranch-no" title="branch not covered" >false </span>: true} onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.handleReset(this.state.mail)}</span>&gt;Submit&lt;/Button&gt;
            &lt;Button onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.props.navigation.navigate('login')}</span> &gt;I remembered my password&lt;/Button&gt;
            
-      &lt;Modal visible={this.state.visible} onVisibility={this.handleVisibility} infos={this.state.msg} exitText={"dissmis"} admitBackdrop={true} admitButton={true}/&gt;
+      &lt;Modal visible={this.state.visible} onVisibility={this.handleVisibility} infos={&lt;Text&gt;{this.state.msg}&lt;/Text&gt;} exitText={"dissmis"} admitBackdrop={true} admitButton={true}/&gt;
 &nbsp;
         &lt;/View&gt;)
     }
@@ -328,7 +325,7 @@ export default Reset;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Jan 28 2021 16:16:20 GMT+0100 (GMT+01:00)
+                at Fri Jan 29 2021 14:47:46 GMT+0100 (GMT+01:00)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>

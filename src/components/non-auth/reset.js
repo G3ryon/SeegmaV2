@@ -34,8 +34,7 @@ class Reset extends Component{
     }
 
     handleVisibility(value) {
-        this.setState({ visible: false });
-        console.log(value)
+        this.setState({ visible: value });
     }
 
 
@@ -80,7 +79,7 @@ class Reset extends Component{
            <Button disabled={isValid && isValid[0] ? false : true} onPress={() => this.handleReset(this.state.mail)}>Submit</Button>
            <Button onPress={() => this.props.navigation.navigate('login')} >I remembered my password</Button>
            
-      <Modal visible={this.state.visible} onVisibility={this.handleVisibility} infos={this.state.msg} exitText={"dissmis"} admitBackdrop={true} admitButton={true}/>
+      <Modal visible={this.state.visible} onVisibility={this.handleVisibility} infos={<Text>{this.state.msg}</Text>} exitText={"dissmis"} admitBackdrop={true} admitButton={true}/>
 
         </View>)
     }

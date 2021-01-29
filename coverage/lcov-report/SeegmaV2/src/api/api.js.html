@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">5% </span>
+                <span class="strong">3.23% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/20</span>
+                <span class='fraction'>1/31</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>0/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">5.56% </span>
+                <span class="strong">3.57% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/18</span>
+                <span class='fraction'>1/28</span>
             </div>
         
             
@@ -128,7 +128,26 @@
 <a name='L69'></a><a href='#L69'>69</a>
 <a name='L70'></a><a href='#L70'>70</a>
 <a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -186,6 +205,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -270,6 +308,25 @@ export async function <span class="fstat-no" title="function not covered" >reset
         .then(<span class="fstat-no" title="function not covered" >re</span>sult =&gt; {<span class="cstat-no" title="statement not covered" >data = JSON.parse(result); <span class="cstat-no" title="statement not covered" ></span>console.log(data)}</span>)
         .catch(<span class="fstat-no" title="function not covered" >er</span>ror =&gt; <span class="cstat-no" title="statement not covered" >console.log('error', error))</span>;
 <span class="cstat-no" title="statement not covered" >    return data</span>
+}
+&nbsp;
+export async function <span class="fstat-no" title="function not covered" >signup(</span>mail, username, password) {
+&nbsp;
+    var formdata = <span class="cstat-no" title="statement not covered" >new FormData();</span>
+<span class="cstat-no" title="statement not covered" >    formdata.append("email", mail);</span>
+<span class="cstat-no" title="statement not covered" >    formdata.append("username", username);</span>
+<span class="cstat-no" title="statement not covered" >    formdata.append("password", password);</span>
+&nbsp;
+    let data = <span class="cstat-no" title="statement not covered" >{};</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    await fetch(url + "signup", {</span>
+        method: 'POST',
+        body: formdata,
+&nbsp;
+    }).then(<span class="fstat-no" title="function not covered" >re</span>sponse =&gt; <span class="cstat-no" title="statement not covered" >response.text())</span>
+        .then(<span class="fstat-no" title="function not covered" >re</span>sult =&gt; {<span class="cstat-no" title="statement not covered" >data = JSON.parse(result); <span class="cstat-no" title="statement not covered" ></span>console.log(data)}</span>)
+        .catch(<span class="fstat-no" title="function not covered" >er</span>ror =&gt; <span class="cstat-no" title="statement not covered" >console.log('error', error))</span>;
+<span class="cstat-no" title="statement not covered" >    return data</span>
 }</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -277,7 +334,7 @@ export async function <span class="fstat-no" title="function not covered" >reset
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Jan 28 2021 16:16:20 GMT+0100 (GMT+01:00)
+                at Fri Jan 29 2021 14:47:46 GMT+0100 (GMT+01:00)
             </div>
         </div>
         <script src="../../../prettify.js"></script>

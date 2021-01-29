@@ -4,7 +4,7 @@ import { act } from 'react-test-renderer';
 import { fireEvent, render, waitFor } from '@testing-library/react-native';
 import 'react-native';
 import React, {useState} from 'react';
-import Modal from '../../components/pratical/modal.js';
+import Modal from '../modal.js';
 
 jest.useFakeTimers()
 
@@ -17,7 +17,6 @@ test('Testing modal appearance', async () => {
        fireEvent.press(button)}
       );
     expect(getByText('TestingModal')).toBeDefined()
-    console.log(expect(getByText('TestingModal')).toBeDefined())
     })
 
 test('Testing modal vanishing by button', async () => {

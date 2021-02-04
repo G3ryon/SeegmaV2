@@ -35,7 +35,6 @@ function InputTest (){
   ]);
   return(
     <ApplicationProvider mapping={mapping} theme={lightTheme}>
-          
           <Input type={"text"} required={true} readonly={false} pattern={pattern} value={loginValue} onChange={setValue} placeholder={"Log"}/>
     </ApplicationProvider>
   )

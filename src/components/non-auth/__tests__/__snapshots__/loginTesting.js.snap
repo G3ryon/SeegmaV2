@@ -8,7 +8,18 @@ exports[`Login renders correctly 1`] = `
     }
   }
 >
-  <View>
+  <View
+    appearance="default"
+    level="1"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#FFFFFF",
+        },
+        undefined,
+      ]
+    }
+  >
     <Image
       source={1}
     />

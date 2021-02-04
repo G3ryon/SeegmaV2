@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1611928066544" clover="3.2.0">
-  <project timestamp="1611928066544" name="All files">
+<coverage generated="1612430600468" clover="3.2.0">
+  <project timestamp="1612430600468" name="All files">
     <metrics statements="216" coveredstatements="67" conditionals="78" coveredconditionals="31" methods="127" coveredmethods="23" elements="421" coveredelements="121" complexity="0" loc="216" ncloc="216" packages="11" files="19" classes="19"/>
     <package name="SeegmaV2">
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>

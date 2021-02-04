@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import { View, Image, TextInput } from 'react-native';
+import { SafeAreaView, Image, TextInput, View } from 'react-native';
 import { Button, Layout, Text } from '@ui-kitten/components';
 import logo from '../../assets/logo.png';
 import Input from '../../components/pratical/input.js';
 import { authentification } from '../../api/api.js';
-
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 /*
 PROPS:  other.isSignIn  : bool displaying if the user is authenticated
         other.signIn    : method to set the isSignIn
@@ -66,7 +66,8 @@ class Login extends Component{
     render(){
 
         return(
-        <View>
+        
+        <SafeAreaView level='4'>
            <Image source={logo}/>
            <Input type={"text"} required={true} status={this.state.statusLog} caption={this.state.captionLog} readonly={false} value={this.state.login} onChange={this.handleLogin} placeHolder={"Login"}></Input>
            <Input 
@@ -78,12 +79,12 @@ class Login extends Component{
             value={this.state.password} 
             onChange={this.handlePassword} 
             placeholder={"Password"}/>
-            <View>
+            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
            <Button onPress={() => this.handleSignin(this.state.login, this.state.password)}>Login</Button>
            <Button onPress={() => this.props.navigation.navigate('signup')}>SignUp</Button>
            <Button onPress={() => this.props.navigation.navigate('reset')}>Forgot your password?</Button>
            </View>
-        </View>)
+        </SafeAreaView>  )
     }
     
 }

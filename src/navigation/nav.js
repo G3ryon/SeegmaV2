@@ -22,9 +22,9 @@ import Graph from '../components/graph/graph.js';
 import Alarms_info from '../components/alarm/alarm_info.js';
 import Alarms_history from '../components/alarm/alarms_history.js';
 import Alarms_occ from '../components/alarm/alarm_occ.js';
-import { Graph_disp } from '../components/graph/graph_disp.js';
+import { Graph_disp } from '../components/graph/graphDisp.js';
 import {authentification} from '../api/api.js';
-
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 //PROPS
 // isSignIn  : bool displaying if the user is authenticated
 // signIn    : method to set the isSignIn
@@ -156,9 +156,10 @@ class Nav extends Component{
         else{
             //Part of the navigation concerning the non-authentified part of the app
             return(
+              
                 <Stack.Navigator headerMode={""}>
-                    <Stack.Screen name={"login"}>{props => <Login {...props} other={this.props} />}</Stack.Screen>
-                    <Stack.Screen name={"signup"}>{props => <Signup {...props} other={this.props} />}</Stack.Screen>
+                    <Stack.Screen name={"login"}>{props => <SafeAreaView><Login {...props} other={this.props} /></SafeAreaView>}</Stack.Screen>
+                    <Stack.Screen name={"signup"}>{props => <SafeAreaView><Signup {...props} other={this.props} /></SafeAreaView>}</Stack.Screen>
                     <Stack.Screen name={"reset"}>{props => <Reset {...props} other={this.props} />}</Stack.Screen>
                 </Stack.Navigator>
                 ) 

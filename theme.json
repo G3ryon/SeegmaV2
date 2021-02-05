@@ -82,7 +82,7 @@
   "color-basic-500": "#DFE0F7",
   "color-basic-600": "#A3A4D4",
   "color-basic-700": "#7072B1",
-  "color-basic-800": "#background-basic-color-1",
+  "color-basic-800": "#47498F",
   "color-basic-900": "#2A2C76",
   "color-basic-1000": "#1F1F1F",
   "color-basic-1100": "#141414",
@@ -94,7 +94,7 @@
   "color-basic-transparent-600": "rgba(128, 128, 128, 0.48)",
 
   "text-basic-color" : "$color-basic-100",
-  "background-basic-color-1": "#47498F", 
+  "background-basic-color-1": "$color-basic-800", 
   "background-basic-color-2": "$color-basic-900", 
   "background-basic-color-3": "$color-basic-1000",
   "background-basic-color-4": "$color-basic-1100",

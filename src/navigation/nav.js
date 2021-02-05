@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import { View, Image, TextInput } from 'react-native';
 import { Button, Layout, Text } from '@ui-kitten/components';
-import Login from '../components/non-auth/login.js';
-import Signup from '../components/non-auth/signup.js';
-import Reset from '../components/non-auth/reset.js';
-import Home from '../components/site_selection/home.js';
-import Notif_center from '../components/notification_center/notif_center.js';
-import Details_view from '../components/general/details_view.js';
+import Login from '../components/nonAuth/login.js';
+import Signup from '../components/nonAuth/signup.js';
+import Reset from '../components/nonAuth/reset.js';
+import Home from '../components/siteSelection/home.js';
+import Notif_center from '../components/notificationCenter/notifCenter.js';
+import Details_view from '../components/general/detailsView.js';
 import Dashboard from '../components/dashboard/dashboard.js';
 import Widget from '../components/dashboard/widget.js';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -19,9 +19,9 @@ import {
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Alarms from '../components/alarm/alarms.js';
 import Graph from '../components/graph/graph.js';
-import Alarms_info from '../components/alarm/alarm_info.js';
-import Alarms_history from '../components/alarm/alarms_history.js';
-import Alarms_occ from '../components/alarm/alarm_occ.js';
+import Alarms_info from '../components/alarm/alarmInfo.js';
+import Alarms_history from '../components/alarm/alarmsHistory.js';
+import Alarms_occ from '../components/alarm/alarmOcc.js';
 import { Graph_disp } from '../components/graph/graphDisp.js';
 import {authentification} from '../api/api.js';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
@@ -112,7 +112,7 @@ class Nav extends Component{
                 return(
                         <Drawer.Navigator
                         drawerContentOptions={{
-                          activeTintColor: '#e91e63',
+                          
                           itemStyle: {padding: 0},
                         }}
                         //Part to add DrawerItem and to hide routes contained into the drawer drom the user

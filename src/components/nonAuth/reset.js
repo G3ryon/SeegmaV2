@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import { View, Image, TextInput } from 'react-native';
 import { Button, Layout, Text } from '@ui-kitten/components';
 import logo from '../../assets/logo.png';
-import Input from '../../components/pratical/input.js';
-import Modal from '../../components/pratical/modal.js';
+import Input from '../pratical/input.js';
+import Modal from '../pratical/modal.js';
 import { reset } from '../../api/api.js';
 
 

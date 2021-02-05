@@ -21,11 +21,11 @@ export default function App(){
   const MyTheme = {
     dark: true,
     colors: {
-      primary: 'rgb(255, 45, 85)',//selected color
-      background: 'rgb(242, 242, 242)',
-      card: 'rgb(255, 255, 255)',//header,bars
+      primary: theme["color-basic-900"],//selected color
+      background: theme[theme["background-basic-color-1"]],
+      card: theme["color-basic-100"],//header,bars
       text: theme[theme['text-basic-color']],
-      border: 'rgb(199, 199, 204)',
+      border: theme['border-basic-color-1'],
       notification: 'rgb(255, 69, 58)',
     },
   };

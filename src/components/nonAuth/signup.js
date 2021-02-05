@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import { View, Image, TextInput } from 'react-native';
 import { Button, Layout, Text } from '@ui-kitten/components';
 import logo from '../../assets/logo.png';
-import Input from '../../components/pratical/input.js';
+import Input from '../pratical/input.js';
 import { signup } from '../../api/api.js';
-import Modal from '../../components/pratical/modal.js';
+import Modal from '../pratical/modal.js';
 /*
 PROPS:  other.isSignIn  : bool displaying if the user is authenticated
         other.signIn    : method to set the isSignIn

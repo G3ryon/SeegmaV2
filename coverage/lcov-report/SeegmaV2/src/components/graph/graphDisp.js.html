@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for SeegmaV2/src/components/graph/graph.js</title>
+    <title>Code coverage report for SeegmaV2/src/components/graph/graphDisp.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">SeegmaV2/src/components/graph</a> graph.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">SeegmaV2/src/components/graph</a> graphDisp.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
@@ -86,9 +86,12 @@
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -102,6 +105,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -110,14 +118,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, {Component} from 'react';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, {Component,useState} from 'react';
 import { View, Image, TextInput } from 'react-native';
-import { Button, Layout, Text } from '@ui-kitten/components';
+import { Button, Layout, Text, Modal, Card } from '@ui-kitten/components';
 &nbsp;
 /*
 PROPS:  other.isSignIn  : bool displaying if the user is authenticated
@@ -125,26 +135,31 @@ PROPS:  other.isSignIn  : bool displaying if the user is authenticated
         other.authToken : string with the token of the user
         other.setAuth   : method to set the authToken
        
-RETURN: a view for the choices of graphs to be displayed
+RETURN: a view of the graph with the data set choosen, there is also the modal for the settings
 */
 &nbsp;
-class Graph extends Component{
-<span class="fstat-no" title="function not covered" >    co</span>nstructor(props){
-<span class="cstat-no" title="statement not covered" >        super(props);</span>
-<span class="cstat-no" title="statement not covered" >        this.state = {</span>
+export const Graph_disp = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt;{</span>
+    
+    const [visible, setVisible] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
 &nbsp;
-        }
-    }
-&nbsp;
-<span class="fstat-no" title="function not covered" >    re</span>nder(){
-<span class="cstat-no" title="statement not covered" >        return(</span>
+<span class="cstat-no" title="statement not covered" >    return(</span>
         &lt;View&gt;
-           &lt;Button onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.props.navigation.navigate('Graph')}</span>&gt;graph&lt;/Button&gt;
+           &lt;Button onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setVisible(true)}</span>&gt;
+        MODAL
+      &lt;/Button&gt;
+      &lt;Modal visible={visible}&gt;
+          &lt;Card&gt;
+          &lt;Text&gt;GRAPHE&lt;/Text&gt;
+          &lt;Button onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setVisible(false)}</span>&gt;
+            DISMISS
+          &lt;/Button&gt;
+            &lt;/Card&gt;  
+      &lt;/Modal&gt;
         &lt;/View&gt;)
     }
     
-}
-export default Graph;</pre></td></tr></table></pre>
+&nbsp;
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->

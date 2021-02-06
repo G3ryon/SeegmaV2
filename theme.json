@@ -76,13 +76,13 @@
   "color-danger-transparent-600": "rgba(255, 115, 96, 0.48)",
 
   "color-basic-100": "#F9F9FE",
-  "color-basic-200": "#F4F4FE",
+  "color-basic-200": "#EDEEFC",
   "color-basic-300": "#EDEEFC",
   "color-basic-400": "#E7E8FA",
   "color-basic-500": "#DFE0F7",
   "color-basic-600": "#A3A4D4",
   "color-basic-700": "#7072B1",
-  "color-basic-800": "#47498F",
+  "color-basic-800": "#A3A4D4",
   "color-basic-900": "#2A2C76",
   "color-basic-1000": "#1F1F1F",
   "color-basic-1100": "#141414",
@@ -93,9 +93,9 @@
   "color-basic-transparent-500": "rgba(128, 128, 128, 0.4)",
   "color-basic-transparent-600": "rgba(128, 128, 128, 0.48)",
 
-  "text-basic-color" : "$color-basic-100",
-  "background-basic-color-1": "$color-basic-800", 
-  "background-basic-color-2": "$color-basic-900", 
+  "text-basic-color" : "$color-basic-1100",
+  "background-basic-color-1": "$color-basic-100", 
+  "background-basic-color-2": "$color-basic-200", 
   "background-basic-color-3": "$color-basic-1000",
   "background-basic-color-4": "$color-basic-1100",
 

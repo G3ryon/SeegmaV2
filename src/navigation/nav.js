@@ -41,7 +41,7 @@ class Nav extends Component{
     //Navigation of the Notification part, base on stack screens
     notifNav = () => {
         return(
-            <Stack.Navigator headerMode={"screen"}>
+            <Stack.Navigator headerMode={""}>
                 <Stack.Screen name={"Notification center"}>{props => <Notif_center {...props} other={this.props} />}</Stack.Screen>
                 <Stack.Screen name={"Notification"}>{props => <Details_view {...props} other={this.props} />}</Stack.Screen>
             </Stack.Navigator>
@@ -51,7 +51,7 @@ class Nav extends Component{
     //Navigation of the Dashboard part, base on stack screens
     dashNav = () => {
         return(
-            <Stack.Navigator headerMode={"screen"}>
+            <Stack.Navigator headerMode={""}>
                 <Stack.Screen name={"Dashboard"}>{props => <Dashboard {...props} other={this.props} />}</Stack.Screen>
                 <Stack.Screen name={"widget"}>{props => <Widget {...props} other={this.props} />}</Stack.Screen>
             </Stack.Navigator>
@@ -61,7 +61,7 @@ class Nav extends Component{
     //Navigation of the Alarms part, base on stack screens
     alarmNav = () => {
         return(
-            <Stack.Navigator headerMode={"screen"}>
+            <Stack.Navigator headerMode={""}>
                 <Stack.Screen name={"Alarms"}>{props => <Alarms {...props} other={this.props} />}</Stack.Screen>
                 <Stack.Screen name={"Alarms info"}>{props => <Alarms_info {...props} other={this.props} />}</Stack.Screen>
                 <Stack.Screen name={"Alarms history"}>{props => <Alarms_history {...props} other={this.props} />}</Stack.Screen>
@@ -74,7 +74,7 @@ class Nav extends Component{
     //Navigation of the Graphs part, base on stack screens
     graphNav = () => {
         return(
-            <Stack.Navigator headerMode={"screen"}>
+            <Stack.Navigator headerMode={""}>
                 <Stack.Screen name={"Graphs"}>{props => <Graph {...props} other={this.props} />}</Stack.Screen>
                 <Stack.Screen name={"Graph"}>{props => <Graph_disp {...props} other={this.props} />}</Stack.Screen>
             </Stack.Navigator>
@@ -84,7 +84,7 @@ class Nav extends Component{
     //Navigation of the non authentified part, base on stack screens
     nonAuthNav = () => {
         return(
-            <Stack.Navigator headerMode={"screen"}>
+            <Stack.Navigator headerMode={""}>
                 <Stack.Screen name={"login"}>{props => <Login {...props} other={this.props} />}</Stack.Screen>
                 <Stack.Screen name={"signup"}>{props => <Signup {...props} other={this.props} />}</Stack.Screen>
                 <Stack.Screen name={"reset"}>{props => <Reset {...props} other={this.props} />}</Stack.Screen>
@@ -145,7 +145,7 @@ class Nav extends Component{
                             </DrawerContentScrollView>
                           );
                         }}>
-                        <Drawer.Screen name="home">{props => <Home {...props} other={this.props} setNotif={this.handleNotification} setSite={this.props.setSite}/>}</Drawer.Screen>
+                        <Drawer.Screen name="home">{props => <SafeAreaView><Home {...props} other={this.props} setNotif={this.handleNotification} setSite={this.props.setSite}/></SafeAreaView>}</Drawer.Screen>
                         <Drawer.Screen name="notification" component={this.notifNav} />
                         <Drawer.Screen name="bottomNav" component={this.authBottomNav}/>
                     </Drawer.Navigator>
@@ -160,7 +160,7 @@ class Nav extends Component{
                 <Stack.Navigator headerMode={""}>
                     <Stack.Screen name={"login"}>{props => <SafeAreaView><Login {...props} other={this.props} /></SafeAreaView>}</Stack.Screen>
                     <Stack.Screen name={"signup"}>{props => <SafeAreaView><Signup {...props} other={this.props} /></SafeAreaView>}</Stack.Screen>
-                    <Stack.Screen name={"reset"}>{props => <Reset {...props} other={this.props} />}</Stack.Screen>
+                    <Stack.Screen name={"reset"}>{props => <SafeAreaView><Reset {...props} other={this.props} /></SafeAreaView>}</Stack.Screen>
                 </Stack.Navigator>
                 ) 
         }

@@ -1,0 +1,2 @@
+for the buttons : "color-basic-900"
+for the header and card : "color-basic-800"

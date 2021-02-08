@@ -94,7 +94,7 @@
   "color-basic-transparent-600": "rgba(128, 128, 128, 0.48)",
 
   "text-basic-color" : "$color-basic-1100",
-  "background-basic-color-1": "$color-basic-100", 
+  "background-basic-color-1": "$color-basic-700", 
   "background-basic-color-2": "$color-basic-200", 
   "background-basic-color-3": "$color-basic-1000",
   "background-basic-color-4": "$color-basic-1100",

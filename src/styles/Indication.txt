@@ -1,2 +1,4 @@
 for the buttons : "color-basic-900"
 for the header and card : "color-basic-800"
+background-basic-color-1 color of the headers
+background-basic-color-2 color of the background layout

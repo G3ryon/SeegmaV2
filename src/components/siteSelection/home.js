@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import { View, Image, TextInput, ScrollView, SafeAreaView } from 'react-native';
+import { View, Image, TextInput, ScrollView, SafeAreaView,FlatList } from 'react-native';
 import { Icon, Button, Layout, Text, Divider, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
+import TilesView from '../pratical/tilesView';
 
 /*
 PROPS:  other.isSignIn  : bool displaying if the user is authenticated
@@ -10,6 +11,22 @@ PROPS:  other.isSignIn  : bool displaying if the user is authenticated
        
 RETURN: a view of the different site of the user
 */
+const data = [
+    { separator: true},
+    {
+        title: 'Title for Item',
+        description: 'Description for Item',
+    },
+    {
+        title: 'Title for Item',
+        description: 'Description for Item',
+    },
+    { separator: true},
+    {
+        title: 'Title for Item',
+        description: 'Description for Item',
+    },
+  ];
 
 class Home extends Component{
     constructor(props){
@@ -31,35 +48,30 @@ class Home extends Component{
         <TopNavigationAction icon={this.NotifIcon} onPress={() => this.props.navigation.navigate('notification')}/>
     );
 
+     renderItem= (item, index) => {
+        return (
+          <Text>erzerfz</Text>
+        )
+      }
+
     render(){
         return(
-            <View>
-                
-        
         <SafeAreaView>
+           
+           <TilesView itemData={data} Header={<TopNavigation title="Home"  accessoryLeft={this.BackAction} accessoryRight={this.NotifAction}/>}/>
         
-        <TopNavigation title="Home"  accessoryLeft={this.BackAction} accessoryRight={this.NotifAction}/>
-            <Text>Your favorites sites</Text>
-           <ScrollView onTouchStart={(ev) => { this.setState({ content: { flex: 1 } }); }}
-									onMomentumScrollEnd={(e) => { this.setState({ content: {} }); }}
-									onScrollEndDrag={(e) => { this.setState({ content: {} }); }}
-									style={{ margin: 10, maxHeight: 200 }}>
-           <Button onPress={() => this.props.navigation.navigate('bottomNav')}>site</Button>
-           <Button onPress={() => this.props.other.setSite('home')}>home site</Button>
-           </ScrollView>
-           <Text>Your sites</Text>
-           <ScrollView onTouchStart={(ev) => { this.setState({ content: { flex: 1 } }); }}
-									onMomentumScrollEnd={(e) => { this.setState({ content: {} }); }}
-									onScrollEndDrag={(e) => { this.setState({ content: {} }); }}
-									style={{ margin: 10, maxHeight: 200 }}>
-           <Button onPress={() => this.props.navigation.navigate('bottomNav')}>site</Button>
-           <Button onPress={() => this.props.other.setSite('home')}>home site</Button>
-           </ScrollView>
-
-
-        
-        </SafeAreaView></View>)
+        </SafeAreaView>)
     }
     
 }
-export default Home;
+export default Home;/* 
+<TopNavigation title="Home"  accessoryLeft={this.BackAction} accessoryRight={this.NotifAction}/>
+<Text>Your favorites sites</Text>
+           <ScrollView onTouchStart={(ev) => { this.setState({ content: { flex: 1 } }); }}
+									onMomentumScrollEnd={(e) => { this.setState({ content: {} }); }}
+									onScrollEndDrag={(e) => { this.setState({ content: {} }); }}
+									style={{ margin: 2, maxHeight: 200 }}>
+           <TilesView></TilesView>
+           </ScrollView><Button onPress={() => this.props.navigation.navigate('bottomNav')}>site</Button>
+           <Button onPress={() => this.props.other.setSite('home')}>home site</Button>
+           <Text>Your sites</Text>*/

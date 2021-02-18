@@ -89,3 +89,23 @@ export async function signup(mail, username, password) {
         .catch(error => console.log('error', error));
     return data
 }
+
+export async function gettingSite(token,userId) {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + token);
+
+    var formdata = new FormData();
+    formdata.append("userId", userId);
+
+    let data = {};
+
+    await fetch(url + "usersite", {
+        method: 'POST',
+        body: formdata,
+
+
+    }).then(response => response.text())
+        .then(result => {data = JSON.parse(result);})
+        .catch(error => console.log('error', error));
+    return data
+}

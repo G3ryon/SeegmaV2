@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>8/10</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>8/10</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -102,7 +102,11 @@
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
 <a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -112,17 +116,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -134,7 +140,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -149,45 +157,49 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, {useState} from 'react';
 import * as eva from '@eva-design/eva';
-import { ApplicationProvider, Layout, Button, Text } from '@ui-kitten/components';
+import { ApplicationProvider, Layout, Button, Text, IconRegistry } from '@ui-kitten/components';
 import { default as theme } from './theme.json'; // &lt;-- Import app theme
 import { default as mapping } from './mapping.json';
 import Nav from "./src/navigation/nav.js";
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { ThemeContext } from './src/styles/themeContext.js';
+import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
-export default function <span class="fstat-no" title="function not covered" >App(</span>){
-  const [isLoggin, setLoggin] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
-  const [token, setToken] = <span class="cstat-no" title="statement not covered" >useState(undefined);</span>
-  const [site, setSite] = <span class="cstat-no" title="statement not covered" >useState(undefined);</span>
-  const [themes, setTheme] = <span class="cstat-no" title="statement not covered" >useState('light');</span>
+export default function App(){
+  const [isLoggin, setLoggin] = useState(false);
+  const [token, setToken] = useState(undefined);
+  const [site, setSite] = useState(undefined);
+  const [userId, setUserId] = useState(undefined);
+  const [themes, setTheme] = useState('dark');
 &nbsp;
-  const toggleTheme = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+  const toggleTheme = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
     const nextTheme = <span class="cstat-no" title="statement not covered" >themes === 'light' ? 'dark' : 'light';</span>
 <span class="cstat-no" title="statement not covered" >    setTheme(nextTheme);</span>
   };
 &nbsp;
-  const MyTheme = <span class="cstat-no" title="statement not covered" >{</span>
+  const MyTheme = {
     dark: true,
     colors: {
       primary: theme["color-basic-900"],//selected color
-      background: theme[theme["background-basic-color-1"]],
+      background: theme["color-basic-200"],
       card: theme["color-basic-100"],//header,bars
-      text: theme[theme['text-basic-color']],
+      text: theme["color-basic-1100"],
       border: theme['border-basic-color-1'],
       notification: 'rgb(255, 69, 58)',
     },
   };
   
-<span class="cstat-no" title="statement not covered" >  return(</span>
+  return(
+    
     &lt;ThemeContext.Provider value={{ themes, toggleTheme }}&gt;
-  &lt;ApplicationProvider {...eva} theme={{ ...eva[themes],...theme}} customMapping={mapping}&gt;
-  
+    &lt;IconRegistry icons={EvaIconsPack} /&gt;
+    &lt;ApplicationProvider {...eva} theme={{ ...eva[themes],...theme}} customMapping={mapping}&gt;
+    &lt;SafeAreaProvider &gt; 
     &lt;NavigationContainer theme={MyTheme}&gt;
       
-      &lt;Nav isSignIn={isLoggin} signIn={setLoggin} authToken={token} setAuth={setToken} site={site} setSite={setSite}/&gt;
+      &lt;Nav isSignIn={isLoggin} signIn={setLoggin} authToken={token} setAuth={setToken} site={site} setSite={setSite} userId={userId} setUserId={setUserId}/&gt;
       
-    &lt;/NavigationContainer&gt;
+    &lt;/NavigationContainer&gt;&lt;/SafeAreaProvider&gt;
   &lt;/ApplicationProvider&gt;
   &lt;/ThemeContext.Provider&gt;  
   
@@ -199,7 +211,7 @@ export default function <span class="fstat-no" title="function not covered" >App
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Feb 05 2021 11:52:42 GMT+0100 (GMT+01:00)
+                at Sun Feb 14 2021 17:53:25 GMT+0100 (GMT+01:00)
             </div>
         </div>
         <script src="../prettify.js"></script>

@@ -21,6 +21,7 @@ class Login extends Component{
             password: "jujubeberhot",
             login: "juju_beber",
             token: "",
+            userId:"",
         }
         this.handlePassword = this.handlePassword.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
@@ -55,8 +56,10 @@ class Login extends Component{
                 }
                 else {
                     let token = response["data"]["access_tokens"][0];
-                    this.setState({ token: token });
+                    let id = response["data"]["id"];
+                    this.setState({ token: token, userId: id });
                     this.props.other.setAuth(token);
+                    this.props.other.setUserId(id);
                     this.props.other.signIn(true);
                 }
                 

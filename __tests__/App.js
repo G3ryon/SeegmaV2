@@ -4,7 +4,7 @@ import App from '../App';
 import { act } from 'react-test-renderer';
 import { clearUpdateCacheExperimentalAsync } from 'expo-updates';
 import { fireEvent, render, waitFor } from '@testing-library/react-native';
-import Login from '../src/components/non-auth/login.js';
+
 import { ApplicationProvider, Layout, Button, Text } from '@ui-kitten/components';
 import { mapping, light as lightTheme } from '@eva-design/eva';
 

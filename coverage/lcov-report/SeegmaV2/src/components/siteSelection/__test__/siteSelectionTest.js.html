@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for SeegmaV2/src/components/alarm/alarmOcc.js</title>
+    <title>Code coverage report for SeegmaV2/src/components/siteSelection/__test__/siteSelectionTest.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../../prettify.css" />
-    <link rel="stylesheet" href="../../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <link rel="stylesheet" href="../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../../sort-arrow-sprite.png);
+            background-image: url(../../../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">SeegmaV2/src/components/alarm</a> alarmOcc.js</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">SeegmaV2/src/components/siteSelection/__test__</a> siteSelectionTest.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
@@ -77,18 +77,7 @@
 <a name='L18'></a><a href='#L18'>18</a>
 <a name='L19'></a><a href='#L19'>19</a>
 <a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a>
-<a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L21'></a><a href='#L21'>21</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -102,66 +91,50 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, {Component} from 'react';
-import { View, Image, TextInput } from 'react-native';
-import { Button, Layout, Text } from '@ui-kitten/components';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import 'react-native';
+import React from 'react';
 &nbsp;
-/*
-PROPS:  other.isSignIn  : bool displaying if the user is authenticated
-        other.signIn    : method to set the isSignIn
-        other.authToken : string with the token of the user
-        other.setAuth   : method to set the authToken
-       
-RETURN: a view of the activation of the choosen alarm into a graph
-*/
+import { act } from 'react-test-renderer';
 &nbsp;
-class Alarms_occ extends Component{
-<span class="fstat-no" title="function not covered" >    co</span>nstructor(props){
-<span class="cstat-no" title="statement not covered" >        super(props);</span>
-<span class="cstat-no" title="statement not covered" >        this.state = {</span>
+import { fireEvent, render, waitFor } from '@testing-library/react-native';
+import Home from '../home.js';
+import { ApplicationProvider, Layout, Button, Text } from '@ui-kitten/components';
+import { mapping, light as lightTheme } from '@eva-design/eva';
 &nbsp;
-        }
-    }
+// Note: test renderer must be required after react-native.
+//import renderer from 'react-test-renderer';
 &nbsp;
-<span class="fstat-no" title="function not covered" >    re</span>nder(){
-<span class="cstat-no" title="statement not covered" >        return(</span>
-        &lt;View&gt;
-           
-        &lt;/View&gt;)
-    }
-    
-}
-export default Alarms_occ;</pre></td></tr></table></pre>
+<span class="cstat-no" title="statement not covered" >jest.useFakeTimers()</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >test('Login renders correctly', <span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {</span>
+    const result = <span class="cstat-no" title="statement not covered" >render(</span>
+      &lt;ApplicationProvider mapping={mapping} theme={lightTheme}&gt;&lt;Home /&gt;&lt;/ApplicationProvider&gt;
+    );
+<span class="cstat-no" title="statement not covered" >    await act(<span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {<span class="cstat-no" title="statement not covered" >expect(result).toMatchSnapshot();}</span>)</span>
+  });</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sun Feb 14 2021 17:53:25 GMT+0100 (GMT+01:00)
+                at Sun Feb 14 2021 17:42:19 GMT+0100 (GMT+01:00)
             </div>
         </div>
-        <script src="../../../../prettify.js"></script>
+        <script src="../../../../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../../sorter.js"></script>
-        <script src="../../../../block-navigation.js"></script>
+        <script src="../../../../../sorter.js"></script>
+        <script src="../../../../../block-navigation.js"></script>
     </body>
 </html>
     

@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">7.14% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/42</span>
+                <span class='fraction'>3/42</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">7.32% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/41</span>
+                <span class='fraction'>3/41</span>
             </div>
         
             
@@ -261,9 +261,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -432,9 +432,9 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 // authToken : string with the token of the user
 // setAuth   : method to set the authToken
 &nbsp;
-const Drawer = <span class="cstat-no" title="statement not covered" >createDrawerNavigator();</span>
-const Stack = <span class="cstat-no" title="statement not covered" >createStackNavigator();</span>
-const Tab = <span class="cstat-no" title="statement not covered" >createBottomTabNavigator();</span>
+const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 &nbsp;
 &nbsp;
 class Nav extends Component{
@@ -442,7 +442,7 @@ class Nav extends Component{
     //Navigation of the Notification part, base on stack screens
     notifNav = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        return(</span>
-            &lt;Stack.Navigator headerMode={"screen"}&gt;
+            &lt;Stack.Navigator headerMode={""}&gt;
                 &lt;Stack.Screen name={"Notification center"}&gt;{<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >&lt;Notif_center {...props} other={this.props} /&gt;}</span>&lt;/Stack.Screen&gt;
                 &lt;Stack.Screen name={"Notification"}&gt;{<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >&lt;Details_view {...props} other={this.props} /&gt;}</span>&lt;/Stack.Screen&gt;
             &lt;/Stack.Navigator&gt;
@@ -452,7 +452,7 @@ class Nav extends Component{
     //Navigation of the Dashboard part, base on stack screens
     dashNav = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        return(</span>
-            &lt;Stack.Navigator headerMode={"screen"}&gt;
+            &lt;Stack.Navigator headerMode={""}&gt;
                 &lt;Stack.Screen name={"Dashboard"}&gt;{<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >&lt;Dashboard {...props} other={this.props} /&gt;}</span>&lt;/Stack.Screen&gt;
                 &lt;Stack.Screen name={"widget"}&gt;{<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >&lt;Widget {...props} other={this.props} /&gt;}</span>&lt;/Stack.Screen&gt;
             &lt;/Stack.Navigator&gt;
@@ -462,7 +462,7 @@ class Nav extends Component{
     //Navigation of the Alarms part, base on stack screens
     alarmNav = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        return(</span>
-            &lt;Stack.Navigator headerMode={"screen"}&gt;
+            &lt;Stack.Navigator headerMode={""}&gt;
                 &lt;Stack.Screen name={"Alarms"}&gt;{<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >&lt;Alarms {...props} other={this.props} /&gt;}</span>&lt;/Stack.Screen&gt;
                 &lt;Stack.Screen name={"Alarms info"}&gt;{<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >&lt;Alarms_info {...props} other={this.props} /&gt;}</span>&lt;/Stack.Screen&gt;
                 &lt;Stack.Screen name={"Alarms history"}&gt;{<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >&lt;Alarms_history {...props} other={this.props} /&gt;}</span>&lt;/Stack.Screen&gt;
@@ -475,7 +475,7 @@ class Nav extends Component{
     //Navigation of the Graphs part, base on stack screens
     graphNav = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        return(</span>
-            &lt;Stack.Navigator headerMode={"screen"}&gt;
+            &lt;Stack.Navigator headerMode={""}&gt;
                 &lt;Stack.Screen name={"Graphs"}&gt;{<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >&lt;Graph {...props} other={this.props} /&gt;}</span>&lt;/Stack.Screen&gt;
                 &lt;Stack.Screen name={"Graph"}&gt;{<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >&lt;Graph_disp {...props} other={this.props} /&gt;}</span>&lt;/Stack.Screen&gt;
             &lt;/Stack.Navigator&gt;
@@ -485,7 +485,7 @@ class Nav extends Component{
     //Navigation of the non authentified part, base on stack screens
     nonAuthNav = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        return(</span>
-            &lt;Stack.Navigator headerMode={"screen"}&gt;
+            &lt;Stack.Navigator headerMode={""}&gt;
                 &lt;Stack.Screen name={"login"}&gt;{<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >&lt;Login {...props} other={this.props} /&gt;}</span>&lt;/Stack.Screen&gt;
                 &lt;Stack.Screen name={"signup"}&gt;{<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >&lt;Signup {...props} other={this.props} /&gt;}</span>&lt;/Stack.Screen&gt;
                 &lt;Stack.Screen name={"reset"}&gt;{<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >&lt;Reset {...props} other={this.props} /&gt;}</span>&lt;/Stack.Screen&gt;
@@ -546,7 +546,7 @@ class Nav extends Component{
                             &lt;/DrawerContentScrollView&gt;
                           );
                         }}&gt;
-                        &lt;Drawer.Screen name="home"&gt;{<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >&lt;Home {...props} other={this.props} setNotif={this.handleNotification} setSite={this.props.setSite}/&gt;}</span>&lt;/Drawer.Screen&gt;
+                        &lt;Drawer.Screen name="home"&gt;{<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >&lt;SafeAreaView&gt;&lt;Home {...props} other={this.props} setNotif={this.handleNotification} setSite={this.props.setSite}/&gt;&lt;/SafeAreaView&gt;}</span>&lt;/Drawer.Screen&gt;
                         &lt;Drawer.Screen name="notification" component={this.notifNav} /&gt;
                         &lt;Drawer.Screen name="bottomNav" component={this.authBottomNav}/&gt;
                     &lt;/Drawer.Navigator&gt;
@@ -561,7 +561,7 @@ class Nav extends Component{
                 &lt;Stack.Navigator headerMode={""}&gt;
                     &lt;Stack.Screen name={"login"}&gt;{<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >&lt;SafeAreaView&gt;&lt;Login {...props} other={this.props} /&gt;&lt;/SafeAreaView&gt;}</span>&lt;/Stack.Screen&gt;
                     &lt;Stack.Screen name={"signup"}&gt;{<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >&lt;SafeAreaView&gt;&lt;Signup {...props} other={this.props} /&gt;&lt;/SafeAreaView&gt;}</span>&lt;/Stack.Screen&gt;
-                    &lt;Stack.Screen name={"reset"}&gt;{<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >&lt;Reset {...props} other={this.props} /&gt;}</span>&lt;/Stack.Screen&gt;
+                    &lt;Stack.Screen name={"reset"}&gt;{<span class="fstat-no" title="function not covered" >pr</span>ops =&gt; <span class="cstat-no" title="statement not covered" >&lt;SafeAreaView&gt;&lt;Reset {...props} other={this.props} /&gt;&lt;/SafeAreaView&gt;}</span>&lt;/Stack.Screen&gt;
                 &lt;/Stack.Navigator&gt;
                 ) 
         }
@@ -577,7 +577,7 @@ export default Nav;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Feb 05 2021 11:52:42 GMT+0100 (GMT+01:00)
+                at Sun Feb 14 2021 17:53:25 GMT+0100 (GMT+01:00)
             </div>
         </div>
         <script src="../../../prettify.js"></script>

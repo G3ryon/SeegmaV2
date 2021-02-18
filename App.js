@@ -12,6 +12,7 @@ export default function App(){
   const [isLoggin, setLoggin] = useState(false);
   const [token, setToken] = useState(undefined);
   const [site, setSite] = useState(undefined);
+  const [userId, setUserId] = useState(undefined);
   const [themes, setTheme] = useState('dark');
 
   const toggleTheme = () => {
@@ -39,7 +40,7 @@ export default function App(){
     <SafeAreaProvider > 
     <NavigationContainer theme={MyTheme}>
       
-      <Nav isSignIn={isLoggin} signIn={setLoggin} authToken={token} setAuth={setToken} site={site} setSite={setSite}/>
+      <Nav isSignIn={isLoggin} signIn={setLoggin} authToken={token} setAuth={setToken} site={site} setSite={setSite} userId={userId} setUserId={setUserId}/>
       
     </NavigationContainer></SafeAreaProvider>
   </ApplicationProvider>

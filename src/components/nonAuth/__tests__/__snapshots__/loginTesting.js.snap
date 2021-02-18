@@ -8,17 +8,9 @@ exports[`Login renders correctly 1`] = `
     }
   }
 >
-  <View
-    appearance="default"
-    level="1"
-    style={
-      Array [
-        Object {
-          "backgroundColor": "#FFFFFF",
-        },
-        undefined,
-      ]
-    }
+  <RCTSafeAreaView
+    emulateUnlessSupported={true}
+    level="4"
   >
     <Image
       source={1}
@@ -177,7 +169,14 @@ exports[`Login renders correctly 1`] = `
         }
       />
     </View>
-    <View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "justifyContent": "center",
+        }
+      }
+    >
       <View
         accessible={true}
         focusable={true}
@@ -332,6 +331,6 @@ exports[`Login renders correctly 1`] = `
         </Text>
       </View>
     </View>
-  </View>
+  </RCTSafeAreaView>
 </View>
 `;

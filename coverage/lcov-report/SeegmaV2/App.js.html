@@ -106,7 +106,14 @@
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -128,17 +135,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -152,12 +148,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, {useState} from 'react';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from 'react';
 import * as eva from '@eva-design/eva';
-import { ApplicationProvider, Layout, Button, Text, IconRegistry } from '@ui-kitten/components';
+import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import { default as theme } from './theme.json'; // &lt;-- Import app theme
 import { default as mapping } from './mapping.json';
 import Nav from "./src/navigation/nav.js";
@@ -165,7 +173,10 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { ThemeContext } from './src/styles/themeContext.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
-export default function App(){
+&nbsp;
+//Root of the app with the initialisation of all providers
+&nbsp;
+export default function App() {
   const [isLoggin, setLoggin] = useState(false);
   const [token, setToken] = useState(undefined);
   const [site, setSite] = useState(undefined);
@@ -177,6 +188,7 @@ export default function App(){
 <span class="cstat-no" title="statement not covered" >    setTheme(nextTheme);</span>
   };
 &nbsp;
+  //synchronisation of the theme
   const MyTheme = {
     dark: true,
     colors: {
@@ -188,22 +200,22 @@ export default function App(){
       notification: 'rgb(255, 69, 58)',
     },
   };
-  
-  return(
-    
+&nbsp;
+  return (
+&nbsp;
     &lt;ThemeContext.Provider value={{ themes, toggleTheme }}&gt;
-    &lt;IconRegistry icons={EvaIconsPack} /&gt;
-    &lt;ApplicationProvider {...eva} theme={{ ...eva[themes],...theme}} customMapping={mapping}&gt;
-    &lt;SafeAreaProvider &gt; 
-    &lt;NavigationContainer theme={MyTheme}&gt;
-      
-      &lt;Nav isSignIn={isLoggin} signIn={setLoggin} authToken={token} setAuth={setToken} site={site} setSite={setSite} userId={userId} setUserId={setUserId}/&gt;
-      
-    &lt;/NavigationContainer&gt;&lt;/SafeAreaProvider&gt;
-  &lt;/ApplicationProvider&gt;
-  &lt;/ThemeContext.Provider&gt;  
-  
-);
+      &lt;IconRegistry icons={EvaIconsPack} /&gt;
+      &lt;ApplicationProvider {...eva} theme={{ ...eva[themes], ...theme }} customMapping={mapping}&gt;
+        &lt;SafeAreaProvider &gt;
+          &lt;NavigationContainer theme={MyTheme}&gt;
+&nbsp;
+            &lt;Nav isSignIn={isLoggin} signIn={setLoggin} authToken={token} setAuth={setToken} site={site} setSite={setSite} userId={userId} setUserId={setUserId} /&gt;
+&nbsp;
+          &lt;/NavigationContainer&gt;&lt;/SafeAreaProvider&gt;
+      &lt;/ApplicationProvider&gt;
+    &lt;/ThemeContext.Provider&gt;
+&nbsp;
+  );
 }</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -211,7 +223,7 @@ export default function App(){
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sun Feb 14 2021 17:53:25 GMT+0100 (GMT+01:00)
+                at Fri Feb 26 2021 13:50:55 GMT+0100 (GMT+01:00)
             </div>
         </div>
         <script src="../prettify.js"></script>

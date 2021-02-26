@@ -64,6 +64,7 @@ export default class TilesView extends Component {
     
     //Icon to be render in the left of the tile
     renderItemIconImg = (props,iconImg,bool) =>{ 
+      
       return(
       bool?(
         <Icon {...props} name={iconImg}/>
@@ -74,10 +75,17 @@ export default class TilesView extends Component {
         width: 128}} 
         source={{uri: iconImg}}/>)
       )}
-        
+      
+    componentDidMount(){
+      let isDefined = false
+      if(typeof this.props.pressTile === "function"){ isDefined = true}
+      this.setState({isDefined:isDefined})
+    }
+      
     //render function for the tiles with the input datas
     //render in function of the input datas
-    renderItem = ({ item}) => item.separator ?
+    renderItem = ({ item}) =>{
+    return( item.separator ?
     (
        <Text category='h6' style={{textAlign: 'center',}}>{`${item.title}`}</Text>
     ):(
@@ -87,17 +95,17 @@ export default class TilesView extends Component {
           description={`${item.description}`}
           accessoryLeft={item.image?(props)=>this.renderItemIconImg(props,`${item.image}`,false):(props)=>this.renderItemIconImg(props,`${item.icon}`,true)}
           accessoryRight={()=>this.renderItemAccessory(`${item.id}`,`${item.buttonIcon}`)}
-          onPress={()=>{this.handlePressTile(`${item.id}`)}}
+          onPress={()=>{if(this.state.isDefined){this.handlePressTile(`${item.id}`)}}}
         />
       ):(
           <ListItem
           title={`${item.title}`}
           accessoryLeft={item.image?(props)=>this.renderItemIconImg(props,`${item.image}`,false):(props)=>this.renderItemIconImg(props,`${item.icon}`,true)}
           accessoryRight={()=>this.renderItemAccessory(`${item.id}`,`${item.buttonIcon}`)}
-          onPress={()=>{this.handlePressTile(`${item.id}`)}}
+          onPress={()=>{if(this.state.isDefined){this.handlePressTile(`${item.id}`)}}}
         />
       )
-    );
+    ))}
     
     render(){
     return (

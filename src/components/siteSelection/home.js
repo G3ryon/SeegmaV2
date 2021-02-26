@@ -8,7 +8,11 @@ PROPS:  other.isSignIn  : bool displaying if the user is authenticated
         other.signIn    : method to set the isSignIn
         other.authToken : string with the token of the user
         other.setAuth   : method to set the authToken
-       
+        other.site      : Id of the site currently selected
+        other.setSite   : method to set the selected site
+        other.userId    : Id of the current user
+        other.setUserId : method to set the user id
+        setSiteData     : method to set the variable with the data of the selected site
 RETURN: a view of the different site of the user
 */
 
@@ -25,30 +29,57 @@ class Home extends Component {
         }
         this.handleTilePress = this.handleTilePress.bind(this);
         this.handleIconPress = this.handleIconPress.bind(this);
+        
     }
 
+    //Methods for basic state update
     //function to change the site and redirect to the dashboard
     handleTilePress(id) {
-        console.log(id)
-        this.props.setSite(id)
-        //this.props.navigation.navigate('bottomNav')
+        let data = this.state.brutData
+        let siteData = null
+        data.forEach(element => {
+            if (element["id"] == id) {
+                siteData = element
+            }
+        });
+        this.props.setSiteData(siteData)
+        this.props.other.setSite(id)
+        this.props.navigation.navigate('bottomNav')
     }
 
     //function to change the favorite state
     handleIconPress(id) {
-        console.log(id)
         let data = this.state.brutData
         //need to add api call to change fav status in DB
-        console.log(data)
         data.forEach(element => {
-            if(element["id"] == id){
-                element["favorite"] = !element["favorite"]                
+            if (element["id"] == id) {
+                element["favorite"] = !element["favorite"]
             }
         });
         let reformatedData = this.dataProcessing(data)
         this.setState({ data: reformatedData, brutData: data });
     }
 
+    //Methods immplicating the life cycle
+    //getting all the site of the user
+    componentDidMount() {
+        
+        this.props.other.setSite(null)
+        this.props.setSiteData(null)
+        gettingSite(this.props.other.authToken, this.props.other.userId)
+            .then(response => {
+                if (response["success"] === 0) {
+
+                }
+                else {
+                    let data = response["data"]
+                    let reformatedData = this.dataProcessing(data)
+                    this.setState({ data: reformatedData, brutData: data });
+                }
+            })
+    }
+
+    //General Methods
     //function to format the json received from backend
     dataProcessing(data) {
         if (data.length === 0) {
@@ -66,7 +97,7 @@ class Home extends Component {
                         id: element["id"],
                         buttonIcon: 'star',
                         image: element["society"],
-                        
+
                     })
                 }
                 nonFavorite.push({
@@ -88,6 +119,7 @@ class Home extends Component {
         }
     }
 
+    //Method for declaring constant and navigation
     //Icon constant
     backIcon = (props) => (
         <Icon {...props} name='menu-outline' />
@@ -103,24 +135,7 @@ class Home extends Component {
         <TopNavigationAction icon={this.notifIcon} onPress={() => this.props.navigation.navigate('notification')} />
     );
 
-    //getting all the site of the user
-    componentDidMount() {
-        this.props.setSite(null)
-        gettingSite(this.props.other.authToken, this.props.other.userId)
-            .then(response => {
-                if (response["success"] === 0) {
-
-                }
-                else {
-                    let data = response["data"]
-                    let reformatedData = this.dataProcessing(data)
-                    this.setState({ data: reformatedData, brutData: data });
-                }
-            })
-    }
-
     render() {
-
         return (
             <SafeAreaView>
                 <TilesView itemData={this.state.data}

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { View, Image, TextInput } from 'react-native';
-import { Button, Layout, Text } from '@ui-kitten/components';
+import { Icon, Button, Layout, Text, Divider, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 
 /*
 PROPS:  other.isSignIn  : bool displaying if the user is authenticated
@@ -18,12 +18,35 @@ class Details_view  extends Component{
 
         }
     }
+    backIcon = (props) => (
+        <Icon {...props} name='arrow-back-outline' />
+    );
+    //function to handle the buttons of the header
+    backAction = () => (
+        <TopNavigationAction icon={this.backIcon} onPress={() => this.props.navigation.goBack()} />
+    );
 
     render(){
+        if(this.props.type == 'Notification'){
         return(
         <View>
-           <Button onPress={() => this.props.navigation.goBack()}>go back</Button>
-        </View>)
+            <TopNavigation
+                title = {"Notification : "+this.props.data['name']}
+                accessoryLeft = {this.backAction}
+            />
+            <Text category='h2' status='primary'>{this.props.data['date'].slice(4,21)}</Text>
+            <Text category='h2'>Description</Text>
+            <Text>{this.props.data['description']}</Text>
+            <Text category='h2'>More details</Text>
+            <Text>{this.props.data['infos']}</Text>
+        </View>)}
+        else{
+            return(
+                <View>
+
+                </View>
+            )
+        }
     }
     
 }

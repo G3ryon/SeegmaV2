@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import * as eva from '@eva-design/eva';
-import { ApplicationProvider, Layout, Button, Text, IconRegistry } from '@ui-kitten/components';
+import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import { default as theme } from './theme.json'; // <-- Import app theme
 import { default as mapping } from './mapping.json';
 import Nav from "./src/navigation/nav.js";
@@ -8,7 +8,10 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { ThemeContext } from './src/styles/themeContext.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
-export default function App(){
+
+//Root of the app with the initialisation of all providers
+
+export default function App() {
   const [isLoggin, setLoggin] = useState(false);
   const [token, setToken] = useState(undefined);
   const [site, setSite] = useState(undefined);
@@ -20,6 +23,7 @@ export default function App(){
     setTheme(nextTheme);
   };
 
+  //synchronisation of the theme
   const MyTheme = {
     dark: true,
     colors: {
@@ -31,20 +35,20 @@ export default function App(){
       notification: 'rgb(255, 69, 58)',
     },
   };
-  
-  return(
-    
+
+  return (
+
     <ThemeContext.Provider value={{ themes, toggleTheme }}>
-    <IconRegistry icons={EvaIconsPack} />
-    <ApplicationProvider {...eva} theme={{ ...eva[themes],...theme}} customMapping={mapping}>
-    <SafeAreaProvider > 
-    <NavigationContainer theme={MyTheme}>
-      
-      <Nav isSignIn={isLoggin} signIn={setLoggin} authToken={token} setAuth={setToken} site={site} setSite={setSite} userId={userId} setUserId={setUserId}/>
-      
-    </NavigationContainer></SafeAreaProvider>
-  </ApplicationProvider>
-  </ThemeContext.Provider>  
-  
-);
+      <IconRegistry icons={EvaIconsPack} />
+      <ApplicationProvider {...eva} theme={{ ...eva[themes], ...theme }} customMapping={mapping}>
+        <SafeAreaProvider >
+          <NavigationContainer theme={MyTheme}>
+
+            <Nav isSignIn={isLoggin} signIn={setLoggin} authToken={token} setAuth={setToken} site={site} setSite={setSite} userId={userId} setUserId={setUserId} />
+
+          </NavigationContainer></SafeAreaProvider>
+      </ApplicationProvider>
+    </ThemeContext.Provider>
+
+  );
 }

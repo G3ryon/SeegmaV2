@@ -16,7 +16,7 @@ jest.useFakeTimers()
 test('Login renders correctly', async () => {
 
     const result = render(
-      <SelectionViewTest authToken={"test"} userId={"test"}/>
+      <SelectionViewTest authToken={"test"} userId={"test"} setSite={(val)=>{}}/>
     );
     await act(async () => {expect(result).toMatchSnapshot();})
   });
@@ -29,7 +29,7 @@ test('Login renders correctly', async () => {
       <>
       <IconRegistry icons={EvaIconsPack} />
       <ApplicationProvider mapping={mapping} theme={lightTheme}>
-        <Home {...props} other={props} setNotif={handleNotification} setSite={setSite}/>
+        <Home {...props} other={props} setNotif={handleNotification} setSiteData={setSite}/>
       </ApplicationProvider>
       </>
     )

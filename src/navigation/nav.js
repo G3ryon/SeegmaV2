@@ -47,16 +47,23 @@ class Nav extends Component {
       data: null,
       notifData: null,
       widgetData: null,
-      siteData: null
+      siteData: null,
+      alarmData: null,
     }
     this.handlesiteData = this.handlesiteData.bind(this);
     this.handlenotifData = this.handlenotifData.bind(this);
     this.handlewidgetData = this.handlewidgetData.bind(this);
+    this.handlealarmData = this.handlealarmData.bind(this);
+    this.handledetailData = this.handledetailData.bind(this);
   }
 
   //Methods for basic state update
   handlesiteData(data) {
     this.setState({ siteData: data })
+  }
+
+  handlealarmData(data) {
+    this.setState({ alarmData: data })
   }
 
   handlewidgetData(data) {
@@ -65,6 +72,10 @@ class Nav extends Component {
 
   handlenotifData(data) {
     this.setState({ notifData: data })
+  }
+
+  handledetailData(data) {
+    this.setState({ detailData: data })
   }
 
   //Methods of each navigation view
@@ -92,11 +103,11 @@ class Nav extends Component {
   alarmNav = () => {
     return (
       <Stack.Navigator headerMode={""}>
-        <Stack.Screen name={"Alarms"}>{props => <Alarms {...props} other={this.props} />}</Stack.Screen>
-        <Stack.Screen name={"Alarms info"}>{props => <Alarms_info {...props} other={this.props} />}</Stack.Screen>
-        <Stack.Screen name={"Alarms history"}>{props => <Alarms_history {...props} other={this.props} />}</Stack.Screen>
-        <Stack.Screen name={"Alarms details"}>{props => <Details_view {...props} other={this.props} />}</Stack.Screen>
-        <Stack.Screen name={"Alarms graph"}>{props => <Alarms_occ {...props} other={this.props} />}</Stack.Screen>
+        <Stack.Screen name={"Alarms"}>{props => <SafeAreaView><Alarms {...props} other={this.props} setAlarm={this.handlealarmData}/></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"Alarms info"}>{props => <SafeAreaView><Alarms_info {...props} other={this.props} alarmData={this.state.alarmData} /></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"Alarms history"}>{props => <SafeAreaView><Alarms_history {...props} other={this.props} alarmData={this.state.alarmData} handleDetail={this.handledetailData}/></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"Alarms details"}>{props => <SafeAreaView><Details_view {...props} other={this.props} alarmData={this.state.alarmData} type={"Alarm"} data={this.state.detailData}/></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"Alarms graph"}>{props => <SafeAreaView><Alarms_occ {...props} other={this.props} alarmData={this.state.alarmData}/></SafeAreaView>}</Stack.Screen>
       </Stack.Navigator>
     );
   }

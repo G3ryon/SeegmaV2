@@ -79,3 +79,15 @@ export async function gettingSiteData(token,userId,siteId) {
     let data = await fecthing("getSiteData", formdata, myHeaders)
     return data
 }
+
+export async function gettingUserAlarms(token,userId,siteId) {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + token);
+
+    var formdata = new FormData();
+    formdata.append("userId", userId);
+    formdata.append("siteId", siteId);
+
+    let data = await fecthing("getUserAlarms", formdata, myHeaders)
+    return data
+}

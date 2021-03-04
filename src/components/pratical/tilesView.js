@@ -67,7 +67,7 @@ export default class TilesView extends Component {
       
       return(
       bool?(
-        <Icon {...props} name={iconImg}/>
+        iconImg ==''?(<Text></Text>):(<Icon {...props} name={iconImg}/>)
       ):(
         <Image style={{
         resizeMode: "contain",

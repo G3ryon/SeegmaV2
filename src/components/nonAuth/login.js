@@ -3,7 +3,7 @@ import { SafeAreaView, Image, TextInput, View } from 'react-native';
 import { Button, Layout, Text } from '@ui-kitten/components';
 import logo from '../../assets/logo.png';
 import Input from '../../components/pratical/input.js';
-import { authentification } from '../../api/api.js';
+import { authentification, storeData } from '../../api/api.js';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 /*
 PROPS:  other.isSignIn  : bool displaying if the user is authenticated
@@ -13,6 +13,7 @@ PROPS:  other.isSignIn  : bool displaying if the user is authenticated
        
 RETURN: a view for the login and the authentification
 */
+
 
 class Login extends Component{
     constructor(props){
@@ -61,6 +62,7 @@ class Login extends Component{
                     this.props.other.setAuth(token);
                     this.props.other.setUserId(id);
                     this.props.other.signIn(true);
+                    storeData({authToken: token, userId: id, signIn: true},"@storage_Key")
                     this.props.navigation.navigate("drawer")
                 }
                 

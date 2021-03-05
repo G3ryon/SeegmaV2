@@ -71,20 +71,7 @@ class Alarms_history extends Component {
     );
 
     render() {
-        const data = [
-            {
-                title: "Historic by graph",
-                id: "graph",
-                buttonIcon: 'arrow-ios-forward-outline',
-                icon: 'bar-chart'
-            },
-            {
-                title: "Historic in details",
-                id: "details",
-                buttonIcon: 'arrow-ios-forward-outline',
-                icon: 'search-outline'
-            }
-        ]
+
         return (
             <View>
                 <TilesView

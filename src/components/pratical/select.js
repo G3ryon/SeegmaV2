@@ -18,7 +18,6 @@ class SelectComp extends Component {
 
     handleSelect(event) {
         this.props.handleSelect(event);
-        console.log(event)
     }
 
     renderOption = (title) => (

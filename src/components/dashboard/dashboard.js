@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import { View} from 'react-native';
-import { IndexPath, Icon, TopNavigation, TopNavigationAction} from '@ui-kitten/components';
+import React, { Component, useCallback } from 'react';
+import { View } from 'react-native';
+import { IndexPath, Icon, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import TilesView from '../pratical/tilesView';
 import SelectComp from '../pratical/select';
 import { gettingSiteData } from '../../api/api.js';
+import { useFocusEffect } from '@react-navigation/native';
 /*
 PROPS:  other.isSignIn  : bool displaying if the user is authenticated
         other.signIn    : method to set the isSignIn
@@ -78,76 +79,102 @@ class Dashboard extends Component {
             let reformatedData = this.dataProcessing(this.state.brutData[this.state.selectedIndex.row]["data"])
             this.setState({ data: reformatedData });
         }
-    }
-
-    //General Methods
-    //function to format the data of the choosen option
-    dataProcessing(data) {
-
-        if (data.length === 0) {
-            let reformatedData = [{ separator: true, title: "You don't have any widgets" }]
-            return reformatedData
-        } else {
-            let reformatedData = [{ separator: true, title: "Actual site : " + this.props.site["site"] }]
-
-            data.forEach(element => {
-                let icon = this.icons[element["type"]]
-
-                reformatedData.push({
-                    title: element["name"],
-                    id: element["id"],
-                    buttonIcon: 'chevron-right',
-                    icon: icon,
-                })
-            });
-            reformatedData.push({ separator: true, title: '' });
-            return reformatedData
+        if (prevprops.site["site"] !== this.props.site["site"]) {
+            console.log('repair')
+            this.componentDidMount()
         }
     }
 
-    //method to extract the value for the options
-    selectProcessing(data) {
-        if (data.length === 0) {
-            return []
-        } else {
-            let selectData = []
+    
 
-            data.forEach(element => {
-                selectData.push(element.name)
-            });
-            return selectData
-        }
+    OnFocus({props}) {
+        useFocusEffect(
+            useCallback(() => {
+                console.log("focus")
+                
+                // Do something when the screen is focused
+                return () => {
+                    console.log("unfocus")
+
+                    // Do something when the screen is unfocused
+                    // Useful for cleanup functions
+                };
+                
+            }, [props]))
+        return null
+        
     }
 
-    //Method for declaring constant and navigation
-    //Icon constant
-    backIcon = (props) => (
-        <Icon {...props} name='menu-outline' />
-    );
-    notifIcon = (props) => (
-        <Icon {...props} name='bell-outline' />
-    );
-    //function to handle the buttons of the header
-    backAction = () => (
-        <TopNavigationAction icon={this.backIcon} onPress={() => this.props.navigation.openDrawer()} />
-    );
-    notifAction = () => (
-        <TopNavigationAction icon={this.notifIcon} onPress={() => this.props.navigation.navigate('notification')} />
-    );
+//General Methods
+//function to format the data of the choosen option
+dataProcessing(data) {
 
-    render() {
-        return (
-            <View>
-                <TilesView itemData={this.state.data}
-                    pressTile={this.handleIconPress}
-                    pressIcon={this.handleIconPress}
-                    headerComp={<TopNavigation
-                        title={<SelectComp selectedIndex={this.state.selectedIndex} data={this.state.dataSelect} handleSelect={this.handleSelect} />}
-                        accessoryLeft={this.backAction}
-                        accessoryRight={this.notifAction}
-                    />}
-                />
-            </View>)
+    if (data.length === 0) {
+        let reformatedData = [{ separator: true, title: "You don't have any widgets" }]
+        return reformatedData
+    } else {
+        let reformatedData = [{ separator: true, title: "Actual site : " + this.props.site["site"] }]
+
+        data.forEach(element => {
+            let icon = this.icons[element["type"]]
+
+            reformatedData.push({
+                title: element["name"],
+                id: element["id"],
+                buttonIcon: 'chevron-right',
+                icon: icon,
+            })
+        });
+        reformatedData.push({ separator: true, title: '' });
+        return reformatedData
     }
+}
+
+//method to extract the value for the options
+selectProcessing(data) {
+    if (data.length === 0) {
+        return []
+    } else {
+        let selectData = []
+
+        data.forEach(element => {
+            selectData.push(element.name)
+        });
+        return selectData
+    }
+}
+
+//Method for declaring constant and navigation
+//Icon constant
+backIcon = (props) => (
+    <Icon {...props} name='menu-outline' />
+);
+notifIcon = (props) => (
+    <Icon {...props} name='bell-outline' />
+);
+//function to handle the buttons of the header
+backAction = () => (
+    <TopNavigationAction icon={this.backIcon} onPress={() => this.props.navigation.openDrawer()} />
+);
+notifAction = () => (
+    <TopNavigationAction icon={this.notifIcon} onPress={() => this.props.navigation.navigate('notification')} />
+);
+
+render() {
+    
+    return (
+        <View>
+            <this.OnFocus props={this.props}></this.OnFocus>
+            <TilesView itemData={this.state.data}
+                pressTile={this.handleIconPress}
+                pressIcon={this.handleIconPress}
+                headerComp={<TopNavigation
+                    title={<SelectComp selectedIndex={this.state.selectedIndex} data={this.state.dataSelect} handleSelect={this.handleSelect} />}
+                    accessoryLeft={this.backAction}
+                    accessoryRight={this.notifAction}
+                />}
+            />
+        </View>)
+}
 }
 export default Dashboard;

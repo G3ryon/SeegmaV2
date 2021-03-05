@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Image, TextInput } from 'react-native';
-import { IndexPath, Icon, Button, Layout, Text, Divider, TopNavigation, TopNavigationAction, Select, SelectItem } from '@ui-kitten/components';
+import { IndexPath, Icon} from '@ui-kitten/components';
 import Login from '../components/nonAuth/login.js';
 import Signup from '../components/nonAuth/signup.js';
 import Reset from '../components/nonAuth/reset.js';
@@ -25,6 +25,8 @@ import Alarms_occ from '../components/alarm/alarmOcc.js';
 import { Graph_disp } from '../components/graph/graphDisp.js';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { default as theme } from '../../theme.json';
+import {getData, storeData } from '../api/api.js';
+import Loading from '../components/general/loading'
 //PROPS
 // isSignIn  : bool displaying if the user is authenticated
 // signIn    : method to set the isSignIn
@@ -38,6 +40,9 @@ import { default as theme } from '../../theme.json';
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+
+
+
 
 export const navigationRef = React.createRef();
 
@@ -54,6 +59,7 @@ class Nav extends Component {
       widgetData: null,
       siteData: null,
       alarmData: null,
+      loading: true,
     }
     this.handlesiteData = this.handlesiteData.bind(this);
     this.handlenotifData = this.handlenotifData.bind(this);
@@ -65,6 +71,7 @@ class Nav extends Component {
   //Methods for basic state update
   handlesiteData(data) {
     this.setState({ siteData: data })
+    //console.log(data)
   }
 
   handlealarmData(data) {
@@ -87,6 +94,7 @@ class Nav extends Component {
     this.props.signIn(false)
     this.props.setAuth(undefined)
     this.props.setUserId(undefined)
+    storeData({authToken: undefined, userId: undefined, signIn: false}, '@storage_Key')
     reset('login')
   }
 
@@ -103,6 +111,7 @@ class Nav extends Component {
 
   //Navigation of the Dashboard part, base on stack screens
   dashNav = () => {
+    console.log(this.state.siteData)
     return (
       <Stack.Navigator headerMode={""}>
         <Stack.Screen name={"Dashboard"}>{props => <SafeAreaView><Dashboard {...props} other={this.props} site={this.state.siteData} handlewidget={this.handlewidgetData} widgetData={this.state.widgetData} /></SafeAreaView>}</Stack.Screen>
@@ -218,11 +227,25 @@ class Nav extends Component {
         </Drawer.Navigator>
     )
   }
-
+  async componentDidMount(){
+    let data = await getData('@storage_Key');
+    if(data !== null)
+    this.props.signIn(data["signIn"])
+    this.props.setAuth(data["authToken"])
+    this.props.setUserId(data["userId"])
+    this.setState({loading:false})
+  }
 
   render() {
-
       //Part of the navigation concerning the non-authentified part of the app and the redirection to the authentified part
+      if(this.state.loading){
+        return(
+          <View>
+            <Loading/>
+          </View>
+        )
+      }
+      else{
       return (
         <Stack.Navigator headerMode={""} initialRouteName={this.props.isSignIn?("drawer"):("login")}>
           <Stack.Screen name={"login"}>{props => <SafeAreaView><Login {...props} other={this.props} /></SafeAreaView>}</Stack.Screen>
@@ -230,7 +253,7 @@ class Nav extends Component {
           <Stack.Screen name={"reset"}>{props => <SafeAreaView><Reset {...props} other={this.props} /></SafeAreaView>}</Stack.Screen>
           <Stack.Screen name={"drawer"} component={this.drawerNav}></Stack.Screen>
         </Stack.Navigator>
-      )
+      )}
     
 
   }

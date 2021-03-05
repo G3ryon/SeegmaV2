@@ -1,5 +1,6 @@
 var url = "https://36e69cb8-cc8f-49fe-b48b-8ed4b2a2d9e9.mock.pstmn.io/"
 import React, { Component } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 async function fecthing(redirection, data, headers) {
     let returnedData = {};
@@ -90,4 +91,22 @@ export async function gettingUserAlarms(token,userId,siteId) {
 
     let data = await fecthing("getUserAlarms", formdata, myHeaders)
     return data
+}
+
+export const storeData = async (value, key) => {
+    try {
+      const jsonValue = JSON.stringify(value)
+      await AsyncStorage.setItem(key,jsonValue)
+    } catch (e) {
+      // saving error
+    }
+  }
+
+export const getData = async (key) => {
+  try {
+    const jsonValue = await AsyncStorage.getItem(key)
+    return jsonValue != null ? JSON.parse(jsonValue) : null;
+  } catch(e) {
+    // error reading value
+  }
 }

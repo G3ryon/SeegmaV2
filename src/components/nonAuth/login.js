@@ -61,6 +61,7 @@ class Login extends Component{
                     this.props.other.setAuth(token);
                     this.props.other.setUserId(id);
                     this.props.other.signIn(true);
+                    this.props.navigation.navigate("drawer")
                 }
                 
             });

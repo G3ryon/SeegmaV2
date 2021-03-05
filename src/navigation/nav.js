@@ -39,6 +39,11 @@ const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
+export const navigationRef = React.createRef();
+
+export function reset(name) {
+  navigationRef.current?.reset({index:0,routes:[{name:name}],});
+}
 
 class Nav extends Component {
   constructor(props) {
@@ -76,6 +81,13 @@ class Nav extends Component {
 
   handledetailData(data) {
     this.setState({ detailData: data })
+  }
+
+  reset(){
+    this.props.signIn(false)
+    this.props.setAuth(undefined)
+    this.props.setUserId(undefined)
+    reset('login')
   }
 
   //Methods of each navigation view
@@ -160,18 +172,16 @@ class Nav extends Component {
       </Tab.Navigator>
     )
   }
-
-
-  render() {
-    if (this.props.isSignIn) {
-      //Part of the navigation concerning the authentified part of the app
+//Part of the navigation concerning the authentified part of the app
       //The base of this part is the drawer accessible in each authentified screen
-      return (
-        <Drawer.Navigator
+  drawerNav = () => {
+    return(
+      <Drawer.Navigator
           drawerContentOptions={{
-
+            
             itemStyle: { padding: 0 },
           }}
+          initialRouteName = {"home"}
           //Part to add DrawerItem and to hide routes contained into the drawer drom the user
           drawerContent={(props) => {
             const filteredProps = {
@@ -197,7 +207,7 @@ class Nav extends Component {
                 <DrawerItemList {...filteredProps} />
                 <DrawerItem
                   label="Disconnect"
-                  onPress={() => { this.props.setAuth(undefined); this.props.signIn(false); }}
+                  onPress={() => { this.reset();}}
                 />
               </DrawerContentScrollView>
             );
@@ -206,21 +216,22 @@ class Nav extends Component {
           <Drawer.Screen name="notification" component={this.notifNav} />
           <Drawer.Screen name="bottomNav" component={this.authBottomNav} />
         </Drawer.Navigator>
+    )
+  }
 
-      )
 
-    }
-    else {
-      //Part of the navigation concerning the non-authentified part of the app
+  render() {
+
+      //Part of the navigation concerning the non-authentified part of the app and the redirection to the authentified part
       return (
-
-        <Stack.Navigator headerMode={""}>
+        <Stack.Navigator headerMode={""} initialRouteName={this.props.isSignIn?("drawer"):("login")}>
           <Stack.Screen name={"login"}>{props => <SafeAreaView><Login {...props} other={this.props} /></SafeAreaView>}</Stack.Screen>
           <Stack.Screen name={"signup"}>{props => <SafeAreaView><Signup {...props} other={this.props} /></SafeAreaView>}</Stack.Screen>
           <Stack.Screen name={"reset"}>{props => <SafeAreaView><Reset {...props} other={this.props} /></SafeAreaView>}</Stack.Screen>
+          <Stack.Screen name={"drawer"} component={this.drawerNav}></Stack.Screen>
         </Stack.Navigator>
       )
-    }
+    
 
   }
 

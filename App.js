@@ -8,7 +8,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { ThemeContext } from './src/styles/themeContext.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
-
+import { navigationRef } from './src/navigation/nav.js';
 //Root of the app with the initialisation of all providers
 
 export default function App() {
@@ -42,7 +42,7 @@ export default function App() {
       <IconRegistry icons={EvaIconsPack} />
       <ApplicationProvider {...eva} theme={{ ...eva[themes], ...theme }} customMapping={mapping}>
         <SafeAreaProvider >
-          <NavigationContainer theme={MyTheme}>
+          <NavigationContainer ref={navigationRef} theme={MyTheme}>
 
             <Nav isSignIn={isLoggin} signIn={setLoggin} authToken={token} setAuth={setToken} site={site} setSite={setSite} userId={userId} setUserId={setUserId} />
 

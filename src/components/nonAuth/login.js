@@ -1,10 +1,11 @@
-import React, {Component} from 'react';
+import React, {Component,  useContext } from 'react';
 import { SafeAreaView, Image, TextInput, View } from 'react-native';
 import { Button, Layout, Text } from '@ui-kitten/components';
 import logo from '../../assets/logo.png';
 import Input from '../../components/pratical/input.js';
 import { authentification, storeData } from '../../api/api.js';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import {TokenContext} from '../../styles/themeContext'
 /*
 PROPS:  other.isSignIn  : bool displaying if the user is authenticated
         other.signIn    : method to set the isSignIn
@@ -22,11 +23,11 @@ class Login extends Component{
             password: "jujubeberhot",
             login: "juju_beber",
             token: "",
-            userId:"",
         }
         this.handlePassword = this.handlePassword.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
     }
+    static contextType = TokenContext;
 
     handlePassword(text) {
         this.setState({ password: text });
@@ -57,12 +58,10 @@ class Login extends Component{
                 }
                 else {
                     let token = response["data"]["access_tokens"][0];
-                    let id = response["data"]["id"];
-                    this.setState({ token: token, userId: id });
-                    this.props.other.setAuth(token);
-                    this.props.other.setUserId(id);
-                    this.props.other.signIn(true);
-                    storeData({authToken: token, userId: id, signIn: true},"@storage_Key")
+                    this.setState({ token: token});
+    
+                    this.context.handleToken(token)
+                    storeData({authToken: token, signIn: "drawer"},"@storage_Key")
                     this.props.navigation.navigate("drawer")
                 }
                 

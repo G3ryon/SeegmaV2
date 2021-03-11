@@ -6,10 +6,6 @@ import Input from '../pratical/input.js';
 import { signup } from '../../api/api.js';
 import Modal from '../pratical/modal.js';
 /*
-PROPS:  other.isSignIn  : bool displaying if the user is authenticated
-        other.signIn    : method to set the isSignIn
-        other.authToken : string with the token of the user
-        other.setAuth   : method to set the authToken
        
 RETURN: a view for signing up
 */

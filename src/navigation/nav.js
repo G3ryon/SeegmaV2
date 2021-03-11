@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import { View, Image, TextInput } from 'react-native';
 import { IndexPath, Icon} from '@ui-kitten/components';
 import Login from '../components/nonAuth/login.js';
@@ -27,6 +27,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { default as theme } from '../../theme.json';
 import {getData, storeData } from '../api/api.js';
 import Loading from '../components/general/loading'
+import {TokenContext} from '../styles/themeContext.js'
 //PROPS
 // isSignIn  : bool displaying if the user is authenticated
 // signIn    : method to set the isSignIn
@@ -34,15 +35,10 @@ import Loading from '../components/general/loading'
 // setAuth   : method to set the authToken
 // site      : Id of the site currently selected
 // setSite   : method to set the selected site
-// userId    : Id of the current user
-// setUserId : method to set the user id
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-
-
-
 
 export const navigationRef = React.createRef();
 
@@ -54,47 +50,18 @@ class Nav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: null,
-      notifData: null,
-      widgetData: null,
-      siteData: null,
-      alarmData: null,
-      loading: true,
+      signIn:'login',
+      loading: true
     }
-    this.handlesiteData = this.handlesiteData.bind(this);
-    this.handlenotifData = this.handlenotifData.bind(this);
-    this.handlewidgetData = this.handlewidgetData.bind(this);
-    this.handlealarmData = this.handlealarmData.bind(this);
-    this.handledetailData = this.handledetailData.bind(this);
+
   }
 
-  //Methods for basic state update
-  handlesiteData(data) {
-    this.setState({ siteData: data })
-    //console.log(data)
-  }
-
-  handlealarmData(data) {
-    this.setState({ alarmData: data })
-  }
-
-  handlewidgetData(data) {
-    this.setState({ widgetData: data })
-  }
-
-  handlenotifData(data) {
-    this.setState({ notifData: data })
-  }
-
-  handledetailData(data) {
-    this.setState({ detailData: data })
-  }
 
   reset(){
-    this.props.signIn(false)
-    this.props.setAuth(undefined)
-    this.props.setUserId(undefined)
-    storeData({authToken: undefined, userId: undefined, signIn: false}, '@storage_Key')
+    this.signIn = false
+    this.context.handleToken(undefined)
+    storeData({authToken: undefined,
+       signIn: 'login'}, '@storage_Key')
     reset('login')
   }
 
@@ -103,19 +70,18 @@ class Nav extends Component {
   notifNav = () => {
     return (
       <Stack.Navigator headerMode={""}>
-        <Stack.Screen name={"Notification center"}>{props => <SafeAreaView><Notif_center {...props} other={this.props} handleNotifData={this.handlenotifData} /></SafeAreaView>}</Stack.Screen>
-        <Stack.Screen name={"Notification"}>{props => <SafeAreaView><Details_view {...props} other={this.props} type={"Notification"} data={this.state.notifData} /></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"Notification center"}>{props => <SafeAreaView><Notif_center {...props}/></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"Notification"}>{props => <SafeAreaView><Details_view {...props} /></SafeAreaView>}</Stack.Screen>
       </Stack.Navigator>
     );
   }
 
   //Navigation of the Dashboard part, base on stack screens
   dashNav = () => {
-    console.log(this.state.siteData)
     return (
       <Stack.Navigator headerMode={""}>
-        <Stack.Screen name={"Dashboard"}>{props => <SafeAreaView><Dashboard {...props} other={this.props} site={this.state.siteData} handlewidget={this.handlewidgetData} widgetData={this.state.widgetData} /></SafeAreaView>}</Stack.Screen>
-        <Stack.Screen name={"widget"}>{props => <SafeAreaView><Widget {...props} other={this.props} widgetData={this.state.widgetData} /></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"Dashboard"}>{props => <SafeAreaView><Dashboard {...props}/></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"widget"}>{props => <SafeAreaView><Widget {...props}/></SafeAreaView>}</Stack.Screen>
       </Stack.Navigator>
     );
   }
@@ -124,11 +90,11 @@ class Nav extends Component {
   alarmNav = () => {
     return (
       <Stack.Navigator headerMode={""}>
-        <Stack.Screen name={"Alarms"}>{props => <SafeAreaView><Alarms {...props} other={this.props} setAlarm={this.handlealarmData}/></SafeAreaView>}</Stack.Screen>
-        <Stack.Screen name={"Alarms info"}>{props => <SafeAreaView><Alarms_info {...props} other={this.props} alarmData={this.state.alarmData} /></SafeAreaView>}</Stack.Screen>
-        <Stack.Screen name={"Alarms history"}>{props => <SafeAreaView><Alarms_history {...props} other={this.props} alarmData={this.state.alarmData} handleDetail={this.handledetailData}/></SafeAreaView>}</Stack.Screen>
-        <Stack.Screen name={"Alarms details"}>{props => <SafeAreaView><Details_view {...props} other={this.props} alarmData={this.state.alarmData} type={"Alarm"} data={this.state.detailData}/></SafeAreaView>}</Stack.Screen>
-        <Stack.Screen name={"Alarms graph"}>{props => <SafeAreaView><Alarms_occ {...props} other={this.props} alarmData={this.state.alarmData}/></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"Alarms"}>{props => <SafeAreaView><Alarms {...props}/></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"Alarms info"}>{props => <SafeAreaView><Alarms_info {...props}/></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"Alarms history"}>{props => <SafeAreaView><Alarms_history {...props}/></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"Alarms details"}>{props => <SafeAreaView><Details_view {...props} /></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"Alarms graph"}>{props => <SafeAreaView><Alarms_occ {...props}/></SafeAreaView>}</Stack.Screen>
       </Stack.Navigator>
     );
   }
@@ -137,8 +103,8 @@ class Nav extends Component {
   graphNav = () => {
     return (
       <Stack.Navigator headerMode={""}>
-        <Stack.Screen name={"Graphs"}>{props => <Graph {...props} other={this.props} />}</Stack.Screen>
-        <Stack.Screen name={"Graph"}>{props => <Graph_disp {...props} other={this.props} />}</Stack.Screen>
+        <Stack.Screen name={"Graphs"}>{props => <Graph {...props}/>}</Stack.Screen>
+        <Stack.Screen name={"Graph"}>{props => <Graph_disp {...props}/>}</Stack.Screen>
       </Stack.Navigator>
     );
   }
@@ -148,8 +114,8 @@ class Nav extends Component {
     return (
       <Stack.Navigator headerMode={""}>
         <Stack.Screen name={"login"}>{props => <Login {...props} other={this.props} />}</Stack.Screen>
-        <Stack.Screen name={"signup"}>{props => <Signup {...props} other={this.props} />}</Stack.Screen>
-        <Stack.Screen name={"reset"}>{props => <Reset {...props} other={this.props} />}</Stack.Screen>
+        <Stack.Screen name={"signup"}>{props => <Signup {...props} />}</Stack.Screen>
+        <Stack.Screen name={"reset"}>{props => <Reset {...props} />}</Stack.Screen>
       </Stack.Navigator>
     )
   }
@@ -221,21 +187,21 @@ class Nav extends Component {
               </DrawerContentScrollView>
             );
           }}>
-          <Drawer.Screen name="home">{props => <SafeAreaView><Home {...props} other={this.props} setSiteData={this.handlesiteData} /></SafeAreaView>}</Drawer.Screen>
+          <Drawer.Screen name="home">{props => <SafeAreaView><Home {...props} setSiteData={this.handlesiteData} /></SafeAreaView>}</Drawer.Screen>
           <Drawer.Screen name="notification" component={this.notifNav} />
           <Drawer.Screen name="bottomNav" component={this.authBottomNav} />
         </Drawer.Navigator>
     )
   }
   async componentDidMount(){
+    
     let data = await getData('@storage_Key');
+    console.log(data)
     if(data !== null)
-    this.props.signIn(data["signIn"])
-    this.props.setAuth(data["authToken"])
-    this.props.setUserId(data["userId"])
-    this.setState({loading:false})
+    this.context.handleToken(data["authToken"])
+    this.setState({signIn:data["signIn"],loading : false})
   }
-
+  static contextType = TokenContext;
   render() {
       //Part of the navigation concerning the non-authentified part of the app and the redirection to the authentified part
       if(this.state.loading){
@@ -246,11 +212,12 @@ class Nav extends Component {
         )
       }
       else{
+        console.log(this.state.signIn)
       return (
-        <Stack.Navigator headerMode={""} initialRouteName={this.props.isSignIn?("drawer"):("login")}>
-          <Stack.Screen name={"login"}>{props => <SafeAreaView><Login {...props} other={this.props} /></SafeAreaView>}</Stack.Screen>
-          <Stack.Screen name={"signup"}>{props => <SafeAreaView><Signup {...props} other={this.props} /></SafeAreaView>}</Stack.Screen>
-          <Stack.Screen name={"reset"}>{props => <SafeAreaView><Reset {...props} other={this.props} /></SafeAreaView>}</Stack.Screen>
+        <Stack.Navigator headerMode={""} initialRouteName={this.state.signIn}>
+          <Stack.Screen name={"login"}>{props => <SafeAreaView><Login {...props}  /></SafeAreaView>}</Stack.Screen>
+          <Stack.Screen name={"signup"}>{props => <SafeAreaView><Signup {...props} /></SafeAreaView>}</Stack.Screen>
+          <Stack.Screen name={"reset"}>{props => <SafeAreaView><Reset {...props} /></SafeAreaView>}</Stack.Screen>
           <Stack.Screen name={"drawer"} component={this.drawerNav}></Stack.Screen>
         </Stack.Navigator>
       )}

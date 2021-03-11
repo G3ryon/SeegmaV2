@@ -22,9 +22,9 @@ class Alarms_info extends Component {
 
     pressAction(event) {
         if (event == "details")
-            this.props.navigation.navigate("Alarms history")
+            this.props.navigation.navigate("Alarms history",{id:this.props.route.params['id'], name:this.props.route.params['name']})
         else {
-            this.props.navigation.navigate("Alarms graph")
+            this.props.navigation.navigate("Alarms graph",{id:this.props.route.params['id'],name:this.props.route.params['name']})
         }
     }
     backIcon = (props) => (
@@ -55,22 +55,22 @@ class Alarms_info extends Component {
         return (
             <View>
                 <TopNavigation
-                    title={"Alarm : " + this.props.alarmData['name']}
+                    title={"Alarm : " + this.props.route.params['name']}
                     accessoryLeft={this.backAction}
                 />
                 <View>
-                    {this.props.alarmData['status'] &&
+                    {this.props.route.params['status'] &&
                         <View>
                             <Text category='h1' status='primary'>Status : Triggered </Text>
-                            <Text>Activated {this.props.alarmData['date'].slice(4, 21)}</Text>
-                            <Text>because : {this.props.alarmData['infos']}</Text>
+                            <Text>Activated {this.props.route.params['date'].slice(4, 21)}</Text>
+                            <Text>because : {this.props.route.params['infos']}</Text>
                         </View>}
-                    {!this.props.alarmData['status'] &&
+                    {!this.props.route.params['status'] &&
                         <View>
                             <Text category='h1' status='primary'>Status : Not triggered </Text>
                         </View>}
                     <Text category='h2' status='primary'>Description</Text>
-                    <Text>{this.props.alarmData['description']}</Text>
+                    <Text>{this.props.route.params['description']}</Text>
                     <Text category='h2' status='primary'>Historic</Text>
                 </View>
                 <TilesView

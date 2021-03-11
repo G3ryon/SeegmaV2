@@ -3,12 +3,11 @@ import { View, Image, TextInput } from 'react-native';
 import { Icon, Button, Layout, Text, Divider, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import TilesView from '../pratical/tilesView';
 import { gettingNotifications } from '../../api/api.js';
+import {TokenContext} from '../../styles/themeContext.js'
 /*
-PROPS:  other.isSignIn  : bool displaying if the user is authenticated
-        other.signIn    : method to set the isSignIn
-        other.authToken : string with the token of the user
-        other.setAuth   : method to set the authToken
-       
+Route : name : Name of the route
+        params : data linked to the route
+
 RETURN: a view of the list of notification for the user
 */
 
@@ -28,21 +27,19 @@ class Notif_center extends Component {
         }
         this.icons = icons
     }
-    
+    static contextType = TokenContext;
+
     //handle the preparation to see the details of the notiication
     handleIconPress(id) {
-        console.log(id)
         this.state.brutData.forEach(element => {
             if(element['id'] == id){
-                this.props.handleNotifData(element)
+                this.props.navigation.navigate('Notification',element)
             }
         });
-        this.props.navigation.navigate('Notification')
     }
 
     handleDelete() {
         this.setState({ data: null })
-        console.log("sdsd")
         //call api to delete the notification data
         this.props.navigation.goBack()
     }
@@ -73,7 +70,7 @@ class Notif_center extends Component {
 
     //function to initialize all the data to display
     componentDidMount() {
-        gettingNotifications(this.props.other.authToken, this.props.other.userId)
+        gettingNotifications(this.context.token)
             .then(response => {
                 if (response["success"] === 0) {
                 }

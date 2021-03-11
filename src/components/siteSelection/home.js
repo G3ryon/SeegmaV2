@@ -3,16 +3,10 @@ import { View, Image, TextInput, ScrollView, SafeAreaView, FlatList } from 'reac
 import { Icon, Button, Layout, Text, Divider, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import TilesView from '../pratical/tilesView';
 import { gettingSite } from '../../api/api.js';
+import {TokenContext} from '../../styles/themeContext.js'
 /*
-PROPS:  other.isSignIn  : bool displaying if the user is authenticated
-        other.signIn    : method to set the isSignIn
-        other.authToken : string with the token of the user
-        other.setAuth   : method to set the authToken
-        other.site      : Id of the site currently selected
-        other.setSite   : method to set the selected site
-        other.userId    : Id of the current user
-        other.setUserId : method to set the user id
-        setSiteData     : method to set the variable with the data of the selected site
+route : 
+
 RETURN: a view of the different site of the user
 */
 
@@ -31,7 +25,7 @@ class Home extends Component {
         this.handleIconPress = this.handleIconPress.bind(this);
         
     }
-
+    static contextType = TokenContext;
     //Methods for basic state update
     //function to change the site and redirect to the dashboard
     handleTilePress(id) {
@@ -42,9 +36,8 @@ class Home extends Component {
                 siteData = element
             }
         });
-        this.props.setSiteData(siteData)
-        this.props.other.setSite(id)
-        this.props.navigation.navigate('bottomNav')
+        this.context.handleSite(id,siteData['site'])
+        this.props.navigation.navigate('bottomNav',{screen:"Dashboard", params: {screen:"Dashboard", params:{id:id,name:siteData['site']}}})
     }
 
     //function to change the favorite state
@@ -64,9 +57,8 @@ class Home extends Component {
     //getting all the site of the user
     componentDidMount() {
         
-        this.props.other.setSite(null)
-        this.props.setSiteData(null)
-        gettingSite(this.props.other.authToken, this.props.other.userId)
+        this.context.handleSite(null,null)
+        gettingSite(this.context.token)
             .then(response => {
                 if (response["success"] === 0) {
 

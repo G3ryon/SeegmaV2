@@ -19,7 +19,7 @@ class Widget extends Component{
         }
     }
 
-        //Icon constant
+    //Icon constant
     backIcon = (props) => (
         <Icon {...props} name='arrow-back-outline' />
     );
@@ -32,7 +32,7 @@ class Widget extends Component{
         return(
         <View>
            <TopNavigation
-                        title={this.props.widgetData["title"]}
+                        title={this.props.route.params["name"]}
                         accessoryLeft={this.backAction}
                     />
         </View>)

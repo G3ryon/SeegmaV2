@@ -5,15 +5,9 @@ import TilesView from '../pratical/tilesView';
 import SelectComp from '../pratical/select';
 import { gettingSiteData } from '../../api/api.js';
 import { useFocusEffect } from '@react-navigation/native';
+import {TokenContext} from '../../styles/themeContext.js'
 /*
-PROPS:  other.isSignIn  : bool displaying if the user is authenticated
-        other.signIn    : method to set the isSignIn
-        other.authToken : string with the token of the user
-        other.setAuth   : method to set the authToken
-        other.site      : Id of the site currently selected
-        other.setSite   : method to set the selected site
-        other.userId    : Id of the current user
-        other.setUserId : method to set the user id
+PROPS: 
         handleWidget    : method to set the variable with the data of the selected widget
         widgetData      : variable containing the data of the current selected widget
         site            : variable containing the data of the current selected site
@@ -39,6 +33,7 @@ class Dashboard extends Component {
         }
         this.icons = icons
     }
+    static contextType = TokenContext;
 
     //Methods for basic state update
     handleSelect(event) {
@@ -53,15 +48,13 @@ class Dashboard extends Component {
                 data = element
             }
         });
-        this.props.handlewidget(data)
-        this.props.navigation.navigate('widget')
+        this.props.navigation.navigate('widget',{id:id,name:data['title']})
     }
 
     //Methods immplicating the life cycle
-    //Initialisation of the data to be displayed
+    //Initialisation of the data to be displayed this.props.route.params['id']
     componentDidMount() {
-        this.props.handlewidget(null)
-        gettingSiteData(this.props.other.authToken, this.props.other.userId, this.props.other.site)
+        gettingSiteData(this.context.token,this.context.site)
             .then(response => {
                 if (response["success"] === 0) {
                 }
@@ -79,8 +72,7 @@ class Dashboard extends Component {
             let reformatedData = this.dataProcessing(this.state.brutData[this.state.selectedIndex.row]["data"])
             this.setState({ data: reformatedData });
         }
-        if (prevprops.site["site"] !== this.props.site["site"]) {
-            console.log('repair')
+        if (prevprops.route.params !== this.props.route.params) {
             this.componentDidMount()
         }
     }
@@ -113,7 +105,7 @@ dataProcessing(data) {
         let reformatedData = [{ separator: true, title: "You don't have any widgets" }]
         return reformatedData
     } else {
-        let reformatedData = [{ separator: true, title: "Actual site : " + this.props.site["site"] }]
+        let reformatedData = [{ separator: true, title: "Actual site : " + this.context.siteName }]
 
         data.forEach(element => {
             let icon = this.icons[element["type"]]
@@ -161,7 +153,7 @@ notifAction = () => (
 );
 
 render() {
-    
+    console.log(this.props.route)
     return (
         <View>
             <this.OnFocus props={this.props}></this.OnFocus>

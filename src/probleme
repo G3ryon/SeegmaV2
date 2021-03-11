@@ -14,3 +14,23 @@ jest.useFakeTimers() mocks out setTimeout and other timer functions with mock fu
 If running multiple tests inside of one file or describe block, jest.useFakeTimers(); can be called before each test manually or with a setup function such as beforeEach.
 
 Not doing so will result in the internal usage counter not being reset.
+
+---------------------------------------------------
+utilisation de context 1 def le context 
+
+export const TokenContext = React.createContext({
+  authToken: "hdqgs",
+  handleToken: () => {},
+});
+
+2 add le provider dans app et y def les fonctions
+
+//import {TokenContext} from '../styles/themeContext.js'
+3 add l'import du context au sein du code ou on desire l'use
+
+//static contextType = TokenContext;
+4 faire appel a static contextType = contextchoosen
+
+//console.log(this.context)
+5 faire appel au contextchoosen pour avoir le json
+---------------------------------------------------

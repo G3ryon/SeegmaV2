@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { View, Image, TextInput } from 'react-native';
 import { Button, Layout, Text } from '@ui-kitten/components';
-
+import {TokenContext} from '../../styles/themeContext.js'
 /*
 PROPS:  other.isSignIn  : bool displaying if the user is authenticated
         other.signIn    : method to set the isSignIn
@@ -18,11 +18,12 @@ class Graph extends Component{
 
         }
     }
-
+    static contextType = TokenContext;
     render(){
         return(
         <View>
            <Button onPress={() => this.props.navigation.navigate('Graph')}>graph</Button>
+           <Text>{this.context.siteName}</Text>
         </View>)
     }
     

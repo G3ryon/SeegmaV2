@@ -3,11 +3,9 @@ import { View, Image, TextInput } from 'react-native';
 import { Icon, Button, Layout, Text, Divider, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 
 /*
-PROPS:  other.isSignIn  : bool displaying if the user is authenticated
-        other.signIn    : method to set the isSignIn
-        other.authToken : string with the token of the user
-        other.setAuth   : method to set the authToken
-       
+Route : name : Name of the route
+        params : data linked to the route
+         
 RETURN: a view of the details for a selected items
 */
 
@@ -27,30 +25,31 @@ class Details_view extends Component {
     );
 
     render() {
-        if (this.props.type == 'Notification') {
+        console.log(this.props.route.params)
+        if (this.props.route.name == 'Notification') {
             return (
                 <View>
                     <TopNavigation
-                        title={"Notification : " + this.props.data['name']}
+                        title={"Notification : " + this.props.route.params['name']}
                         accessoryLeft={this.backAction}
                     />
-                    <Text category='h2' status='primary'>{this.props.data['date'].slice(4, 21)}</Text>
+                    <Text category='h2' status='primary'>{this.props.route.params['date'].slice(4, 21)}</Text>
                     <Text category='h2'>Description</Text>
-                    <Text>{this.props.data['description']}</Text>
+                    <Text>{this.props.route.params['description']}</Text>
                     <Text category='h2'>More details</Text>
-                    <Text>{this.props.data['infos']}</Text>
+                    <Text>{this.props.route.params['infos']}</Text>
                 </View>)
         }
-        else if (this.props.type == 'Alarm') {
+        else if (this.props.route.name == "Alarms details") {
             return (
                 <View>
                     <TopNavigation
-                        title={"Alarm : " + this.props.data['name']}
+                        title={"Alarm : " + this.props.route.params['name']}
                         accessoryLeft={this.backAction}
                     />
-                    <Text category='h2' status='primary'>{this.props.data['date'].slice(4, 21)}</Text>
+                    <Text category='h2' status='primary'>{this.props.route.params['date'].slice(4, 21)}</Text>
                     <Text category='h2'>Details</Text>
-                    <Text>{this.props.data['infos']}</Text>
+                    <Text>{this.props.route.params['infos']}</Text>
                 </View>
             )
         } else {

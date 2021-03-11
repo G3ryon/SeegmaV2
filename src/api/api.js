@@ -47,50 +47,55 @@ export async function signup(mail, username, password) {
     return data
 }
 
-export async function gettingSite(token,userId) {
+export async function gettingSite(token) {
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + token);
 
-    var formdata = new FormData();
-    formdata.append("userId", userId);
 
-    let data = await fecthing("usersite", formdata, myHeaders)
+    let data = await fecthing("usersite", myHeaders)
     return data
 }
 
-export async function gettingNotifications(token,userId) {
+export async function gettingNotifications(token) {
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + token);
 
-    var formdata = new FormData();
-    formdata.append("userId", userId);
 
-    let data = await fecthing("userNotification", formdata, myHeaders)
+    let data = await fecthing("userNotification", myHeaders)
     return data
 }
 
-export async function gettingSiteData(token,userId,siteId) {
+export async function gettingSiteData(token,siteId) {
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + token);
 
     var formdata = new FormData();
-    formdata.append("userId", userId);
     formdata.append("siteId", siteId);
 
     let data = await fecthing("getSiteData", formdata, myHeaders)
     return data
 }
 
-export async function gettingUserAlarms(token,userId,siteId) {
+export async function gettingUserAlarms(token,siteId) {
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + token);
 
     var formdata = new FormData();
-    formdata.append("userId", userId);
     formdata.append("siteId", siteId);
 
     let data = await fecthing("getUserAlarms", formdata, myHeaders)
     return data
+}
+
+export async function gettingAlarmsList(token,alarmId) {
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", "Bearer " + token);
+
+  var formdata = new FormData();
+  formdata.append("alarmId", alarmId);
+
+  let data = await fecthing("getAlarmsList", formdata, myHeaders)
+  return data
 }
 
 export const storeData = async (value, key) => {

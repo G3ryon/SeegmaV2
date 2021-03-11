@@ -8,11 +8,7 @@ import { reset } from '../../api/api.js';
 
 
 /*
-PROPS:  other.isSignIn  : bool displaying if the user is authenticated
-        other.signIn    : method to set the isSignIn
-        other.authToken : string with the token of the user
-        other.setAuth   : method to set the authToken
-       
+
 RETURN: a view to handle the reset of a password
 */
 

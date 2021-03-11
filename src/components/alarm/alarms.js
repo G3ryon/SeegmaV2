@@ -3,11 +3,9 @@ import { View, Image, TextInput } from 'react-native';
 import { Icon, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import TilesView from '../pratical/tilesView';
 import { gettingUserAlarms } from '../../api/api.js';
+import {TokenContext} from '../../styles/themeContext.js'
 /*
-PROPS:  other.isSignIn  : bool displaying if the user is authenticated
-        other.signIn    : method to set the isSignIn
-        other.authToken : string with the token of the user
-        other.setAuth   : method to set the authToken
+Route :
        
 RETURN: a view of the alarms of the user
 */
@@ -22,23 +20,23 @@ class Alarms extends Component {
         }
         this.handleIconPress = this.handleIconPress.bind(this);
     }
+    static contextType = TokenContext;
     //handle the preparation to see the widget
     handleIconPress(id) {
         let data = null
         this.state.brutData.forEach(element => {
             if (element["id"] == id) {
-                data = element
+                this.props.navigation.navigate('Alarms info',element)
             }
         });
-        this.props.setAlarm(data)
-        this.props.navigation.navigate('Alarms info')
+        
     }
 
     //Methods immplicating the life cycle
     //Initialisation of the data to be displayed
     componentDidMount() {
-        this.props.setAlarm(null)
-        gettingUserAlarms(this.props.other.authToken, this.props.other.userId, this.props.other.site)
+        //this.props.setAlarm(null)
+        gettingUserAlarms(this.context.token,this.context.site)
             .then(response => {
                 if (response["success"] === 0) {
                 }
@@ -103,20 +101,6 @@ class Alarms extends Component {
     );
 
     render() {
-        const data = [
-            {
-                title: "Alarms 2",
-                id: "12345",
-                buttonIcon: 'arrow-ios-forward-outline',
-                icon: 'alert-triangle'
-            },
-            {
-                title: "Alarms 2",
-                id: "12345s",
-                buttonIcon: 'arrow-ios-forward-outline',
-                icon: ''
-            }
-        ]
         return (
             <View>
                 <TilesView itemData={this.state.data}

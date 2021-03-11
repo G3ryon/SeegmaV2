@@ -5,7 +5,7 @@ import { default as theme } from './theme.json'; // <-- Import app theme
 import { default as mapping } from './mapping.json';
 import Nav from "./src/navigation/nav.js";
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { ThemeContext } from './src/styles/themeContext.js';
+import { ThemeContext, TokenContext } from './src/styles/themeContext.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { navigationRef } from './src/navigation/nav.js';
@@ -13,14 +13,22 @@ import { navigationRef } from './src/navigation/nav.js';
 
 export default function App() {
   const [isLoggin, setLoggin] = useState(false);
-  const [token, setToken] = useState(undefined);
+  const [token, setToken] = useState("defined");
   const [site, setSite] = useState(undefined);
-  const [userId, setUserId] = useState(undefined);
+  const [siteName, setSiteName] = useState(undefined);
   const [themes, setTheme] = useState('dark');
 
   const toggleTheme = () => {
     const nextTheme = themes === 'light' ? 'dark' : 'light';
     setTheme(nextTheme);
+  };
+
+  const handleToken = (token) => {
+    setToken(token);
+  };
+  const handleSite = (id,name) => {
+    setSite(id);
+    setSiteName(name)
   };
 
   //synchronisation of the theme
@@ -36,19 +44,22 @@ export default function App() {
     },
   };
 
-  return (
 
+
+  return (
+    <TokenContext.Provider value={{token,site,siteName, handleToken,handleSite}}>
     <ThemeContext.Provider value={{ themes, toggleTheme }}>
       <IconRegistry icons={EvaIconsPack} />
       <ApplicationProvider {...eva} theme={{ ...eva[themes], ...theme }} customMapping={mapping}>
         <SafeAreaProvider >
           <NavigationContainer ref={navigationRef} theme={MyTheme}>
 
-            <Nav isSignIn={isLoggin} signIn={setLoggin} authToken={token} setAuth={setToken} site={site} setSite={setSite} userId={userId} setUserId={setUserId} />
+            <Nav isSignIn={isLoggin} signIn={setLoggin}/>
 
           </NavigationContainer></SafeAreaProvider>
       </ApplicationProvider>
     </ThemeContext.Provider>
+    </TokenContext.Provider>
 
   );
 }

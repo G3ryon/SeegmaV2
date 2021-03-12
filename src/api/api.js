@@ -56,6 +56,17 @@ export async function gettingSite(token) {
     return data
 }
 
+export async function gettingGraph(token,siteId) {
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", "Bearer " + token);
+
+  var formdata = new FormData();
+  formdata.append("siteId", siteId);
+
+  let data = await fecthing("getGraphList", myHeaders)
+  return data
+}
+
 export async function gettingNotifications(token) {
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + token);

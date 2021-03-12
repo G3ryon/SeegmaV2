@@ -55,11 +55,14 @@ export default class TilesView extends Component {
 
     //button to be render in the right of the tile
     renderItemAccessory = (id, iconName) => (
+      iconName ==''?(
+        <Text></Text>
+      ):(
       <Button
       testID={id}
       appearance='ghost'
       accessoryLeft={(props)=> this.renderIcon(props,iconName)}
-      onPress={()=>{this.handlePressIcon(id)}}/>    
+      onPress={()=>{this.handlePressIcon(id)}}/>  )  
     );
     
     //Icon to be render in the left of the tile

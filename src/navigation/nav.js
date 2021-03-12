@@ -22,7 +22,7 @@ import Graph from '../components/graph/graph.js';
 import Alarms_info from '../components/alarm/alarmInfo.js';
 import Alarms_history from '../components/alarm/alarmsHistory.js';
 import Alarms_occ from '../components/alarm/alarmOcc.js';
-import { Graph_disp } from '../components/graph/graphDisp.js';
+import  Graph_disp  from '../components/graph/graphDisp.js';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { default as theme } from '../../theme.json';
 import {getData, storeData } from '../api/api.js';
@@ -103,8 +103,8 @@ class Nav extends Component {
   graphNav = () => {
     return (
       <Stack.Navigator headerMode={""}>
-        <Stack.Screen name={"Graphs"}>{props => <Graph {...props}/>}</Stack.Screen>
-        <Stack.Screen name={"Graph"}>{props => <Graph_disp {...props}/>}</Stack.Screen>
+        <Stack.Screen name={"Graphs"}>{props => <SafeAreaView><Graph {...props}/></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"Graph"}>{props => <SafeAreaView><Graph_disp {...props}/></SafeAreaView>}</Stack.Screen>
       </Stack.Navigator>
     );
   }

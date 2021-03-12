@@ -20,6 +20,7 @@ class Graph_disp extends Component{
         value: "Brut",
         visible: false,
         show: false,
+        
         date:new Date(),
         mode:'date',
     }

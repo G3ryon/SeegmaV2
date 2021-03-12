@@ -18,6 +18,7 @@ export default RadioButton = (props) => {
                     textStyle={selected == index ? { color: "white" } : null}
                     style={selected == index ? styles.buttonSelected : null}
                     onPress={() => {props.setValue(element.value); setIndex(index);}}
+                    key={index}
                 >{element.label}</Button>)}
 
             </ButtonGroup>

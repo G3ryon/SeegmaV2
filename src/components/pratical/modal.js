@@ -1,4 +1,4 @@
-import React, { Component, Fragment, } from 'react';
+import React, { Children, Component, Fragment, } from 'react';
 import { Button, Layout, Modal, Card, Text } from '@ui-kitten/components';
 
 
@@ -26,10 +26,12 @@ class ModalCard extends Component {
     }
 
     render() {
+
         return (
             <Modal visible={this.props.visible}  onBackdropPress={() => this.props.admitBackdrop && this.handleVisibility(false) }>
             <Card>
             {this.props.infos}
+            {this.props.children}
             {this.props.admitButton && <Button onPress={() => this.handleVisibility(false)} >{this.props.exitText}</Button>} 
             </Card>
             </Modal>

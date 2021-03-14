@@ -3,7 +3,7 @@ import { View, Image, TextInput, ScrollView, SafeAreaView, FlatList } from 'reac
 import { Icon, Button, Layout, Text, Divider, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import TilesView from '../pratical/tilesView';
 import { gettingSite } from '../../api/api.js';
-import {TokenContext} from '../../styles/themeContext.js'
+import { TokenContext } from '../general/context';
 /*
 route : 
 

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { View, Image, TextInput } from 'react-native';
-import { Icon, Button, Layout, Text, Divider, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
+import { View} from 'react-native';
+import { Icon, Text, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import TilesView from '../pratical/tilesView';
 /*
-PROPS:  other.isSignIn  : bool displaying if the user is authenticated
-        other.signIn    : method to set the isSignIn
-        other.authToken : string with the token of the user
-        other.setAuth   : method to set the authToken
+route: name : name of the selected alarm 
+       id   : id of the selected alarm
+       date : last time the alarm wazs triggered
+       infos  :  infos about the trigger
+       description : infos about the alarm
        
 RETURN: a view of the infos concerning the alarm choosen
 */

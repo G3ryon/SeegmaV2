@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet,View } from 'react-native';
-import { Button, ButtonGroup, Layout, Text, Modal } from '@ui-kitten/components';
+import {Modal } from '@ui-kitten/components';
 import { default as theme } from '../../../theme.json';
 
 import DatePicker from 'react-native-modern-datepicker';
@@ -12,6 +12,7 @@ import DatePicker from 'react-native-modern-datepicker';
 
 export default DatumPicker = (props) => {
 
+    //Theming 
     const options = {
         backgroundColor: theme["color-basic-300"],
         textHeaderColor: theme["color-basic-800"],
@@ -19,12 +20,12 @@ export default DatumPicker = (props) => {
         selectedTextColor: theme["color-basic-100"],
         mainColor: theme["color-primary-900"],
         textSecondaryColor: theme["color-basic-800"],
-        borderColor: theme["color-basic-800"],//color-basic-transparent-600
+        borderColor: theme["color-basic-800"],
     }
 
     return (
         <Modal visible={props.visible} style={{ flex: 1, padding: 100 }} backdropStyle={styles.backdrop}>
-            <View style={{
+            <View testID="calendar"  style={{
                 width: 300,
                 height: 400,
             }}>
@@ -37,6 +38,7 @@ export default DatumPicker = (props) => {
                     />
                 ) : (
                     <DatePicker
+                        
                         mode={props.mode}
                         
                         onSelectedChange={date => { props.onChange(date,false);console.log(date.replace(' ','-')) }}

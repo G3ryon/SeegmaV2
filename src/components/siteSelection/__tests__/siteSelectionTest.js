@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 
 import { act } from 'react-test-renderer';
 
-import { fireEvent, render, waitFor } from '@testing-library/react-native';
+import {render } from '@testing-library/react-native';
 import Home from '../home.js';
-import { ApplicationProvider, Layout, Button, Text, TopNavigation, TopNavigationAction, IconRegistry } from '@ui-kitten/components';
+import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import { mapping, light as lightTheme } from '@eva-design/eva';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 // Note: test renderer must be required after react-native.

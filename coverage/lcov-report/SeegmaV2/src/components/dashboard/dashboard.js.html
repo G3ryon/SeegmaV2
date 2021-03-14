@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">2% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/49</span>
+                <span class='fraction'>1/50</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/10</span>
+                <span class='fraction'>0/12</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">2.08% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/47</span>
+                <span class='fraction'>1/48</span>
             </div>
         
             
@@ -229,11 +229,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -250,6 +245,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -265,13 +261,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -290,6 +284,11 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -348,6 +347,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -363,21 +363,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
-import { View} from 'react-native';
-import { IndexPath, Icon, TopNavigation, TopNavigationAction} from '@ui-kitten/components';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component, useCallback } from 'react';
+import { View } from 'react-native';
+import { IndexPath, Icon, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import TilesView from '../pratical/tilesView';
 import SelectComp from '../pratical/select';
 import { gettingSiteData } from '../../api/api.js';
+import { useFocusEffect } from '@react-navigation/native';
+import {TokenContext} from '../../styles/themeContext.js'
 /*
-PROPS:  other.isSignIn  : bool displaying if the user is authenticated
-        other.signIn    : method to set the isSignIn
-        other.authToken : string with the token of the user
-        other.setAuth   : method to set the authToken
-        other.site      : Id of the site currently selected
-        other.setSite   : method to set the selected site
-        other.userId    : Id of the current user
-        other.setUserId : method to set the user id
+PROPS: 
         handleWidget    : method to set the variable with the data of the selected widget
         widgetData      : variable containing the data of the current selected widget
         site            : variable containing the data of the current selected site
@@ -403,6 +398,7 @@ class Dashboard extends Component {
         }
 <span class="cstat-no" title="statement not covered" >        this.icons = icons</span>
     }
+    static contextType = TokenContext;
 &nbsp;
     //Methods for basic state update
 <span class="fstat-no" title="function not covered" >    ha</span>ndleSelect(event) {
@@ -417,15 +413,13 @@ class Dashboard extends Component {
 <span class="cstat-no" title="statement not covered" >                data = element</span>
             }
         });
-<span class="cstat-no" title="statement not covered" >        this.props.handlewidget(data)</span>
-<span class="cstat-no" title="statement not covered" >        this.props.navigation.navigate('widget')</span>
+<span class="cstat-no" title="statement not covered" >        this.props.navigation.navigate('widget',{id:id,name:data['title']})</span>
     }
 &nbsp;
     //Methods immplicating the life cycle
-    //Initialisation of the data to be displayed
+    //Initialisation of the data to be displayed this.props.route.params['id']
 <span class="fstat-no" title="function not covered" >    co</span>mponentDidMount() {
-<span class="cstat-no" title="statement not covered" >        this.props.handlewidget(null)</span>
-<span class="cstat-no" title="statement not covered" >        gettingSiteData(this.props.other.authToken, this.props.other.userId, this.props.other.site)</span>
+<span class="cstat-no" title="statement not covered" >        gettingSiteData(this.context.token,this.context.site)</span>
             .then(<span class="fstat-no" title="function not covered" >re</span>sponse =&gt; {
 <span class="cstat-no" title="statement not covered" >                if (response["success"] === 0) {</span>
                 }
@@ -443,77 +437,83 @@ class Dashboard extends Component {
             let reformatedData = <span class="cstat-no" title="statement not covered" >this.dataProcessing(this.state.brutData[this.state.selectedIndex.row]["data"])</span>
 <span class="cstat-no" title="statement not covered" >            this.setState({ data: reformatedData });</span>
         }
-    }
-&nbsp;
-    //General Methods
-    //function to format the data of the choosen option
-<span class="fstat-no" title="function not covered" >    da</span>taProcessing(data) {
-&nbsp;
-<span class="cstat-no" title="statement not covered" >        if (data.length === 0) {</span>
-            let reformatedData = <span class="cstat-no" title="statement not covered" >[{ separator: true, title: "You don't have any widgets" }]</span>
-<span class="cstat-no" title="statement not covered" >            return reformatedData</span>
-        } else {
-            let reformatedData = <span class="cstat-no" title="statement not covered" >[{ separator: true, title: "Actual site : " + this.props.site["site"] }]</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >            data.forEach(<span class="fstat-no" title="function not covered" >el</span>ement =&gt; {</span>
-                let icon = <span class="cstat-no" title="statement not covered" >this.icons[element["type"]]</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >                reformatedData.push({</span>
-                    title: element["name"],
-                    id: element["id"],
-                    buttonIcon: 'chevron-right',
-                    icon: icon,
-                })
-            });
-<span class="cstat-no" title="statement not covered" >            reformatedData.push({ separator: true, title: '' });</span>
-<span class="cstat-no" title="statement not covered" >            return reformatedData</span>
+<span class="cstat-no" title="statement not covered" >        if (prevprops.route.params !== this.props.route.params) {</span>
+<span class="cstat-no" title="statement not covered" >            this.componentDidMount()</span>
         }
     }
 &nbsp;
-    //method to extract the value for the options
-<span class="fstat-no" title="function not covered" >    se</span>lectProcessing(data) {
-<span class="cstat-no" title="statement not covered" >        if (data.length === 0) {</span>
-<span class="cstat-no" title="statement not covered" >            return []</span>
-        } else {
-            let selectData = <span class="cstat-no" title="statement not covered" >[]</span>
+    
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            data.forEach(<span class="fstat-no" title="function not covered" >el</span>ement =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >                selectData.push(element.name)</span>
-            });
-<span class="cstat-no" title="statement not covered" >            return selectData</span>
-        }
+//General Methods
+//function to format the data of the choosen option
+<span class="fstat-no" title="function not covered" >da</span>taProcessing(data) {
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (data.length === 0) {</span>
+        let reformatedData = <span class="cstat-no" title="statement not covered" >[{ separator: true, title: "You don't have any widgets" }]</span>
+<span class="cstat-no" title="statement not covered" >        return reformatedData</span>
+    } else {
+        let reformatedData = <span class="cstat-no" title="statement not covered" >[{ separator: true, title: "Actual site : " + this.context.siteName }]</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        data.forEach(<span class="fstat-no" title="function not covered" >el</span>ement =&gt; {</span>
+            let icon = <span class="cstat-no" title="statement not covered" >this.icons[element["type"]]</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            reformatedData.push({</span>
+                title: element["name"],
+                id: element["id"],
+                buttonIcon: 'chevron-right',
+                icon: icon,
+            })
+        });
+<span class="cstat-no" title="statement not covered" >        reformatedData.push({ separator: true, title: '' });</span>
+<span class="cstat-no" title="statement not covered" >        return reformatedData</span>
     }
+}
 &nbsp;
-    //Method for declaring constant and navigation
-    //Icon constant
-    backIcon = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(p</span>rops) =&gt; (</span>
-<span class="cstat-no" title="statement not covered" >        &lt;Icon {...props} name='menu-outline' /&gt;</span>
-    );
-    notifIcon = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(p</span>rops) =&gt; (</span>
-<span class="cstat-no" title="statement not covered" >        &lt;Icon {...props} name='bell-outline' /&gt;</span>
-    );
-    //function to handle the buttons of the header
-    backAction = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; (</span>
-<span class="cstat-no" title="statement not covered" >        &lt;TopNavigationAction icon={this.backIcon} onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.props.navigation.openDrawer()}</span> /&gt;</span>
-    );
-    notifAction = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; (</span>
-<span class="cstat-no" title="statement not covered" >        &lt;TopNavigationAction icon={this.notifIcon} onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.props.navigation.navigate('notification')}</span> /&gt;</span>
-    );
+//method to extract the value for the options
+<span class="fstat-no" title="function not covered" >se</span>lectProcessing(data) {
+<span class="cstat-no" title="statement not covered" >    if (data.length === 0) {</span>
+<span class="cstat-no" title="statement not covered" >        return []</span>
+    } else {
+        let selectData = <span class="cstat-no" title="statement not covered" >[]</span>
 &nbsp;
-<span class="fstat-no" title="function not covered" >    re</span>nder() {
-<span class="cstat-no" title="statement not covered" >        return (</span>
-            &lt;View&gt;
-                &lt;TilesView itemData={this.state.data}
-                    pressTile={this.handleIconPress}
-                    pressIcon={this.handleIconPress}
-                    headerComp={&lt;TopNavigation
-                        title={&lt;SelectComp selectedIndex={this.state.selectedIndex} data={this.state.dataSelect} handleSelect={this.handleSelect} /&gt;}
-                        accessoryLeft={this.backAction}
-                        accessoryRight={this.notifAction}
-                    /&gt;}
-                /&gt;
-            &lt;/View&gt;)
+<span class="cstat-no" title="statement not covered" >        data.forEach(<span class="fstat-no" title="function not covered" >el</span>ement =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            selectData.push(element.name)</span>
+        });
+<span class="cstat-no" title="statement not covered" >        return selectData</span>
     }
+}
+&nbsp;
+//Method for declaring constant and navigation
+//Icon constant
+backIcon = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(p</span>rops) =&gt; (</span>
+<span class="cstat-no" title="statement not covered" >    &lt;Icon {...props} name='menu-outline' /&gt;</span>
+);
+notifIcon = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(p</span>rops) =&gt; (</span>
+<span class="cstat-no" title="statement not covered" >    &lt;Icon {...props} name='bell-outline' /&gt;</span>
+);
+//function to handle the buttons of the header
+backAction = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; (</span>
+<span class="cstat-no" title="statement not covered" >    &lt;TopNavigationAction icon={this.backIcon} onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.props.navigation.openDrawer()}</span> /&gt;</span>
+);
+notifAction = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; (</span>
+<span class="cstat-no" title="statement not covered" >    &lt;TopNavigationAction icon={this.notifIcon} onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.props.navigation.navigate('notification')}</span> /&gt;</span>
+);
+&nbsp;
+<span class="fstat-no" title="function not covered" >re</span>nder() {
+    
+<span class="cstat-no" title="statement not covered" >    return (</span>
+        &lt;View&gt;
+            &lt;TilesView itemData={this.state.data}
+                pressTile={this.handleIconPress}
+                pressIcon={this.handleIconPress}
+                headerComp={&lt;TopNavigation
+                    title={&lt;SelectComp selectedIndex={this.state.selectedIndex} data={this.state.dataSelect} handleSelect={this.handleSelect} /&gt;}
+                    accessoryLeft={this.backAction}
+                    accessoryRight={this.notifAction}
+                /&gt;}
+            /&gt;
+        &lt;/View&gt;)
+}
 }
 export default Dashboard;
 &nbsp;</pre></td></tr></table></pre>
@@ -523,7 +523,7 @@ export default Dashboard;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Feb 26 2021 13:50:55 GMT+0100 (GMT+01:00)
+                at Sat Mar 13 2021 20:13:38 GMT+0100 (GMT+01:00)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>

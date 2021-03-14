@@ -4,10 +4,11 @@ import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import { default as theme } from './theme.json'; // <-- Import app theme
 import { default as mapping } from './mapping.json';
 import Nav from "./src/navigation/nav.js";
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { ThemeContext, TokenContext } from './src/styles/themeContext.js';
+import { SafeAreaProvider} from 'react-native-safe-area-context';
+import { ThemeContext } from './src/styles/themeContext.js';
+import { TokenContext } from './src/components/general/context';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
-import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { navigationRef } from './src/navigation/nav.js';
 //Root of the app with the initialisation of all providers
 

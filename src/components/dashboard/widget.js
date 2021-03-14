@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { View, Image, TextInput } from 'react-native';
-import { IndexPath, Icon, Button, Layout, Text, Divider, TopNavigation, TopNavigationAction, Select, SelectItem } from '@ui-kitten/components';
+import {  Icon, TopNavigation, TopNavigationAction} from '@ui-kitten/components';
 
 /*
 PROPS:  other.isSignIn  : bool displaying if the user is authenticated

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { View, Image, TextInput } from 'react-native';
-import { Icon, Button, Layout, Text, Divider, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
+import { View} from 'react-native';
+import { Icon, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import TilesView from '../pratical/tilesView';
 import { gettingNotifications } from '../../api/api.js';
-import {TokenContext} from '../../styles/themeContext.js'
+import { TokenContext } from '../general/context';
 /*
 Route : name : Name of the route
         params : data linked to the route

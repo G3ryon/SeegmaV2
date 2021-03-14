@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import { View, Image, TextInput } from 'react-native';
-import { Icon, Button, Layout, Text, Divider, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
+import { View} from 'react-native';
+import { Icon, Text, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import TilesView from '../pratical/tilesView';
 import { gettingAlarmsList } from '../../api/api.js';
-import {TokenContext} from '../../styles/themeContext.js'
+import { TokenContext } from '../general/context';
 /*
-PROPS:  other.isSignIn  : bool displaying if the user is authenticated
-        other.signIn    : method to set the isSignIn
-        other.authToken : string with the token of the user
-        other.setAuth   : method to set the authToken
+route : name : alarm name
        
 RETURN: a view of the activation of the choosen alarm
 */
@@ -24,6 +21,26 @@ class Alarms_history extends Component {
     }
     static contextType = TokenContext;
 
+    //Lyfecycle event
+    componentDidMount(){
+        gettingAlarmsList(this.context.token,this.context.site)
+        .then(response => {
+            if (response["success"] === 0) {
+            }
+            else {
+                let data = response["data"]
+                this.dataProcessing(data)
+            }
+        })
+    }
+
+    componentDidUpdate(prevprops){
+        if(prevprops.route !== this.props.route){
+            this.componentDidMount
+        }
+    }
+
+    //Basic Method
     pressAction(event) {
         let data = this.state.brutData
         data.forEach(element => {
@@ -49,26 +66,6 @@ class Alarms_history extends Component {
             })
         });
         this.setState({reformatedData:reformatedData, brutData:data})
-    }
-
-
-    componentDidMount(){
-        console.log("dddd")
-        gettingAlarmsList(this.context.token,this.context.site)
-        .then(response => {
-            if (response["success"] === 0) {
-            }
-            else {
-                let data = response["data"]
-                this.dataProcessing(data)
-            }
-        })
-    }
-
-    componentDidUpdate(prevprops){
-        if(prevprops.route !== this.props.route){
-            this.componentDidMount
-        }
     }
 
     //Method for declaring constant and navigation

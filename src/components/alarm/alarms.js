@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import { View, Image, TextInput } from 'react-native';
+import React, { Component, useCallback  } from 'react';
+import { View} from 'react-native';
 import { Icon, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import TilesView from '../pratical/tilesView';
 import { gettingUserAlarms } from '../../api/api.js';
-import {TokenContext} from '../../styles/themeContext.js'
+import { TokenContext } from '../general/context';
+import { useFocusEffect } from '@react-navigation/native';
 /*
 Route :
        
@@ -23,7 +24,6 @@ class Alarms extends Component {
     static contextType = TokenContext;
     //handle the preparation to see the widget
     handleIconPress(id) {
-        let data = null
         this.state.brutData.forEach(element => {
             if (element["id"] == id) {
                 this.props.navigation.navigate('Alarms info',element)
@@ -43,7 +43,7 @@ class Alarms extends Component {
                 else {
                     let data = response["data"]
                     let reformatedData = this.dataProcessing(data)
-                    this.setState({data: reformatedData, brutData: data });
+                    this.setState({data: reformatedData, brutData: data, site: this.context.site  });
                 }
             })
     }
@@ -83,6 +83,23 @@ class Alarms extends Component {
             return reformatedData
         }
     }
+    //function to recall the api
+    OnFocus({props}) {
+        useFocusEffect(
+            useCallback(() => {
+                if(props.context.site !== props.state.site){
+                    props.componentDidMount()
+                }
+                // Do something when the screen is focused
+                return () => {
+                    // Do something when the screen is unfocused
+                    // Useful for cleanup functions
+                };
+                
+            }, [props]))
+        return null
+        
+    }
 
     //Method for declaring constant and navigation
     //Icon constant
@@ -103,6 +120,7 @@ class Alarms extends Component {
     render() {
         return (
             <View>
+                <this.OnFocus props={this} ></this.OnFocus>
                 <TilesView itemData={this.state.data}
                     pressTile={this.handleIconPress}
                     pressIcon={this.handleIconPress}
@@ -117,4 +135,3 @@ class Alarms extends Component {
 
 }
 export default Alarms;
-//<Button onPress={() => this.props.navigation.navigate("Alarms info")}>details alarms</Button>

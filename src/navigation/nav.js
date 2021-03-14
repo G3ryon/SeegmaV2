@@ -1,6 +1,6 @@
-import React, { Component, useContext } from 'react';
-import { View, Image, TextInput } from 'react-native';
-import { IndexPath, Icon} from '@ui-kitten/components';
+import React, { Component} from 'react';
+import { View} from 'react-native';
+import { Icon} from '@ui-kitten/components';
 import Login from '../components/nonAuth/login.js';
 import Signup from '../components/nonAuth/signup.js';
 import Reset from '../components/nonAuth/reset.js';
@@ -23,11 +23,11 @@ import Alarms_info from '../components/alarm/alarmInfo.js';
 import Alarms_history from '../components/alarm/alarmsHistory.js';
 import Alarms_occ from '../components/alarm/alarmOcc.js';
 import  Graph_disp  from '../components/graph/graphDisp.js';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import {SafeAreaView } from 'react-native-safe-area-context';
 import { default as theme } from '../../theme.json';
 import {getData, storeData } from '../api/api.js';
 import Loading from '../components/general/loading'
-import {TokenContext} from '../styles/themeContext.js'
+import { TokenContext } from '../../src/components/general/context';
 //PROPS
 // isSignIn  : bool displaying if the user is authenticated
 // signIn    : method to set the isSignIn
@@ -51,7 +51,7 @@ class Nav extends Component {
     super(props);
     this.state = {
       signIn:'login',
-      loading: true
+      loading: true,
     }
 
   }
@@ -80,7 +80,7 @@ class Nav extends Component {
   dashNav = () => {
     return (
       <Stack.Navigator headerMode={""}>
-        <Stack.Screen name={"Dashboard"}>{props => <SafeAreaView><Dashboard {...props}/></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"Dashboard"}>{props => <SafeAreaView><Dashboard {...props} /></SafeAreaView>}</Stack.Screen>
         <Stack.Screen name={"widget"}>{props => <SafeAreaView><Widget {...props}/></SafeAreaView>}</Stack.Screen>
       </Stack.Navigator>
     );
@@ -187,7 +187,7 @@ class Nav extends Component {
               </DrawerContentScrollView>
             );
           }}>
-          <Drawer.Screen name="home">{props => <SafeAreaView><Home {...props} setSiteData={this.handlesiteData} /></SafeAreaView>}</Drawer.Screen>
+          <Drawer.Screen name="home">{props => <SafeAreaView><Home {...props} /></SafeAreaView>}</Drawer.Screen>
           <Drawer.Screen name="notification" component={this.notifNav} />
           <Drawer.Screen name="bottomNav" component={this.authBottomNav} />
         </Drawer.Navigator>
@@ -196,11 +196,11 @@ class Nav extends Component {
   async componentDidMount(){
     
     let data = await getData('@storage_Key');
-    console.log(data)
     if(data !== null)
     this.context.handleToken(data["authToken"])
     this.setState({signIn:data["signIn"],loading : false})
   }
+
   static contextType = TokenContext;
   render() {
       //Part of the navigation concerning the non-authentified part of the app and the redirection to the authentified part
@@ -212,7 +212,6 @@ class Nav extends Component {
         )
       }
       else{
-        console.log(this.state.signIn)
       return (
         <Stack.Navigator headerMode={""} initialRouteName={this.state.signIn}>
           <Stack.Screen name={"login"}>{props => <SafeAreaView><Login {...props}  /></SafeAreaView>}</Stack.Screen>

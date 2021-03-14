@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Image, TextInput } from 'react-native';
-import { Icon, Button, Layout, Text, Divider, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
+import { View} from 'react-native';
+import { Icon, Text, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 
 /*
 Route : name : Name of the route
@@ -16,6 +16,7 @@ class Details_view extends Component {
 
         }
     }
+    //Icons
     backIcon = (props) => (
         <Icon {...props} name='arrow-back-outline' />
     );

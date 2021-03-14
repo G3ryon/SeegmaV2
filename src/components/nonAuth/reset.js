@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { View, Image, TextInput } from 'react-native';
-import { Button, Layout, Text } from '@ui-kitten/components';
+import { View, Image } from 'react-native';
+import { Button, Text } from '@ui-kitten/components';
 import logo from '../../assets/logo.png';
 import Input from '../pratical/input.js';
 import Modal from '../pratical/modal.js';

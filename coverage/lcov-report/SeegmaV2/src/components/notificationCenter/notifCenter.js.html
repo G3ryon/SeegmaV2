@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">2.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/42</span>
+                <span class='fraction'>1/40</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">2.63% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/40</span>
+                <span class='fraction'>1/38</span>
             </div>
         
             
@@ -198,11 +198,7 @@
 <a name='L139'></a><a href='#L139'>139</a>
 <a name='L140'></a><a href='#L140'>140</a>
 <a name='L141'></a><a href='#L141'>141</a>
-<a name='L142'></a><a href='#L142'>142</a>
-<a name='L143'></a><a href='#L143'>143</a>
-<a name='L144'></a><a href='#L144'>144</a>
-<a name='L145'></a><a href='#L145'>145</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L142'></a><a href='#L142'>142</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -231,20 +227,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -350,12 +344,11 @@ import { View, Image, TextInput } from 'react-native';
 import { Icon, Button, Layout, Text, Divider, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import TilesView from '../pratical/tilesView';
 import { gettingNotifications } from '../../api/api.js';
+import {TokenContext} from '../../styles/themeContext.js'
 /*
-PROPS:  other.isSignIn  : bool displaying if the user is authenticated
-        other.signIn    : method to set the isSignIn
-        other.authToken : string with the token of the user
-        other.setAuth   : method to set the authToken
-       
+Route : name : Name of the route
+        params : data linked to the route
+&nbsp;
 RETURN: a view of the list of notification for the user
 */
 &nbsp;
@@ -375,21 +368,19 @@ class Notif_center extends Component {
         }
 <span class="cstat-no" title="statement not covered" >        this.icons = icons</span>
     }
-    
+    static contextType = TokenContext;
+&nbsp;
     //handle the preparation to see the details of the notiication
 <span class="fstat-no" title="function not covered" >    ha</span>ndleIconPress(id) {
-<span class="cstat-no" title="statement not covered" >        console.log(id)</span>
 <span class="cstat-no" title="statement not covered" >        this.state.brutData.forEach(<span class="fstat-no" title="function not covered" >el</span>ement =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >            if(element['id'] == id){</span>
-<span class="cstat-no" title="statement not covered" >                this.props.handleNotifData(element)</span>
+<span class="cstat-no" title="statement not covered" >                this.props.navigation.navigate('Notification',element)</span>
             }
         });
-<span class="cstat-no" title="statement not covered" >        this.props.navigation.navigate('Notification')</span>
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    ha</span>ndleDelete() {
 <span class="cstat-no" title="statement not covered" >        this.setState({ data: null })</span>
-<span class="cstat-no" title="statement not covered" >        console.log("sdsd")</span>
         //call api to delete the notification data
 <span class="cstat-no" title="statement not covered" >        this.props.navigation.goBack()</span>
     }
@@ -420,7 +411,7 @@ class Notif_center extends Component {
 &nbsp;
     //function to initialize all the data to display
 <span class="fstat-no" title="function not covered" >    co</span>mponentDidMount() {
-<span class="cstat-no" title="statement not covered" >        gettingNotifications(this.props.other.authToken, this.props.other.userId)</span>
+<span class="cstat-no" title="statement not covered" >        gettingNotifications(this.context.token)</span>
             .then(<span class="fstat-no" title="function not covered" >re</span>sponse =&gt; {
 <span class="cstat-no" title="statement not covered" >                if (response["success"] === 0) {</span>
                 }
@@ -496,7 +487,7 @@ export default Notif_center;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Feb 26 2021 13:50:55 GMT+0100 (GMT+01:00)
+                at Sat Mar 13 2021 20:13:38 GMT+0100 (GMT+01:00)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>

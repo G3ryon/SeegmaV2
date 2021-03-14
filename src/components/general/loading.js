@@ -1,6 +1,6 @@
 import React from "react";
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { ActivityIndicator, StyleSheet } from "react-native";
+import { SafeAreaView } from 'react-native-safe-area-context';
 const Loading = () => (
   <SafeAreaView style={{justifyContent: 'center', flex: 1}}>
     <ActivityIndicator  style={{textAlign: 'center'}} size="large" color="#0000ff" />

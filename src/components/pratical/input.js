@@ -1,4 +1,4 @@
-import React, { Component, Fragment, } from 'react';
+import React, { Component } from 'react';
 import { Input } from '@ui-kitten/components';
 
 

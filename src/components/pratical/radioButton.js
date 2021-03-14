@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { Button, ButtonGroup, Layout, Text } from '@ui-kitten/components';
+import { Button, ButtonGroup, Layout } from '@ui-kitten/components';
 import { default as theme } from '../../../theme.json';
 
 export default RadioButton = (props) => {

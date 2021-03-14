@@ -1,5 +1,5 @@
-import React, { Children, Component, Fragment, } from 'react';
-import { Button, Layout, Modal, Card, Text } from '@ui-kitten/components';
+import React, { Component, } from 'react';
+import { Button, Modal, Card} from '@ui-kitten/components';
 
 
 

@@ -1,4 +1,4 @@
-var url = "https://36e69cb8-cc8f-49fe-b48b-8ed4b2a2d9e9.mock.pstmn.io/"
+var url = "https://e44199eb-d3ab-476b-b57e-ad77e559bc66.mock.pstmn.io/"
 import React, { Component } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 

@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">66.67% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/10</span>
+                <span class='fraction'>10/15</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>1/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">66.67% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/10</span>
+                <span class='fraction'>10/15</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -110,7 +110,18 @@
 <a name='L51'></a><a href='#L51'>51</a>
 <a name='L52'></a><a href='#L52'>52</a>
 <a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -135,6 +146,14 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -148,7 +167,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -170,22 +192,30 @@ import { default as theme } from './theme.json'; // &lt;-- Import app theme
 import { default as mapping } from './mapping.json';
 import Nav from "./src/navigation/nav.js";
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { ThemeContext } from './src/styles/themeContext.js';
+import { ThemeContext, TokenContext } from './src/styles/themeContext.js';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
-&nbsp;
+import { navigationRef } from './src/navigation/nav.js';
 //Root of the app with the initialisation of all providers
 &nbsp;
 export default function App() {
   const [isLoggin, setLoggin] = useState(false);
-  const [token, setToken] = useState(undefined);
+  const [token, setToken] = useState("defined");
   const [site, setSite] = useState(undefined);
-  const [userId, setUserId] = useState(undefined);
+  const [siteName, setSiteName] = useState(undefined);
   const [themes, setTheme] = useState('dark');
 &nbsp;
   const toggleTheme = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
     const nextTheme = <span class="cstat-no" title="statement not covered" >themes === 'light' ? 'dark' : 'light';</span>
 <span class="cstat-no" title="statement not covered" >    setTheme(nextTheme);</span>
+  };
+&nbsp;
+  const handleToken = <span class="fstat-no" title="function not covered" >(t</span>oken) =&gt; {
+<span class="cstat-no" title="statement not covered" >    setToken(token);</span>
+  };
+  const handleSite = <span class="fstat-no" title="function not covered" >(i</span>d,name) =&gt; {
+<span class="cstat-no" title="statement not covered" >    setSite(id);</span>
+<span class="cstat-no" title="statement not covered" >    setSiteName(name)</span>
   };
 &nbsp;
   //synchronisation of the theme
@@ -201,19 +231,22 @@ export default function App() {
     },
   };
 &nbsp;
-  return (
 &nbsp;
+&nbsp;
+  return (
+    &lt;TokenContext.Provider value={{token,site,siteName, handleToken,handleSite}}&gt;
     &lt;ThemeContext.Provider value={{ themes, toggleTheme }}&gt;
       &lt;IconRegistry icons={EvaIconsPack} /&gt;
       &lt;ApplicationProvider {...eva} theme={{ ...eva[themes], ...theme }} customMapping={mapping}&gt;
         &lt;SafeAreaProvider &gt;
-          &lt;NavigationContainer theme={MyTheme}&gt;
+          &lt;NavigationContainer ref={navigationRef} theme={MyTheme}&gt;
 &nbsp;
-            &lt;Nav isSignIn={isLoggin} signIn={setLoggin} authToken={token} setAuth={setToken} site={site} setSite={setSite} userId={userId} setUserId={setUserId} /&gt;
+            &lt;Nav isSignIn={isLoggin} signIn={setLoggin}/&gt;
 &nbsp;
           &lt;/NavigationContainer&gt;&lt;/SafeAreaProvider&gt;
       &lt;/ApplicationProvider&gt;
     &lt;/ThemeContext.Provider&gt;
+    &lt;/TokenContext.Provider&gt;
 &nbsp;
   );
 }</pre></td></tr></table></pre>
@@ -223,7 +256,7 @@ export default function App() {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Feb 26 2021 13:50:55 GMT+0100 (GMT+01:00)
+                at Sat Mar 13 2021 20:13:38 GMT+0100 (GMT+01:00)
             </div>
         </div>
         <script src="../prettify.js"></script>

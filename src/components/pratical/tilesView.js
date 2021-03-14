@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import { View, Image, TextInput, ScrollView, SafeAreaView,FlatList, Pressable } from 'react-native';
+import { View, Image } from 'react-native';
 import { Button, Icon, List, ListItem,Text } from '@ui-kitten/components';
-import logo from '../../assets/logo.png';
+
 
 /*
 PROPS:  itemData : json with the data to be displayed and the places to put a seperator

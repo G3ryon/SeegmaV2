@@ -1,11 +1,10 @@
-import React, {Component,  useContext } from 'react';
-import { SafeAreaView, Image, TextInput, View } from 'react-native';
-import { Button, Layout, Text } from '@ui-kitten/components';
+import React, {Component} from 'react';
+import { SafeAreaView, Image, View } from 'react-native';
+import { Button } from '@ui-kitten/components';
 import logo from '../../assets/logo.png';
 import Input from '../../components/pratical/input.js';
 import { authentification, storeData } from '../../api/api.js';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import {TokenContext} from '../../styles/themeContext'
+import { TokenContext } from '../general/context';
 /*
 PROPS:  other.isSignIn  : bool displaying if the user is authenticated
         other.signIn    : method to set the isSignIn

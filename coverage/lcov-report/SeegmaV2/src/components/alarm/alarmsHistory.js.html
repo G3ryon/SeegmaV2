@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">4% </span>
+                <span class="strong">4.17% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/25</span>
+                <span class='fraction'>1/24</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">4.17% </span>
+                <span class="strong">4.35% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/24</span>
+                <span class='fraction'>1/23</span>
             </div>
         
             
@@ -154,13 +154,7 @@
 <a name='L95'></a><a href='#L95'>95</a>
 <a name='L96'></a><a href='#L96'>96</a>
 <a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a>
-<a name='L99'></a><a href='#L99'>99</a>
-<a name='L100'></a><a href='#L100'>100</a>
-<a name='L101'></a><a href='#L101'>101</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L98'></a><a href='#L98'>98</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -184,6 +178,26 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -208,26 +222,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -258,16 +252,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
-import { View, Image, TextInput } from 'react-native';
-import { Icon, Button, Layout, Text, Divider, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
+import { View} from 'react-native';
+import { Icon, Text, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import TilesView from '../pratical/tilesView';
 import { gettingAlarmsList } from '../../api/api.js';
-import {TokenContext} from '../../styles/themeContext.js'
+import { TokenContext } from '../general/context';
 /*
-PROPS:  other.isSignIn  : bool displaying if the user is authenticated
-        other.signIn    : method to set the isSignIn
-        other.authToken : string with the token of the user
-        other.setAuth   : method to set the authToken
+route : name : alarm name
        
 RETURN: a view of the activation of the choosen alarm
 */
@@ -283,6 +274,26 @@ class Alarms_history extends Component {
     }
     static contextType = TokenContext;
 &nbsp;
+    //Lyfecycle event
+<span class="fstat-no" title="function not covered" >    co</span>mponentDidMount(){
+<span class="cstat-no" title="statement not covered" >        gettingAlarmsList(this.context.token,this.context.site)</span>
+        .then(<span class="fstat-no" title="function not covered" >re</span>sponse =&gt; {
+<span class="cstat-no" title="statement not covered" >            if (response["success"] === 0) {</span>
+            }
+            else {
+                let data = <span class="cstat-no" title="statement not covered" >response["data"]</span>
+<span class="cstat-no" title="statement not covered" >                this.dataProcessing(data)</span>
+            }
+        })
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    co</span>mponentDidUpdate(prevprops){
+<span class="cstat-no" title="statement not covered" >        if(prevprops.route !== this.props.route){</span>
+<span class="cstat-no" title="statement not covered" >            this.componentDidMount</span>
+        }
+    }
+&nbsp;
+    //Basic Method
 <span class="fstat-no" title="function not covered" >    pr</span>essAction(event) {
         let data = <span class="cstat-no" title="statement not covered" >this.state.brutData</span>
 <span class="cstat-no" title="statement not covered" >        data.forEach(<span class="fstat-no" title="function not covered" >el</span>ement =&gt; {</span>
@@ -308,26 +319,6 @@ class Alarms_history extends Component {
             })
         });
 <span class="cstat-no" title="statement not covered" >        this.setState({reformatedData:reformatedData, brutData:data})</span>
-    }
-&nbsp;
-&nbsp;
-<span class="fstat-no" title="function not covered" >    co</span>mponentDidMount(){
-<span class="cstat-no" title="statement not covered" >        console.log("dddd")</span>
-<span class="cstat-no" title="statement not covered" >        gettingAlarmsList(this.context.token,this.context.site)</span>
-        .then(<span class="fstat-no" title="function not covered" >re</span>sponse =&gt; {
-<span class="cstat-no" title="statement not covered" >            if (response["success"] === 0) {</span>
-            }
-            else {
-                let data = <span class="cstat-no" title="statement not covered" >response["data"]</span>
-<span class="cstat-no" title="statement not covered" >                this.dataProcessing(data)</span>
-            }
-        })
-    }
-&nbsp;
-<span class="fstat-no" title="function not covered" >    co</span>mponentDidUpdate(prevprops){
-<span class="cstat-no" title="statement not covered" >        if(prevprops.route !== this.props.route){</span>
-<span class="cstat-no" title="statement not covered" >            this.componentDidMount</span>
-        }
     }
 &nbsp;
     //Method for declaring constant and navigation
@@ -364,7 +355,7 @@ export default Alarms_history;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sat Mar 13 2021 20:13:38 GMT+0100 (GMT+01:00)
+                at Thu Mar 18 2021 09:42:36 GMT+0100 (GMT+01:00)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>

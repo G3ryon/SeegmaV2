@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">2.5% </span>
+                <span class="strong">2.63% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/40</span>
+                <span class='fraction'>1/38</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>0/10</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">2.63% </span>
+                <span class="strong">2.78% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/38</span>
+                <span class='fraction'>1/36</span>
             </div>
         
             
@@ -193,10 +193,7 @@
 <a name='L134'></a><a href='#L134'>134</a>
 <a name='L135'></a><a href='#L135'>135</a>
 <a name='L136'></a><a href='#L136'>136</a>
-<a name='L137'></a><a href='#L137'>137</a>
-<a name='L138'></a><a href='#L138'>138</a>
-<a name='L139'></a><a href='#L139'>139</a>
-<a name='L140'></a><a href='#L140'>140</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L137'></a><a href='#L137'>137</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -225,7 +222,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -289,13 +285,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -304,10 +293,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -317,9 +305,15 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -336,11 +330,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component, useCallback  } from 'react';
-import { View, Image, TextInput } from 'react-native';
+import { View} from 'react-native';
 import { Icon, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import TilesView from '../pratical/tilesView';
 import { gettingUserAlarms } from '../../api/api.js';
-import {TokenContext} from '../../styles/themeContext.js'
+import { TokenContext } from '../general/context';
 import { useFocusEffect } from '@react-navigation/native';
 /*
 Route :
@@ -361,7 +355,6 @@ class Alarms extends Component {
     static contextType = TokenContext;
     //handle the preparation to see the widget
 <span class="fstat-no" title="function not covered" >    ha</span>ndleIconPress(id) {
-        let data = <span class="cstat-no" title="statement not covered" >null</span>
 <span class="cstat-no" title="statement not covered" >        this.state.brutData.forEach(<span class="fstat-no" title="function not covered" >el</span>ement =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >            if (element["id"] == id) {</span>
 <span class="cstat-no" title="statement not covered" >                this.props.navigation.navigate('Alarms info',element)</span>
@@ -381,7 +374,7 @@ class Alarms extends Component {
                 else {
                     let data = <span class="cstat-no" title="statement not covered" >response["data"]</span>
                     let reformatedData = <span class="cstat-no" title="statement not covered" >this.dataProcessing(data)</span>
-<span class="cstat-no" title="statement not covered" >                    this.setState({data: reformatedData, brutData: data });</span>
+<span class="cstat-no" title="statement not covered" >                    this.setState({data: reformatedData, brutData: data, site: this.context.site  });</span>
                 }
             })
     }
@@ -421,16 +414,15 @@ class Alarms extends Component {
 <span class="cstat-no" title="statement not covered" >            return reformatedData</span>
         }
     }
-&nbsp;
+    //function to recall the api
 <span class="fstat-no" title="function not covered" >    On</span>Focus({props}) {
 <span class="cstat-no" title="statement not covered" >        useFocusEffect(</span>
             useCallback(<span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >                console.log("focus")</span>
-<span class="cstat-no" title="statement not covered" >                props.componentDidMount()</span>
+<span class="cstat-no" title="statement not covered" >                if(props.context.site !== props.state.site){</span>
+<span class="cstat-no" title="statement not covered" >                    props.componentDidMount()</span>
+                }
                 // Do something when the screen is focused
 <span class="cstat-no" title="statement not covered" >                return <span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >                    console.log("unfocus")</span>
-&nbsp;
                     // Do something when the screen is unfocused
                     // Useful for cleanup functions
                 };
@@ -473,15 +465,14 @@ class Alarms extends Component {
     }
 &nbsp;
 }
-export default Alarms;
-//&lt;Button onPress={() =&gt; this.props.navigation.navigate("Alarms info")}&gt;details alarms&lt;/Button&gt;</pre></td></tr></table></pre>
+export default Alarms;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sat Mar 13 2021 20:13:38 GMT+0100 (GMT+01:00)
+                at Thu Mar 18 2021 09:42:36 GMT+0100 (GMT+01:00)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>

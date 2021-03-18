@@ -196,9 +196,14 @@ class Nav extends Component {
   async componentDidMount(){
     
     let data = await getData('@storage_Key');
-    if(data !== null)
-    this.context.handleToken(data["authToken"])
-    this.setState({signIn:data["signIn"],loading : false})
+    console.log(data)
+    if(data !== null){
+      this.context.handleToken(data["authToken"])
+      this.setState({signIn:data["signIn"],loading : false})
+    }else{
+      this.setState({loading : false})
+    }
+    
   }
 
   static contextType = TokenContext;

@@ -5,6 +5,7 @@ import TilesView from '../pratical/tilesView';
 import { gettingGraph } from '../../api/api.js';
 import { TokenContext } from '../general/context';
 import { useFocusEffect } from '@react-navigation/native';
+import { gettingGraphInfo } from '../../api/api.js';
 /*
 PROPS:  other.isSignIn  : bool displaying if the user is authenticated
         other.signIn    : method to set the isSignIn
@@ -47,7 +48,7 @@ class Graph extends Component {
     //Methods for basic state update
     //function to change the site and redirect to the dashboard
     handleTilePress(id) {
-        this.props.navigation.navigate('Graph', { graphId: id })
+        this.props.navigation.navigate('Graph', { graphId: id})
     }
 
     //function to change the favorite state

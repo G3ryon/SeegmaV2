@@ -34,7 +34,7 @@ export default function App() {
 
   //synchronisation of the theme
   const MyTheme = {
-    dark: true,
+    dark: false,
     colors: {
       primary: theme["color-basic-900"],//selected color
       background: theme["color-basic-200"],

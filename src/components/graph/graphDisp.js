@@ -6,7 +6,9 @@ import { TokenContext } from '../general/context';
 import { TimeGroup } from '../pratical/timeGroup';
 import Settings from './settings.js';
 import SelectComp from '../pratical/select';
-import FusionCharts from "react-native-fusioncharts";
+import Chart from '../pratical/charts'
+import { gettingGraphInfo } from '../../api/api.js';
+import Loading from '../general/loading'
 /*
 PROPS:  other.isSignIn  : bool displaying if the user is authenticated
         other.signIn    : method to set the isSignIn
@@ -15,41 +17,49 @@ PROPS:  other.isSignIn  : bool displaying if the user is authenticated
        
 RETURN: a view of the graph with the data set choosen, there is also the modal for the settings
 */
-// Preparing the chart data
-const chartData = [
-  {
-    label: "Venezuela",
-    value: "290"
-  },
-  {
-    label: "Saudi",
-    value: "260"
-  },
-  {
-    label: "Canada",
-    value: "180"
-  },
-  {
-    label: "Iran",
-    value: "140"
-  },
-  {
-    label: "Russia",
-    value: "115"
-  },
-  {
-    label: "UAE",
-    value: "100"
-  },
-  {
-    label: "US",
-    value: "30"
-  },
-  {
-    label: "China",
-    value: "30"
-  }
-];
+var data = [
+  [
+      "1/4/2011",
+      "bastien",
+      122
+  ],
+  [
+    "1/4/2011",
+    "michel",
+     12
+  ],
+  [
+      "1/5/2011",
+      "bastien",
+      1200
+  ],
+  [
+    "1/5/2011",
+    "michel",
+    550
+  ],
+  [
+    "1/6/2011",
+    "bastien",
+    1
+],
+[
+  "1/6/2011",
+  "michel",
+   0
+],
+[
+    "1/7/2011",
+    "bastien",
+    4000
+],
+[
+  "1/7/2011",
+  "michel",
+  2500
+],
+]
+
 class Graph_disp extends Component {
   constructor(props) {
     super(props);
@@ -60,41 +70,30 @@ class Graph_disp extends Component {
       value: "Brut",
       visible: false,
       show: false,
-
-      date: new Date(),
-
-
-      type: "column2d", // The chart type
-       width: "100%", // Width of the chart
-      height: "100%", // Height of the chart
-      dataFormat: "json", // Data type
-      dataSource: {
-      // Chart Configuration
-      chart: {
-      caption: "Countries With Most Oil Reserves [2017-18]", //Set the chart caption
-      subCaption: "In MMbbl = One Million barrels", //Set the chart subcaption
-      xAxisName: "Country", //Set the x-axis name
-      yAxisName: "Reserves (MMbbl)", //Set the y-axis name
-      numberSuffix: "K",
-      theme: "zune" //Set the theme for your chart
-      },
-      // Chart Data - from step 2
-      data: chartData}
-      
+      loading : true,
+      date: new Date(),     
     }
-    this.libraryPath = Platform.select({
-      // Specify fusioncharts.html file location
-      android: {
-        uri: "file:///android_asset/fusioncharts.html"
-      },
-      //ios: require("./fusioncharts.html")
-    });
+    
     this.handleSelect = this.handleSelect.bind(this);
     this.handleSetValue = this.handleSetValue.bind(this);
     this.applyChange = this.applyChange.bind(this)
     this.onChange = this.onChange.bind(this)
   }
   static contextType = TokenContext;
+
+  componentDidMount(){
+     gettingGraphInfo(this.context.token,id)
+            .then(response => {
+                if (response["success"] === 0) {
+
+                }
+                else {
+                    let data = response["data"]
+                    this.setState({title:data['title'], yTitle:data['yTitle'], unit:data['unit'], loading : false})
+                }})
+
+  }
+
   handleSetValue(value) {
     this.setState({ value: value })
   }
@@ -136,10 +135,30 @@ class Graph_disp extends Component {
     <TopNavigationAction icon={this.editIcon} onPress={() => this.setState({ visible: true })} />
   );
   render() {
-
+    this.formats = [{
+      "name": "Time",
+      "type": "date",
+      "format": "%-m/%-d/%Y"
+  }, {
+      "name": "Sales",
+      "type": "string"
+  }, {
+    "name": "Power",
+    "type": "number"
+}
+]
+    
+    if(this.state.loading){
+      return(
+        <View>
+          <Loading/>
+        </View>
+      )
+    }
+    else{
     return (
+      
       <View>
-
         <TopNavigation
           title={this.props.route.params["graphId"] == 0 ? (<View><Text>Flux : </Text><SelectComp selectedIndex={this.state.selectedIndex} data={this.state.dataSelect} handleSelect={this.handleSelect} /></View>) : ("Graph")}
           accessoryLeft={this.backAction}
@@ -148,21 +167,12 @@ class Graph_disp extends Component {
         <Text>Site : {this.context.siteName}</Text>
         <RadioButton data={this.state.data} setValue={this.handleSetValue}></RadioButton>
         <TimeGroup onChange={this.onChange} date={this.state.date} type={this.state.value}></TimeGroup>
-
-        <View style={styles.chartContainer}>
-        <FusionCharts
-            type={this.state.type}
-            width={this.state.width}
-            height={this.state.height}
-            dataFormat={this.state.dataFormat}
-            dataSource={this.state.dataSource}
-            libraryPath={this.libraryPath}></FusionCharts>
-        </View>
+        <Chart  timeType={this.state.value} title={this.state.title} unit={this.state.unit} yTitle={this.state.yTitle} data={data} format={this.formats} ></Chart>
         <Modal visible={this.state.visible}>
           <Settings apply={this.applyChange}></Settings>
         </Modal>
 
-      </View>)
+      </View>)}
   }
 }
 export default Graph_disp

@@ -1,13 +1,13 @@
-import React, { Component} from 'react';
-import { StyleSheet,View,Platform, Dimensions} from 'react-native';
-import { IndexPath,Icon, Text, Modal, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
+import React, { Component } from 'react';
+import { StyleSheet, View, Platform, Dimensions } from 'react-native';
+import { IndexPath, Icon, Text, Modal, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import RadioButton from '../pratical/radioButton';
 import { TokenContext } from '../general/context';
 import { TimeGroup } from '../pratical/timeGroup';
 import Settings from './settings.js';
 import SelectComp from '../pratical/select';
 import Chart from '../pratical/charts'
-import { gettingGraphInfo } from '../../api/api.js';
+import { gettingGraphInfo, gettingGraphData } from '../../api/api.js';
 import Loading from '../general/loading'
 /*
 PROPS:  other.isSignIn  : bool displaying if the user is authenticated
@@ -19,19 +19,19 @@ RETURN: a view of the graph with the data set choosen, there is also the modal f
 */
 var data = [
   [
-      "1/4/2011",
-      "bastien",
-      122
+    "1/4/2011",
+    "bastien",
+    122
   ],
   [
     "1/4/2011",
     "michel",
-     12
+    12
   ],
   [
-      "1/5/2011",
-      "bastien",
-      1200
+    "1/5/2011",
+    "bastien",
+    1200
   ],
   [
     "1/5/2011",
@@ -42,22 +42,22 @@ var data = [
     "1/6/2011",
     "bastien",
     1
-],
-[
-  "1/6/2011",
-  "michel",
-   0
-],
-[
+  ],
+  [
+    "1/6/2011",
+    "michel",
+    0
+  ],
+  [
     "1/7/2011",
     "bastien",
     4000
-],
-[
-  "1/7/2011",
-  "michel",
-  2500
-],
+  ],
+  [
+    "1/7/2011",
+    "michel",
+    2500
+  ],
 ]
 
 class Graph_disp extends Component {
@@ -70,10 +70,11 @@ class Graph_disp extends Component {
       value: "Brut",
       visible: false,
       show: false,
-      loading : true,
-      date: new Date(),     
+      loading: true,
+      loading1: true,
+      date: new Date(),
     }
-    
+
     this.handleSelect = this.handleSelect.bind(this);
     this.handleSetValue = this.handleSetValue.bind(this);
     this.applyChange = this.applyChange.bind(this)
@@ -81,16 +82,30 @@ class Graph_disp extends Component {
   }
   static contextType = TokenContext;
 
-  componentDidMount(){
-     gettingGraphInfo(this.context.token,id)
-            .then(response => {
-                if (response["success"] === 0) {
+  async componentDidMount() {
+    await gettingGraphInfo(this.context.token, this.props.route.params["graphId"])
+      .then(response => {
+        if (response["success"] === 0) {
 
-                }
-                else {
-                    let data = response["data"]
-                    this.setState({title:data['title'], yTitle:data['yTitle'], unit:data['unit'], loading : false})
-                }})
+        }
+        else {
+          let data = response["data"]
+          this.setState({ title: data['title'], yTitle: data['yTitle'], unit: data['unit'], graphType: "column", loading: false })
+        }
+      })
+      .catch(error=>console.log(error))
+    await gettingGraphData(this.context.token, this.props.route.params["graphId"], this.state.value, this.state.date, this.state.date, )
+      .then(response => {
+        if (response["success"] === 0) {
+
+        }
+        else {
+          let data = response["data"]
+          console.log(data)
+          this.setState({ title: data['title'], yTitle: data['yTitle'], unit: data['unit'], graphType: "column",loading1: false })
+        }
+      })
+      
 
   }
 
@@ -139,40 +154,41 @@ class Graph_disp extends Component {
       "name": "Time",
       "type": "date",
       "format": "%-m/%-d/%Y"
-  }, {
-      "name": "Sales",
+    }, {
+      "name": "Type",
       "type": "string"
-  }, {
-    "name": "Power",
-    "type": "number"
-}
-]
-    
-    if(this.state.loading){
-      return(
+    }, {
+      "name": "Consumption",
+      "type": "number"
+    }
+    ]
+
+    if (this.state.loading && this.state.loading1) {
+      return (
         <View>
-          <Loading/>
+          <Loading />
         </View>
       )
     }
-    else{
-    return (
-      
-      <View>
-        <TopNavigation
-          title={this.props.route.params["graphId"] == 0 ? (<View><Text>Flux : </Text><SelectComp selectedIndex={this.state.selectedIndex} data={this.state.dataSelect} handleSelect={this.handleSelect} /></View>) : ("Graph")}
-          accessoryLeft={this.backAction}
-          accessoryRight={this.editAction}
-        />
-        <Text>Site : {this.context.siteName}</Text>
-        <RadioButton data={this.state.data} setValue={this.handleSetValue}></RadioButton>
-        <TimeGroup onChange={this.onChange} date={this.state.date} type={this.state.value}></TimeGroup>
-        <Chart  timeType={this.state.value} title={this.state.title} unit={this.state.unit} yTitle={this.state.yTitle} data={data} format={this.formats} ></Chart>
-        <Modal visible={this.state.visible}>
-          <Settings apply={this.applyChange}></Settings>
-        </Modal>
+    else {
+      return (
 
-      </View>)}
+        <View>
+          <TopNavigation
+            title={this.props.route.params["graphId"] == 0 ? (<View><Text>Flux : </Text><SelectComp selectedIndex={this.state.selectedIndex} data={this.state.dataSelect} handleSelect={this.handleSelect} /></View>) : ("Graph")}
+            accessoryLeft={this.backAction}
+            accessoryRight={this.editAction}
+          />
+          <Text>Site : {this.context.siteName}</Text>
+          <RadioButton data={this.state.data} setValue={this.handleSetValue}></RadioButton>
+          <TimeGroup onChange={this.onChange} date={this.state.date} type={this.state.value}></TimeGroup>
+          <Chart graphType={this.state.graphType} timeType={this.state.value} title={this.state.title} unit={this.state.unit} yTitle={this.state.yTitle} data={data} format={this.formats} ></Chart>
+          <Modal visible={this.state.visible}>
+            <Settings apply={this.applyChange}></Settings>
+          </Modal>
+
+        </View>)
+    }
   }
 }
 export default Graph_disp
@@ -186,7 +202,7 @@ const styles = StyleSheet.create({
 
   chartContainer: {
     height: 500,
-    width : Dimensions.get('window').width,
+    width: Dimensions.get('window').width,
     borderColor: "#000",
     borderWidth: 1
   }

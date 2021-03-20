@@ -137,6 +137,17 @@ export async function gettingGraphInfo(token,graphId) {
   return data
 }
 
+export async function gettingGraphData(token,graphId,granularity,date,endDate) {
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", "Bearer " + token);
+
+  let params = {id:graphId,granularity:granularity,date:date,endDate:endDate}
+  
+  let data = await fecthing("getGraphics", params,'GET', myHeaders)
+  
+  return data
+}
+
 export const storeData = async (value, key) => {
     try {
       const jsonValue = JSON.stringify(value)

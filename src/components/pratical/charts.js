@@ -39,12 +39,12 @@ export default class Chart extends Component {
         subcaption: {
           text: ""
         },
-        series:'Sales',
+        series: this.props.format[1].name,
         yAxis: [{
           plot: [
             {
               value: this.props.format[2].name,
-              type: "column"
+              type: this.props.graphType
             }
           ],
           title: this.props.yTitle,

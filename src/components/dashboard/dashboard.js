@@ -20,6 +20,8 @@ class Dashboard extends Component {
         this.state = {
             selectedIndex: new IndexPath(0),
             dataSelect: [],
+            data:[],
+            brutData:[],
 
         }
         this.handleSelect = this.handleSelect.bind(this);
@@ -45,9 +47,10 @@ class Dashboard extends Component {
         this.state.data.forEach(element => {
             if (element["id"] == id) {
                 data = element
+            
             }
         });
-        this.props.navigation.navigate('widget', { id: id, name: data['title'] })
+        this.props.navigation.navigate('widget', { id: id, name: data['title'], type : data['type'] })
     }
 
     //Methods immplicating the life cycle
@@ -96,6 +99,7 @@ class Dashboard extends Component {
                     id: element["id"],
                     buttonIcon: 'chevron-right',
                     icon: icon,
+                    type : element["type"],
                 })
             });
             reformatedData.push({ separator: true, title: '' });

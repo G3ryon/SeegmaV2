@@ -21,7 +21,7 @@ class Alarms_history extends Component {
     }
     static contextType = TokenContext;
 
-    //Lyfecycle event
+    //Lifecycle event
     componentDidMount(){
         gettingAlarmsList(this.context.token,this.context.site)
         .then(response => {

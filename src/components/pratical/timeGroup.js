@@ -52,7 +52,8 @@ export function TimeGroup(props) {
         if (props.type === "Brut" || props.type === "Hour") {
             (operation === "addition" ? date.setDate(date.getDate() + 1) : date.setDate(date.getDate() - 1));
         }
-        props.onChange(date)
+        
+        onChange(date, false)
     }
 
     //method to handle the reformat of the date displayed

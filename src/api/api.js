@@ -1,4 +1,4 @@
-var defaultUrl = "https://a0b40a79-56fc-4091-b035-8a6ce0cf5c72.mock.pstmn.io/"
+var defaultUrl = "https://bb8d7de4-746e-4f0f-8dbb-935b891aae26.mock.pstmn.io/"
 import React, { Component } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -9,7 +9,7 @@ async function fecthing(redirection, data, type, headers ) {
 
     if(type == 'GET' ){
       if(data !== undefined){
-        //url += "?" + new URLSearchParams(data)
+        url += "?" + new URLSearchParams(data)
       }
       
       await fetch(url, {
@@ -68,7 +68,7 @@ export async function signup(mail, username, password) {
 export async function gettingSite(token) {
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + token);
-
+    myHeaders.append("Cache-Control", "no-cache");
 
     let data = await fecthing("usersite",undefined,'POST', myHeaders)
     return data
@@ -77,6 +77,7 @@ export async function gettingSite(token) {
 export async function gettingGraph(token,siteId) {
   var myHeaders = new Headers();
   myHeaders.append("Authorization", "Bearer " + token);
+  myHeaders.append("Cache-Control", "no-cache");
 
   var formdata = new FormData();
   formdata.append("siteId", siteId);
@@ -88,6 +89,7 @@ export async function gettingGraph(token,siteId) {
 export async function gettingNotifications(token) {
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + token);
+    myHeaders.append("Cache-Control", "no-cache");
 
 
     let data = await fecthing("userNotification",undefined,'POST', myHeaders)
@@ -97,6 +99,7 @@ export async function gettingNotifications(token) {
 export async function gettingSiteData(token,siteId) {
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + token);
+    myHeaders.append("Cache-Control", "no-cache");
 
     var formdata = new FormData();
     formdata.append("siteId", siteId);
@@ -108,6 +111,7 @@ export async function gettingSiteData(token,siteId) {
 export async function gettingUserAlarms(token,siteId) {
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer " + token);
+    myHeaders.append("Cache-Control", "no-cache");
 
     var formdata = new FormData();
     formdata.append("siteId", siteId);
@@ -119,6 +123,7 @@ export async function gettingUserAlarms(token,siteId) {
 export async function gettingAlarmsList(token,alarmId) {
   var myHeaders = new Headers();
   myHeaders.append("Authorization", "Bearer " + token);
+  myHeaders.append("Cache-Control", "no-cache");
 
   var formdata = new FormData();
   formdata.append("alarmId", alarmId);
@@ -130,6 +135,7 @@ export async function gettingAlarmsList(token,alarmId) {
 export async function gettingGraphInfo(token,graphId) {
   var myHeaders = new Headers();
   myHeaders.append("Authorization", "Bearer " + token);
+  myHeaders.append("Cache-Control", "no-cache");
 
   let params = {id:graphId}
   
@@ -137,13 +143,49 @@ export async function gettingGraphInfo(token,graphId) {
   return data
 }
 
+export async function gettingFluxInfo(token,graphId) {
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", "Bearer " + token);
+  myHeaders.append("Cache-Control", "no-cache");
+
+  let params = {id:graphId}
+  
+  let data = await fecthing("fluxInfo", params,'GET', myHeaders)
+  return data
+}
+
 export async function gettingGraphData(token,graphId,granularity,date,endDate) {
   var myHeaders = new Headers();
   myHeaders.append("Authorization", "Bearer " + token);
+  myHeaders.append("Cache-Control", "no-cache");
 
   let params = {id:graphId,granularity:granularity,date:date,endDate:endDate}
   
   let data = await fecthing("getGraphics", params,'GET', myHeaders)
+  
+  return data
+}
+
+export async function gettingFluxData(token,graphId,granularity,date,endDate) {
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", "Bearer " + token);
+  myHeaders.append("Cache-Control", "no-cache");
+
+  let params = {id:graphId,granularity:granularity,date:date,endDate:endDate}
+  
+  let data = await fecthing("getFlux", params,'GET', myHeaders)
+  
+  return data
+}
+
+export async function gettingWidgetData(token,widgetId,widgetType) {
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", "Bearer " + token);
+  myHeaders.append("Cache-Control", "no-cache");
+
+  let params = {"widget" : widgetType}
+  
+  let data = await fecthing("getWidget", params,'GET', myHeaders)
   
   return data
 }

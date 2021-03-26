@@ -5,7 +5,7 @@ import TilesView from '../pratical/tilesView';
 import { gettingGraph } from '../../api/api.js';
 import { TokenContext } from '../general/context';
 import { useFocusEffect } from '@react-navigation/native';
-import { gettingGraphInfo } from '../../api/api.js';
+import { gettingFluxInfo, gettingGraphInfo } from '../../api/api.js';
 /*
 PROPS:  other.isSignIn  : bool displaying if the user is authenticated
         other.signIn    : method to set the isSignIn
@@ -48,7 +48,38 @@ class Graph extends Component {
     //Methods for basic state update
     //function to change the site and redirect to the dashboard
     handleTilePress(id) {
-        this.props.navigation.navigate('Graph', { graphId: id})
+        if(id==0){
+        gettingFluxInfo(this.context.token, id)
+        .then(response => {
+        if (response["success"] === 0) {
+
+        }
+        else {
+          let data = response["data"]
+          let fluxId = []
+          let fluxName = []
+          data['fluxList'].forEach(element => {
+              fluxId.push(element.id)
+              fluxName.push(element.name)
+          });
+          this.props.navigation.navigate('Graph', { graphId: id, fluxId: fluxId, fluxName: fluxName, title:"Flux graph", yTitle: data['yTitle'], unit: data['unit'], graphType: data["graphType"]})      
+        }
+      })
+      .catch(error=>console.log(error))
+        }else{
+            gettingGraphInfo(this.context.token, id)
+        .then(response => {
+        if (response["success"] === 0) {
+
+        }
+        else {
+          let data = response["data"]
+          this.props.navigation.navigate('Graph', { graphId: id,  title: data['title'], yTitle: data['yTitle'], unit: data['unit'], graphType: data["graphType"]})      
+        }
+      })
+      .catch(error=>console.log(error))
+        }
+        
     }
 
     //function to change the favorite state

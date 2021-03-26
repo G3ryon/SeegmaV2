@@ -5,10 +5,22 @@ import { default as theme } from '../../../theme.json';
 
 export default RadioButton = (props) => {
 
-    
     const [selected, setIndex] = React.useState(0);
     
-
+    let index = 0
+    React.useEffect(() => {
+        console.log(props.value)
+        if(props.value !== undefined){
+            props.data.forEach(element => {
+                if(element.value == props.value){
+                    setIndex(index)
+                }
+                index +=1 
+            });
+        }
+      });
+    
+    
     return (
         <Layout style={styles.container} level='1'>
 

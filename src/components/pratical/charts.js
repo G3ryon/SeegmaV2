@@ -3,20 +3,15 @@ import { AppRegistry, StyleSheet, Text, View, Platform } from 'react-native';
 import FusionCharts from 'react-native-fusioncharts';
 
 /*
-PROPS: data : Json contenant les infos du graphique
-
-       format : format des données contenues dans le JSON 
-       [{"format": "%Y-%-m-%-d", "name": "Time", "type": "date"}, {"name": "Electricity", "type": "number"}]
-
-       unit : string de l'unité pour les valeurs
-
-       title : titre du graphe
-
-       //yValue : link in the schema to the data for y
+PROPS: data : Json with the data to display
+       format : Json Format of the data 
+       unit : the unit for the data
+       title : Title of the graph
+       yTitle : title of y axis
+       graphType : Type of displaying data
 
 
-
-RETURN: un graphique contenant toutes les infos
+RETURN: a graph formated with the data asked
 */
 
 export default class Chart extends Component {
@@ -73,13 +68,11 @@ export default class Chart extends Component {
   }
 
   fetchDataAndSchema() {
-    
     const dFetch =this.props.data ;
     // This is the remote url to fetch the schema.
-    const sFetch = this.props.format//[{"format": "%Y-%-m-%-d/%-Ih%-M", "name": "Time", "type": "date"}, {"name": "Electricity", "type": "number"}]
+    const sFetch = this.props.format
     
     Promise.all([dFetch, sFetch]).then(res => {
-      //console.log(this.props.data)
       const data = res[0];
       const schema = res[1];
 

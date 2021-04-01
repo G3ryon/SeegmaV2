@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">4.17% </span>
+                <span class="strong">4% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/24</span>
+                <span class='fraction'>1/25</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>0/8</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">4.35% </span>
+                <span class="strong">4.17% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/23</span>
+                <span class='fraction'>1/24</span>
             </div>
         
             
@@ -154,8 +154,8 @@
 <a name='L95'></a><a href='#L95'>95</a>
 <a name='L96'></a><a href='#L96'>96</a>
 <a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -182,6 +182,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -193,6 +194,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -252,14 +254,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
-import { View} from 'react-native';
 import { Icon, Text, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import TilesView from '../pratical/tilesView';
 import { gettingAlarmsList } from '../../api/api.js';
 import { TokenContext } from '../general/context';
 /*
 route : name : alarm name
-       
+props : setError : method to display message need a bool and a string      
 RETURN: a view of the activation of the choosen alarm
 */
 &nbsp;
@@ -268,17 +269,18 @@ class Alarms_history extends Component {
 <span class="cstat-no" title="statement not covered" >        super(props);</span>
 <span class="cstat-no" title="statement not covered" >        this.state = {</span>
             reformatedData : [],
-            brutData:[]
+            brutData:[],
         }
 <span class="cstat-no" title="statement not covered" >        this.pressAction = this.pressAction.bind(this);</span>
     }
     static contextType = TokenContext;
 &nbsp;
-    //Lyfecycle event
+    //Lifecycle event
 <span class="fstat-no" title="function not covered" >    co</span>mponentDidMount(){
 <span class="cstat-no" title="statement not covered" >        gettingAlarmsList(this.context.token,this.context.site)</span>
         .then(<span class="fstat-no" title="function not covered" >re</span>sponse =&gt; {
-<span class="cstat-no" title="statement not covered" >            if (response["success"] === 0) {</span>
+<span class="cstat-no" title="statement not covered" >            if (response["status"] == "error" || response["status"] == "fail") {</span>
+<span class="cstat-no" title="statement not covered" >                this.props.setError(true,response["message"])</span>
             }
             else {
                 let data = <span class="cstat-no" title="statement not covered" >response["data"]</span>
@@ -293,7 +295,8 @@ class Alarms_history extends Component {
         }
     }
 &nbsp;
-    //Basic Method
+    //Methods for basic state update
+    //Method to handle the pressing of a tile
 <span class="fstat-no" title="function not covered" >    pr</span>essAction(event) {
         let data = <span class="cstat-no" title="statement not covered" >this.state.brutData</span>
 <span class="cstat-no" title="statement not covered" >        data.forEach(<span class="fstat-no" title="function not covered" >el</span>ement =&gt; {</span>
@@ -307,12 +310,12 @@ class Alarms_history extends Component {
         });
         
     }
-&nbsp;
+    //Method to format the data fetch
 <span class="fstat-no" title="function not covered" >    da</span>taProcessing(data) {
         let reformatedData = <span class="cstat-no" title="statement not covered" >[]</span>
 <span class="cstat-no" title="statement not covered" >        data.forEach(<span class="fstat-no" title="function not covered" >el</span>ement =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >            reformatedData.push({</span>
-                title: element["date"].slice(4, 21),
+                title: element["date"].slice(0, 21),
                 id: element["id"],
                 buttonIcon: 'chevron-right',
                 icon: 'bar-chart',
@@ -355,7 +358,7 @@ export default Alarms_history;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Mar 18 2021 09:42:36 GMT+0100 (GMT+01:00)
+                at Sun Mar 28 2021 18:54:11 GMT+0200 (GMT+02:00)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>

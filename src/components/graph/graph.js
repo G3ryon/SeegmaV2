@@ -1,16 +1,18 @@
 import React, { Component, useCallback } from 'react';
-import {SafeAreaView} from 'react-native';
-import { Icon, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
+import { SafeAreaView, Text, View } from 'react-native';
+import { Icon, TopNavigation, TopNavigationAction,Button} from '@ui-kitten/components';
 import TilesView from '../pratical/tilesView';
 import { gettingGraph } from '../../api/api.js';
 import { TokenContext } from '../general/context';
 import { useFocusEffect } from '@react-navigation/native';
 import { gettingFluxInfo, gettingGraphInfo } from '../../api/api.js';
+
 /*
 PROPS:  other.isSignIn  : bool displaying if the user is authenticated
         other.signIn    : method to set the isSignIn
         other.authToken : string with the token of the user
         other.setAuth   : method to set the authToken
+        setError : method to display message need a bool and a string 
        
 RETURN: a view for the choices of graphs to be displayed
 */
@@ -32,8 +34,8 @@ class Graph extends Component {
     componentDidMount() {
         gettingGraph(this.context.token)
             .then(response => {
-                if (response["success"] === 0) {
-
+                if (response["status"] == "error" || response["status"] == "fail") {
+                    this.props.setError(true,response["message"])
                 }
                 else {
                     let data = response["data"]
@@ -43,43 +45,41 @@ class Graph extends Component {
             })
     }
 
-
-
     //Methods for basic state update
     //function to change the site and redirect to the dashboard
     handleTilePress(id) {
-        if(id==0){
-        gettingFluxInfo(this.context.token, id)
-        .then(response => {
-        if (response["success"] === 0) {
-
-        }
-        else {
-          let data = response["data"]
-          let fluxId = []
-          let fluxName = []
-          data['fluxList'].forEach(element => {
-              fluxId.push(element.id)
-              fluxName.push(element.name)
-          });
-          this.props.navigation.navigate('Graph', { graphId: id, fluxId: fluxId, fluxName: fluxName, title:"Flux graph", yTitle: data['yTitle'], unit: data['unit'], graphType: data["graphType"]})      
-        }
-      })
-      .catch(error=>console.log(error))
-        }else{
+        if (id == 0) {
+            gettingFluxInfo(this.context.token, id)
+                .then(response => {
+                    if (response["status"] == "error" || response["status"] == "fail") {
+                        this.props.setError(true,response["message"])
+                    }
+                    else {
+                        let data = response["data"]
+                        let fluxId = []
+                        let fluxName = []
+                        data['fluxList'].forEach(element => {
+                            fluxId.push(element.id)
+                            fluxName.push(element.name)
+                        });
+                        this.props.navigation.navigate('Graph', { graphId: id, fluxId: fluxId, fluxName: fluxName, title: "Flux graph", yTitle: data['yTitle'], unit: data['unit'], graphType: data["graphType"] })
+                    }
+                })
+                .catch(error => console.log(error))
+        } else {
             gettingGraphInfo(this.context.token, id)
-        .then(response => {
-        if (response["success"] === 0) {
+                .then(response => {
+                    if (response["status"] == "error" || response["status"] == "fail") {
+                        this.props.setError(true,response["message"])
+                    }
+                    else {
+                        let data = response["data"]
+                        this.props.navigation.navigate('Graph', { graphId: id, title: data['title'], yTitle: data['yTitle'], unit: data['unit'], graphType: data["graphType"] })
+                    }
+                })
+                .catch(error => console.log(error))
+        }
 
-        }
-        else {
-          let data = response["data"]
-          this.props.navigation.navigate('Graph', { graphId: id,  title: data['title'], yTitle: data['yTitle'], unit: data['unit'], graphType: data["graphType"]})      
-        }
-      })
-      .catch(error=>console.log(error))
-        }
-        
     }
 
     //function to change the favorite state
@@ -136,10 +136,10 @@ class Graph extends Component {
         }
     }
     //Method to update the data from api
-    OnFocus({props}) {
+    OnFocus({ props }) {
         useFocusEffect(
             useCallback(() => {
-                if(props.context.site !== props.state.site){
+                if (props.context.site !== props.state.site) {
                     props.componentDidMount()
                 }
                 // Do something when the screen is focused
@@ -147,10 +147,10 @@ class Graph extends Component {
                     // Do something when the screen is unfocused
                     // Useful for cleanup functions
                 };
-                
+
             }, [props]))
         return null
-        
+
     }
 
     //Method for declaring constant and navigation
@@ -171,9 +171,10 @@ class Graph extends Component {
 
     render() {
         return (
-            <SafeAreaView>
-               <this.OnFocus props={this} ></this.OnFocus>
-                
+            <View>
+        
+                <this.OnFocus props={this} ></this.OnFocus>
+
                 <TilesView itemData={this.state.data}
                     pressTile={this.handleTilePress}
                     pressIcon={this.handleIconPress}
@@ -183,7 +184,8 @@ class Graph extends Component {
                         accessoryRight={this.notifAction}
                     />}
                 />
-            </SafeAreaView>)
+            </View>
+        )
     }
 
 }

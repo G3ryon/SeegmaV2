@@ -5,7 +5,9 @@ import { Icon, Text, TopNavigation, TopNavigationAction } from '@ui-kitten/compo
 /*
 Route : name : Name of the route
         params : data linked to the route
-         
+        
+props : setError : method to display message need a bool and a string 
+
 RETURN: a view of the details for a selected items
 */
 
@@ -26,7 +28,6 @@ class Details_view extends Component {
     );
 
     render() {
-        console.log(this.props.route.params)
         if (this.props.route.name == 'Notification') {
             return (
                 <View>
@@ -48,7 +49,7 @@ class Details_view extends Component {
                         title={"Alarm : " + this.props.route.params['name']}
                         accessoryLeft={this.backAction}
                     />
-                    <Text category='h2' status='primary'>{this.props.route.params['date'].slice(4, 21)}</Text>
+                    <Text category='h2' status='primary'>{this.props.route.params['date'].slice(0, 21)}</Text>
                     <Text category='h2'>Details</Text>
                     <Text>{this.props.route.params['infos']}</Text>
                 </View>

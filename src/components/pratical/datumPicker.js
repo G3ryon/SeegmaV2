@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet,View } from 'react-native';
 import {Modal } from '@ui-kitten/components';
 import { default as theme } from '../../../theme.json';
-
 import DatePicker from 'react-native-modern-datepicker';
 /**
  * Props : mode : displaying mode

@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { View} from 'react-native';
-import { Icon, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
+import {  View} from 'react-native';
+import { Button,Icon, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import TilesView from '../pratical/tilesView';
 import { gettingNotifications } from '../../api/api.js';
 import { TokenContext } from '../general/context';
 /*
 Route : name : Name of the route
         params : data linked to the route
+
+props : setError : method to display message need a bool and a string 
 
 RETURN: a view of the list of notification for the user
 */
@@ -20,6 +22,7 @@ class Notif_center extends Component {
         this.handleIconPress = this.handleIconPress.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.handleIconPress = this.handleIconPress.bind(this);
+        //the correspondance between the icons and their id
         const icons = {
             alarm: "bell-outline",
             report: "file-text-outline",
@@ -72,7 +75,8 @@ class Notif_center extends Component {
     componentDidMount() {
         gettingNotifications(this.context.token)
             .then(response => {
-                if (response["success"] === 0) {
+                if (response["status"] == "error" || response["status"] == "fail") {
+                    this.props.setError(true,response["message"])
                 }
                 else {
                     let data = response["data"]

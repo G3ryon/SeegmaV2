@@ -5,11 +5,9 @@ import TilesView from '../pratical/tilesView';
 import SelectComp from '../pratical/select';
 import { gettingSiteData } from '../../api/api.js';
 import { TokenContext } from '../general/context';
+
 /*
-PROPS: 
-        handleWidget    : method to set the variable with the data of the selected widget
-        widgetData      : variable containing the data of the current selected widget
-        site            : variable containing the data of the current selected site
+props : setError : method to display message need a bool and a string 
        
 RETURN: a view of the widget for a selected dashboard
 */
@@ -58,7 +56,8 @@ class Dashboard extends Component {
     componentDidMount() {
         gettingSiteData(this.context.token, this.context.site)
             .then(response => {
-                if (response["success"] === 0) {
+                if (response["status"] == "error" || response["status"] == "fail") {
+                    this.props.setError(true,response["message"])
                 }
                 else {
                     let data = response["data"]

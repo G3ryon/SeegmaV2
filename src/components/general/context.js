@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const TokenContext = React.createContext({
-  authToken: "hdqgs",
+  authToken: "undefined",
   siteId: null,
   siteName: null,
   handleToken: () => {},

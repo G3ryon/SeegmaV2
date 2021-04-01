@@ -6,6 +6,7 @@ import Input from '../pratical/input.js';
 import { signup } from '../../api/api.js';
 import Modal from '../pratical/modal.js';
 /*
+props : setError : method to display message need a bool and a string 
        
 RETURN: a view for signing up
 */
@@ -54,18 +55,14 @@ class Signup extends Component{
 
     handleSignup(mail,username,password) {
         //checking the login
-        
         signup(mail,username,password)
             .then(response => {
-                
-                if (response["success"] === 1) {
-                    this.setState({visible:true, msg:'You have been succesfully sign up'})
-                    
+                if (response["status"] == "error" || response["status"] == "fail") {
+                    this.props.setError(true,response["message"])
                 }
                 else {
-                    this.setState({visible:true, msg:"Your username is already taken"})
+                    this.props.setError(true,"You have been succesfully sign up")
                 }
-                
             });
     }
 

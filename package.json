@@ -79,7 +79,9 @@
       "!**/index.js",
       "!**/metro.config.js",
       "!**/webpack.config.js",
-      "!**/jest.setup.js"
+      "!**/jest.setup.js",
+      "!**/android/**",
+      "!**/ios/**"
     ]
   },
   "private": true

@@ -142,7 +142,19 @@
 <a name='L83'></a><a href='#L83'>83</a>
 <a name='L84'></a><a href='#L84'>84</a>
 <a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -166,18 +178,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -228,15 +246,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
-import { View} from 'react-native';
+import { SafeAreaView, View} from 'react-native';
 import { Icon, Text, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import TilesView from '../pratical/tilesView';
+&nbsp;
 /*
 route: name : name of the selected alarm 
        id   : id of the selected alarm
        date : last time the alarm wazs triggered
        infos  :  infos about the trigger
        description : infos about the alarm
+&nbsp;
+props : setError : method to display message need a bool and a string 
        
 RETURN: a view of the infos concerning the alarm choosen
 */
@@ -250,6 +271,8 @@ class Alarms_info extends Component {
 <span class="cstat-no" title="statement not covered" >        this.pressAction = this.pressAction.bind(this);</span>
     }
 &nbsp;
+    //Methods for basic state update
+    //method to handle the action on the tile
 <span class="fstat-no" title="function not covered" >    pr</span>essAction(event) {
 <span class="cstat-no" title="statement not covered" >        if (event == "details")</span>
 <span class="cstat-no" title="statement not covered" >            this.props.navigation.navigate("Alarms history",{id:this.props.route.params['id'], name:this.props.route.params['name']})</span>
@@ -257,6 +280,9 @@ class Alarms_info extends Component {
 <span class="cstat-no" title="statement not covered" >            this.props.navigation.navigate("Alarms graph",{id:this.props.route.params['id'],name:this.props.route.params['name']})</span>
         }
     }
+    
+    //Method for declaring constant and navigation
+    //Icon constant
     backIcon = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(p</span>rops) =&gt; (</span>
 <span class="cstat-no" title="statement not covered" >        &lt;Icon {...props} name='arrow-back-outline' /&gt;</span>
     );
@@ -267,6 +293,7 @@ class Alarms_info extends Component {
 &nbsp;
 &nbsp;
 <span class="fstat-no" title="function not covered" >    re</span>nder() {
+        //data for the tiles
         const data = <span class="cstat-no" title="statement not covered" >[</span>
             {
                 title: "Historic by graph",
@@ -283,7 +310,7 @@ class Alarms_info extends Component {
         ]
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        return (</span>
-            &lt;View&gt;
+            &lt;SafeAreaView&gt;
                 &lt;TopNavigation
                     title={"Alarm : " + this.props.route.params['name']}
                     accessoryLeft={this.backAction}
@@ -307,7 +334,7 @@ class Alarms_info extends Component {
                     pressTile={this.pressAction}
                     pressIcon={this.pressAction}
                     itemData={data} headerComp={&lt;Text&gt;&lt;/Text&gt;} /&gt;
-            &lt;/View&gt;)
+            &lt;/SafeAreaView&gt;)
     }
 &nbsp;
 }
@@ -319,7 +346,7 @@ export default Alarms_info;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Mar 18 2021 09:42:36 GMT+0100 (GMT+01:00)
+                at Sun Mar 28 2021 18:54:11 GMT+0200 (GMT+02:00)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>

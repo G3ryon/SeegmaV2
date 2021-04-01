@@ -6,6 +6,8 @@ import RadioButton from '../pratical/radioButton';
 import DatumPicker from "../pratical/datumPicker";
 /**
  * Props : apply : method to apply all the modifications
+           setError : method to display message need a bool and a string 
+ * 
  */
 
 export default Settings = (props) => {

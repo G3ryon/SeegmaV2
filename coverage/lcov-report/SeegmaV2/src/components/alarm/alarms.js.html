@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">2.63% </span>
+                <span class="strong">2.56% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/38</span>
+                <span class='fraction'>1/39</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/10</span>
+                <span class='fraction'>0/12</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">2.78% </span>
+                <span class="strong">2.7% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/36</span>
+                <span class='fraction'>1/37</span>
             </div>
         
             
@@ -193,7 +193,11 @@
 <a name='L134'></a><a href='#L134'>134</a>
 <a name='L135'></a><a href='#L135'>135</a>
 <a name='L136'></a><a href='#L136'>136</a>
-<a name='L137'></a><a href='#L137'>137</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -219,20 +223,13 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -246,8 +243,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -336,6 +342,7 @@ import TilesView from '../pratical/tilesView';
 import { gettingUserAlarms } from '../../api/api.js';
 import { TokenContext } from '../general/context';
 import { useFocusEffect } from '@react-navigation/native';
+&nbsp;
 /*
 Route :
        
@@ -347,21 +354,13 @@ class Alarms extends Component {
 <span class="cstat-no" title="statement not covered" >        super(props);</span>
 <span class="cstat-no" title="statement not covered" >        this.state = {</span>
             data : null,
-&nbsp;
-&nbsp;
+            msg: "test",
+            visibility: false,
         }
 <span class="cstat-no" title="statement not covered" >        this.handleIconPress = this.handleIconPress.bind(this);</span>
     }
     static contextType = TokenContext;
-    //handle the preparation to see the widget
-<span class="fstat-no" title="function not covered" >    ha</span>ndleIconPress(id) {
-<span class="cstat-no" title="statement not covered" >        this.state.brutData.forEach(<span class="fstat-no" title="function not covered" >el</span>ement =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >            if (element["id"] == id) {</span>
-<span class="cstat-no" title="statement not covered" >                this.props.navigation.navigate('Alarms info',element)</span>
-            }
-        });
-        
-    }
+    
 &nbsp;
     //Methods immplicating the life cycle
     //Initialisation of the data to be displayed
@@ -369,7 +368,8 @@ class Alarms extends Component {
         //this.props.setAlarm(null)
 <span class="cstat-no" title="statement not covered" >        gettingUserAlarms(this.context.token,this.context.site)</span>
             .then(<span class="fstat-no" title="function not covered" >re</span>sponse =&gt; {
-<span class="cstat-no" title="statement not covered" >                if (response["success"] === 0) {</span>
+<span class="cstat-no" title="statement not covered" >                if (response["status"] == "error" || response["status"] == "fail") {</span>
+<span class="cstat-no" title="statement not covered" >                    this.props.setError(true,response["message"])</span>
                 }
                 else {
                     let data = <span class="cstat-no" title="statement not covered" >response["data"]</span>
@@ -380,15 +380,24 @@ class Alarms extends Component {
     }
 &nbsp;
     //General Methods
+    //handle the preparation to see the widget
+<span class="fstat-no" title="function not covered" >    ha</span>ndleIconPress(id) {
+<span class="cstat-no" title="statement not covered" >        this.state.brutData.forEach(<span class="fstat-no" title="function not covered" >el</span>ement =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            if (element["id"] == id) {</span>
+<span class="cstat-no" title="statement not covered" >                this.props.navigation.navigate('Alarms info',element)</span>
+            }
+        });
+        
+    }
     //function to format the data of the choosen option
 <span class="fstat-no" title="function not covered" >    da</span>taProcessing(data) {
-&nbsp;
 <span class="cstat-no" title="statement not covered" >        if (data.length === 0) {</span>
+            //First tile with the title
             let reformatedData = <span class="cstat-no" title="statement not covered" >[{ separator: true, title: "You don't have any alarms" }]</span>
 <span class="cstat-no" title="statement not covered" >            return reformatedData</span>
         } else {
             let reformatedData = <span class="cstat-no" title="statement not covered" >[{ separator: true, title: "" }]</span>
-&nbsp;
+            //Buildiing the tiles with the data fetch
 <span class="cstat-no" title="statement not covered" >            data.forEach(<span class="fstat-no" title="function not covered" >el</span>ement =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >                if (element["status"]) {</span>
 <span class="cstat-no" title="statement not covered" >                    reformatedData.push({</span>
@@ -461,7 +470,7 @@ class Alarms extends Component {
                         accessoryRight={this.notifAction}
                     /&gt;}
                 /&gt;
-            &lt;/View&gt;)
+           &lt;/View&gt;)
     }
 &nbsp;
 }
@@ -472,7 +481,7 @@ export default Alarms;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Mar 18 2021 09:42:36 GMT+0100 (GMT+01:00)
+                at Sun Mar 28 2021 18:54:11 GMT+0200 (GMT+02:00)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>

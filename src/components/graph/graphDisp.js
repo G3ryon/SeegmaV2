@@ -14,6 +14,7 @@ PROPS:  other.isSignIn  : bool displaying if the user is authenticated
         other.signIn    : method to set the isSignIn
         other.authToken : string with the token of the user
         other.setAuth   : method to set the authToken
+        setError : method to display message need a bool and a string 
        
 RETURN: a view of the graph with the data set choosen, there is also the modal for the settings
 */
@@ -44,10 +45,11 @@ class Graph_disp extends Component {
   //Life cycle method
   async componentDidMount() {
     if (this.props.route.params["graphId"] == 0) {
+      //In case the default option is taken, fetching the data of a flux
       await gettingFluxData(this.context.token, this.props.route.params["fluxId"][this.state.selectedIndex.row], this.state.value, this.state.date, this.state.date)
         .then(response => {
-          if (response["success"] === 0) {
-        
+          if (response["status"] == "error" || response["status"] == "fail") {
+            this.props.setError(true,response["message"])
           }
           else {
             let data = response["data"]
@@ -56,10 +58,11 @@ class Graph_disp extends Component {
           }
         })
     } else {
+      //In case of a specific graph, fetching the data of a graph
       await gettingGraphData(this.context.token, this.props.route.params["graphId"], this.state.value, this.state.date, this.state.date)
         .then(response => {
-          if (response["success"] === 0) {
-
+          if (response["status"] == "error" || response["status"] == "fail") {
+            this.props.setError(true,response["message"])
           }
           else {
             let data = response["data"]
@@ -145,7 +148,6 @@ class Graph_disp extends Component {
       )
     }
     else {
-      //<Text>Site : {this.context.siteName}</Text>
       return (
 
         <ScrollView>

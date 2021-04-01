@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { View} from 'react-native';
-import { Icon, Text, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
+import { Icon, Text, TopNavigation, TopNavigationAction} from '@ui-kitten/components';
 import TilesView from '../pratical/tilesView';
 import { gettingAlarmsList } from '../../api/api.js';
 import { TokenContext } from '../general/context';
 /*
 route : name : alarm name
-       
+props : setError : method to display message need a bool and a string      
 RETURN: a view of the activation of the choosen alarm
 */
 
@@ -15,7 +15,7 @@ class Alarms_history extends Component {
         super(props);
         this.state = {
             reformatedData : [],
-            brutData:[]
+            brutData:[],
         }
         this.pressAction = this.pressAction.bind(this);
     }
@@ -25,7 +25,8 @@ class Alarms_history extends Component {
     componentDidMount(){
         gettingAlarmsList(this.context.token,this.context.site)
         .then(response => {
-            if (response["success"] === 0) {
+            if (response["status"] == "error" || response["status"] == "fail") {
+                this.props.setError(true,response["message"])
             }
             else {
                 let data = response["data"]
@@ -40,7 +41,8 @@ class Alarms_history extends Component {
         }
     }
 
-    //Basic Method
+    //Methods for basic state update
+    //Method to handle the pressing of a tile
     pressAction(event) {
         let data = this.state.brutData
         data.forEach(element => {
@@ -54,12 +56,12 @@ class Alarms_history extends Component {
         });
         
     }
-
+    //Method to format the data fetch
     dataProcessing(data) {
         let reformatedData = []
         data.forEach(element => {
             reformatedData.push({
-                title: element["date"].slice(4, 21),
+                title: element["date"].slice(0, 21),
                 id: element["id"],
                 buttonIcon: 'chevron-right',
                 icon: 'bar-chart',

@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { View} from 'react-native';
+import { SafeAreaView, View} from 'react-native';
 import { Icon, Text, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import TilesView from '../pratical/tilesView';
+
 /*
 route: name : name of the selected alarm 
        id   : id of the selected alarm
        date : last time the alarm wazs triggered
        infos  :  infos about the trigger
        description : infos about the alarm
+
+props : setError : method to display message need a bool and a string 
        
 RETURN: a view of the infos concerning the alarm choosen
 */
@@ -21,6 +24,8 @@ class Alarms_info extends Component {
         this.pressAction = this.pressAction.bind(this);
     }
 
+    //Methods for basic state update
+    //method to handle the action on the tile
     pressAction(event) {
         if (event == "details")
             this.props.navigation.navigate("Alarms history",{id:this.props.route.params['id'], name:this.props.route.params['name']})
@@ -28,6 +33,9 @@ class Alarms_info extends Component {
             this.props.navigation.navigate("Alarms graph",{id:this.props.route.params['id'],name:this.props.route.params['name']})
         }
     }
+    
+    //Method for declaring constant and navigation
+    //Icon constant
     backIcon = (props) => (
         <Icon {...props} name='arrow-back-outline' />
     );
@@ -38,6 +46,7 @@ class Alarms_info extends Component {
 
 
     render() {
+        //data for the tiles
         const data = [
             {
                 title: "Historic by graph",
@@ -54,7 +63,7 @@ class Alarms_info extends Component {
         ]
 
         return (
-            <View>
+            <SafeAreaView>
                 <TopNavigation
                     title={"Alarm : " + this.props.route.params['name']}
                     accessoryLeft={this.backAction}
@@ -78,7 +87,7 @@ class Alarms_info extends Component {
                     pressTile={this.pressAction}
                     pressIcon={this.pressAction}
                     itemData={data} headerComp={<Text></Text>} />
-            </View>)
+            </SafeAreaView>)
     }
 
 }

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { View, Image, TextInput, ScrollView, SafeAreaView, FlatList } from 'react-native';
-import { Icon, Button, Layout, Text, Divider, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
+import { SafeAreaView} from 'react-native';
+import { Icon, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
 import TilesView from '../pratical/tilesView';
 import { gettingSite } from '../../api/api.js';
 import { TokenContext } from '../general/context';
 /*
 route : 
-
+props : setError : method to display message need a bool and a string 
 RETURN: a view of the different site of the user
 */
 
@@ -60,8 +60,8 @@ class Home extends Component {
         this.context.handleSite(null,null)
         gettingSite(this.context.token)
             .then(response => {
-                if (response["success"] === 0) {
-
+                if (response["status"] == "error" || response["status"] == "fail") {
+                    this.props.setError(true,response["message"])
                 }
                 else {
                     let data = response["data"]
@@ -75,9 +75,11 @@ class Home extends Component {
     //function to format the json received from backend
     dataProcessing(data) {
         if (data.length === 0) {
+            //in case there is no site for the user
             let reformatedData = [{ separator: true, title: "You don't have any site" }]
             return reformatedData
         } else {
+            //formating the data to be displayed inside the tiles
             let reformatedData = [{ separator: true, title: 'Your favorite sites' }]
             let favorite = []
             let nonFavorite = []

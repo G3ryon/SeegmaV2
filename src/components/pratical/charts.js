@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, Platform } from 'react-native';
+import { StyleSheet, View, Platform } from 'react-native';
 import FusionCharts from 'react-native-fusioncharts';
 
 /*
@@ -34,11 +34,11 @@ export default class Chart extends Component {
         subcaption: {
           text: ""
         },
-        series: this.props.format[1].name,
+        series: "Type",//this.props.format[1]["name"],
         yAxis: [{
           plot: [
             {
-              value: this.props.format[2].name,
+              value: "Consumption",//this.props.format[2].name,
               type: this.props.graphType
             }
           ],
@@ -62,7 +62,8 @@ export default class Chart extends Component {
         //ios: require("./fusioncharts.html")
       });
   }
-
+  
+  //Life cycle method
   componentDidMount() {
     this.fetchDataAndSchema();
   }

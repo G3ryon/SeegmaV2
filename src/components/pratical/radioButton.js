@@ -8,8 +8,8 @@ export default RadioButton = (props) => {
     const [selected, setIndex] = React.useState(0);
     
     let index = 0
+    //method to update the radio button if there is already a choosen option
     React.useEffect(() => {
-        console.log(props.value)
         if(props.value !== undefined){
             props.data.forEach(element => {
                 if(element.value == props.value){

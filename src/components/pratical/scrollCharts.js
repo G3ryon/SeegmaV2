@@ -54,7 +54,6 @@ export default class ScrollCharts extends Component {
   }
 
   render() {
-    console.log(this.state)
     return (
         <View style={styles.chartContainer}>
           <FusionCharts

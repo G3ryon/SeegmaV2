@@ -70,8 +70,8 @@ class Nav extends Component {
   notifNav = () => {
     return (
       <Stack.Navigator headerMode={""}>
-        <Stack.Screen name={"Notification center"}>{props => <SafeAreaView><Notif_center {...props}/></SafeAreaView>}</Stack.Screen>
-        <Stack.Screen name={"Notification"}>{props => <SafeAreaView><Details_view {...props} /></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"Notification center"}>{props => <SafeAreaView><Notif_center {...props} setError={this.props.setError}/></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"Notification"}>{props => <SafeAreaView><Details_view {...props} setError={this.props.setError}/></SafeAreaView>}</Stack.Screen>
       </Stack.Navigator>
     );
   }
@@ -80,8 +80,8 @@ class Nav extends Component {
   dashNav = () => {
     return (
       <Stack.Navigator headerMode={""}>
-        <Stack.Screen name={"Dashboard"}>{props => <SafeAreaView><Dashboard {...props} /></SafeAreaView>}</Stack.Screen>
-        <Stack.Screen name={"widget"}>{props => <SafeAreaView><Widget {...props}/></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"Dashboard"}>{props => <SafeAreaView><Dashboard {...props} setError={this.props.setError}/></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"widget"}>{props => <SafeAreaView><Widget {...props} setError={this.props.setError}/></SafeAreaView>}</Stack.Screen>
       </Stack.Navigator>
     );
   }
@@ -90,11 +90,11 @@ class Nav extends Component {
   alarmNav = () => {
     return (
       <Stack.Navigator headerMode={""}>
-        <Stack.Screen name={"Alarms"}>{props => <SafeAreaView><Alarms {...props}/></SafeAreaView>}</Stack.Screen>
-        <Stack.Screen name={"Alarms info"}>{props => <SafeAreaView><Alarms_info {...props}/></SafeAreaView>}</Stack.Screen>
-        <Stack.Screen name={"Alarms history"}>{props => <SafeAreaView><Alarms_history {...props}/></SafeAreaView>}</Stack.Screen>
-        <Stack.Screen name={"Alarms details"}>{props => <SafeAreaView><Details_view {...props} /></SafeAreaView>}</Stack.Screen>
-        <Stack.Screen name={"Alarms graph"}>{props => <SafeAreaView><Alarms_occ {...props}/></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"Alarms"}>{props => <SafeAreaView><Alarms {...props} setError={this.props.setError}/></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"Alarms info"}>{props => <SafeAreaView><Alarms_info {...props} setError={this.props.setError}/></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"Alarms history"}>{props => <SafeAreaView><Alarms_history {...props} setError={this.props.setError}/></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"Alarms details"}>{props => <SafeAreaView><Details_view {...props} setError={this.props.setError}/></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"Alarms graph"}>{props => <SafeAreaView><Alarms_occ {...props} setError={this.props.setError}/></SafeAreaView>}</Stack.Screen>
       </Stack.Navigator>
     );
   }
@@ -103,8 +103,8 @@ class Nav extends Component {
   graphNav = () => {
     return (
       <Stack.Navigator headerMode={""}>
-        <Stack.Screen name={"Graphs"}>{props => <SafeAreaView><Graph {...props}/></SafeAreaView>}</Stack.Screen>
-        <Stack.Screen name={"Graph"}>{props => <SafeAreaView><Graph_disp {...props}/></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"Graphs"}>{props => <SafeAreaView><Graph {...props} setError={this.props.setError}/></SafeAreaView>}</Stack.Screen>
+        <Stack.Screen name={"Graph"}>{props => <SafeAreaView><Graph_disp {...props} setError={this.props.setError}/></SafeAreaView>}</Stack.Screen>
       </Stack.Navigator>
     );
   }
@@ -113,9 +113,9 @@ class Nav extends Component {
   nonAuthNav = () => {
     return (
       <Stack.Navigator headerMode={""}>
-        <Stack.Screen name={"login"}>{props => <Login {...props} other={this.props} />}</Stack.Screen>
-        <Stack.Screen name={"signup"}>{props => <Signup {...props} />}</Stack.Screen>
-        <Stack.Screen name={"reset"}>{props => <Reset {...props} />}</Stack.Screen>
+        <Stack.Screen name={"login"}>{props => <Login {...props} other={this.props} setError={this.props.setError}/>}</Stack.Screen>
+        <Stack.Screen name={"signup"}>{props => <Signup {...props} setError={this.props.setError}/>}</Stack.Screen>
+        <Stack.Screen name={"reset"}>{props => <Reset {...props} setError={this.props.setError}/>}</Stack.Screen>
       </Stack.Navigator>
     )
   }
@@ -187,7 +187,7 @@ class Nav extends Component {
               </DrawerContentScrollView>
             );
           }}>
-          <Drawer.Screen name="home">{props => <SafeAreaView><Home {...props} /></SafeAreaView>}</Drawer.Screen>
+          <Drawer.Screen name="home">{props => <SafeAreaView><Home {...props} setError={this.props.setError} /></SafeAreaView>}</Drawer.Screen>
           <Drawer.Screen name="notification" component={this.notifNav} />
           <Drawer.Screen name="bottomNav" component={this.authBottomNav} />
         </Drawer.Navigator>
@@ -219,9 +219,9 @@ class Nav extends Component {
       else{
       return (
         <Stack.Navigator headerMode={""} initialRouteName={this.state.signIn}>
-          <Stack.Screen name={"login"}>{props => <SafeAreaView><Login {...props}  /></SafeAreaView>}</Stack.Screen>
-          <Stack.Screen name={"signup"}>{props => <SafeAreaView><Signup {...props} /></SafeAreaView>}</Stack.Screen>
-          <Stack.Screen name={"reset"}>{props => <SafeAreaView><Reset {...props} /></SafeAreaView>}</Stack.Screen>
+          <Stack.Screen name={"login"}>{props => <SafeAreaView><Login {...props}  setError={this.props.setError}/></SafeAreaView>}</Stack.Screen>
+          <Stack.Screen name={"signup"}>{props => <SafeAreaView><Signup {...props} setError={this.props.setError}/></SafeAreaView>}</Stack.Screen>
+          <Stack.Screen name={"reset"}>{props => <SafeAreaView><Reset {...props} setError={this.props.setError}/></SafeAreaView>}</Stack.Screen>
           <Stack.Screen name={"drawer"} component={this.drawerNav}></Stack.Screen>
         </Stack.Navigator>
       )}

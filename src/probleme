@@ -35,5 +35,10 @@ export const TokenContext = React.createContext({
 5 faire appel au contextchoosen pour avoir le json
 ---------------------------------------------------
 FusionCharts multi graph https://www.fusioncharts.com/fusiontime/examples/stacked-column-chart-with-time-axis?framework=react
-  
- 
+---------------------------------------------------
+
+props : setError : method to display message need a bool and a string 
+
+response["status"] == "error" || response["status"] == "fail"
+
+this.props.setError(true,response["message"])

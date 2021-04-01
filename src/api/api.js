@@ -8,8 +8,9 @@ async function fecthing(redirection, data, type, headers ) {
     let url = defaultUrl + redirection
 
     if(type == 'GET' ){
-      if(data !== undefined){
-        url += "?" + new URLSearchParams(data)
+      if(data !== undefined ){
+        if(data !== ""){
+        url += "?" + new URLSearchParams(data)}
       }
       
       await fetch(url, {
@@ -70,7 +71,7 @@ export async function gettingSite(token) {
     myHeaders.append("Authorization", "Bearer " + token);
     myHeaders.append("Cache-Control", "no-cache");
 
-    let data = await fecthing("usersite",undefined,'POST', myHeaders)
+    let data = await fecthing("usersite",undefined,'GET', myHeaders)
     return data
 }
 
@@ -79,10 +80,9 @@ export async function gettingGraph(token,siteId) {
   myHeaders.append("Authorization", "Bearer " + token);
   myHeaders.append("Cache-Control", "no-cache");
 
-  var formdata = new FormData();
-  formdata.append("siteId", siteId);
+  let params = {}//{id:siteId}
 
-  let data = await fecthing("getGraphList",undefined,'POST', myHeaders)
+  let data = await fecthing("getGraphList",params,'GET', myHeaders)
   return data
 }
 
@@ -92,7 +92,7 @@ export async function gettingNotifications(token) {
     myHeaders.append("Cache-Control", "no-cache");
 
 
-    let data = await fecthing("userNotification",undefined,'POST', myHeaders)
+    let data = await fecthing("userNotification",undefined,'GET', myHeaders)
     return data
 }
 
@@ -101,10 +101,9 @@ export async function gettingSiteData(token,siteId) {
     myHeaders.append("Authorization", "Bearer " + token);
     myHeaders.append("Cache-Control", "no-cache");
 
-    var formdata = new FormData();
-    formdata.append("siteId", siteId);
+    let params = {}//{id:siteId}
 
-    let data = await fecthing("getSiteData", formdata,'POST', myHeaders)
+    let data = await fecthing("getSiteData", params,'GET', myHeaders)
     return data
 }
 
@@ -113,10 +112,9 @@ export async function gettingUserAlarms(token,siteId) {
     myHeaders.append("Authorization", "Bearer " + token);
     myHeaders.append("Cache-Control", "no-cache");
 
-    var formdata = new FormData();
-    formdata.append("siteId", siteId);
+    let params = {}//{id:siteId}
 
-    let data = await fecthing("getUserAlarms", formdata,'POST', myHeaders)
+    let data = await fecthing("getUserAlarms", params,'GET', myHeaders)
     return data
 }
 
@@ -125,10 +123,9 @@ export async function gettingAlarmsList(token,alarmId) {
   myHeaders.append("Authorization", "Bearer " + token);
   myHeaders.append("Cache-Control", "no-cache");
 
-  var formdata = new FormData();
-  formdata.append("alarmId", alarmId);
+  let params = {}//{id:alarmId}
 
-  let data = await fecthing("getAlarmsList", formdata,'POST', myHeaders)
+  let data = await fecthing("getAlarmsList", params,'GET', myHeaders)
   return data
 }
 
@@ -137,7 +134,7 @@ export async function gettingGraphInfo(token,graphId) {
   myHeaders.append("Authorization", "Bearer " + token);
   myHeaders.append("Cache-Control", "no-cache");
 
-  let params = {id:graphId}
+  let params = {}//{id:graphId}
   
   let data = await fecthing("graphInfo", params,'GET', myHeaders)
   return data
@@ -148,7 +145,7 @@ export async function gettingFluxInfo(token,graphId) {
   myHeaders.append("Authorization", "Bearer " + token);
   myHeaders.append("Cache-Control", "no-cache");
 
-  let params = {id:graphId}
+  let params = {}//{id:graphId}
   
   let data = await fecthing("fluxInfo", params,'GET', myHeaders)
   return data
@@ -159,7 +156,7 @@ export async function gettingGraphData(token,graphId,granularity,date,endDate) {
   myHeaders.append("Authorization", "Bearer " + token);
   myHeaders.append("Cache-Control", "no-cache");
 
-  let params = {id:graphId,granularity:granularity,date:date,endDate:endDate}
+  let params = {}//{id:graphId,granularity:granularity,date:date,endDate:endDate}
   
   let data = await fecthing("getGraphics", params,'GET', myHeaders)
   
@@ -171,7 +168,7 @@ export async function gettingFluxData(token,graphId,granularity,date,endDate) {
   myHeaders.append("Authorization", "Bearer " + token);
   myHeaders.append("Cache-Control", "no-cache");
 
-  let params = {id:graphId,granularity:granularity,date:date,endDate:endDate}
+  let params = {}//{id:graphId,granularity:granularity,date:date,endDate:endDate}
   
   let data = await fecthing("getFlux", params,'GET', myHeaders)
   

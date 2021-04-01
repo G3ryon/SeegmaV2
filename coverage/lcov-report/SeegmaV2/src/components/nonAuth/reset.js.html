@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40% </span>
+                <span class="strong">38.46% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/15</span>
+                <span class='fraction'>5/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.86% </span>
+                <span class="strong">37.5% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/14</span>
+                <span class='fraction'>6/16</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">22.22% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/9</span>
+                <span class='fraction'>2/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40% </span>
+                <span class="strong">38.46% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/15</span>
+                <span class='fraction'>5/13</span>
             </div>
         
             
@@ -128,19 +128,7 @@
 <a name='L69'></a><a href='#L69'>69</a>
 <a name='L70'></a><a href='#L70'>70</a>
 <a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L72'></a><a href='#L72'>72</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -161,9 +149,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -172,16 +157,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -221,9 +199,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, {Component} from 'react';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
 import { View, Image } from 'react-native';
 import { Button, Text } from '@ui-kitten/components';
 import logo from '../../assets/logo.png';
@@ -233,76 +209,64 @@ import { reset } from '../../api/api.js';
 &nbsp;
 &nbsp;
 /*
-&nbsp;
+props : setError : method to display message need a bool and a string 
 RETURN: a view to handle the reset of a password
 */
 &nbsp;
-class Reset extends Component{
-    constructor(props){
+class Reset extends Component {
+    constructor(props) {
         super(props);
         this.state = {
             mail: "juju_beber@gmail.com",
             isValid: null,
-            visible: false,
-            msg: "",
         }
         this.handleMail = this.handleMail.bind(this);
-        this.handleVisibility = this.handleVisibility.bind(this);
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    ha</span>ndleMail(text) {
 <span class="cstat-no" title="statement not covered" >        this.setState({ mail: text });</span>
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    ha</span>ndleVisibility(value) {
-<span class="cstat-no" title="statement not covered" >        this.setState({ visible: value });</span>
-    }
-&nbsp;
-&nbsp;
     //function for checking the sign in
 <span class="fstat-no" title="function not covered" >    ha</span>ndleReset(mail) {
         //checking the login
-        
 <span class="cstat-no" title="statement not covered" >        reset(mail)</span>
             .then(<span class="fstat-no" title="function not covered" >re</span>sponse =&gt; {
-                
-<span class="cstat-no" title="statement not covered" >                if (response["success"] === 1) {</span>
-<span class="cstat-no" title="statement not covered" >                    this.setState({visible:true, msg:'Un mail a été envoyé'})</span>
-                    
+<span class="cstat-no" title="statement not covered" >                if (response["status"] == "error" || response["status"] == "fail") {</span>
+<span class="cstat-no" title="statement not covered" >                    this.props.setError(true, response["message"])</span>
+&nbsp;
                 }
                 else {
-<span class="cstat-no" title="statement not covered" >                    this.setState({visible:true, msg:"Votre email n'est lié à aucun compte"})</span>
+<span class="cstat-no" title="statement not covered" >                    this.props.setError(true, "Votre email n'est lié à aucun compte")</span>
                 }
-                
+&nbsp;
             });
     }
-    
-    render(){
+&nbsp;
+    render() {
         const { isValid } = this.state;
-        
 &nbsp;
-        return(
-        &lt;View&gt;
-           &lt;Image source={logo}/&gt;
-           &lt;Input 
-           type={"text"} 
-           required={true} 
-           readonly={false} 
-           value={this.state.mail} 
-           caption={isValid &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >isValid[0] </span>? <span class="branch-0 cbranch-no" title="branch not covered" >"" </span>: "It's not a valid e-mail" }
-           status={isValid &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >isValid[0] </span>? <span class="branch-0 cbranch-no" title="branch not covered" >"" </span>: "danger" }
-           onChange={this.handleMail} 
-           pattern={[
-            '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$', // email regex
-          ]}
-           onValidation={<span class="fstat-no" title="function not covered" >is</span>Valid =&gt; <span class="cstat-no" title="statement not covered" >this.setState({ isValid })}</span>
-           placeHolder={"Mail"}/&gt;
-           &lt;Button disabled={isValid &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >isValid[0] </span>? <span class="branch-0 cbranch-no" title="branch not covered" >false </span>: true} onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.handleReset(this.state.mail)}</span>&gt;Submit&lt;/Button&gt;
-           &lt;Button onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.props.navigation.navigate('login')}</span> &gt;I remembered my password&lt;/Button&gt;
-           
-      &lt;Modal visible={this.state.visible} onVisibility={this.handleVisibility} infos={&lt;Text&gt;{this.state.msg}&lt;/Text&gt;} exitText={"dissmis"} admitBackdrop={true} admitButton={true}/&gt;
 &nbsp;
-        &lt;/View&gt;)
+        return (
+            &lt;View&gt;
+                &lt;Image source={logo} /&gt;
+                &lt;Input
+                    type={"text"}
+                    required={true}
+                    readonly={false}
+                    value={this.state.mail}
+                    caption={isValid &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >isValid[0] </span>? <span class="branch-0 cbranch-no" title="branch not covered" >"" </span>: "It's not a valid e-mail"}
+                    status={isValid &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >isValid[0] </span>? <span class="branch-0 cbranch-no" title="branch not covered" >"" </span>: "danger"}
+                    onChange={this.handleMail}
+                    pattern={[
+                        '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$', // email regex
+                    ]}
+                    onValidation={<span class="fstat-no" title="function not covered" >is</span>Valid =&gt; <span class="cstat-no" title="statement not covered" >this.setState({ isValid })}</span>
+                    placeHolder={"Mail"} /&gt;
+                &lt;Button disabled={isValid &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >isValid[0] </span>? <span class="branch-0 cbranch-no" title="branch not covered" >false </span>: true} onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.handleReset(this.state.mail)}</span>&gt;Submit&lt;/Button&gt;
+                &lt;Button onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.props.navigation.navigate('login')}</span> &gt;I remembered my password&lt;/Button&gt;
+&nbsp;
+            &lt;/View&gt;)
     }
 }
 export default Reset;
@@ -313,7 +277,7 @@ export default Reset;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Mar 18 2021 09:42:36 GMT+0100 (GMT+01:00)
+                at Sun Mar 28 2021 18:54:11 GMT+0200 (GMT+02:00)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>

@@ -5,6 +5,7 @@ import TilesView from '../pratical/tilesView';
 import { gettingUserAlarms } from '../../api/api.js';
 import { TokenContext } from '../general/context';
 import { useFocusEffect } from '@react-navigation/native';
+
 /*
 Route :
        
@@ -16,21 +17,13 @@ class Alarms extends Component {
         super(props);
         this.state = {
             data : null,
-
-
+            msg: "test",
+            visibility: false,
         }
         this.handleIconPress = this.handleIconPress.bind(this);
     }
     static contextType = TokenContext;
-    //handle the preparation to see the widget
-    handleIconPress(id) {
-        this.state.brutData.forEach(element => {
-            if (element["id"] == id) {
-                this.props.navigation.navigate('Alarms info',element)
-            }
-        });
-        
-    }
+    
 
     //Methods immplicating the life cycle
     //Initialisation of the data to be displayed
@@ -38,7 +31,8 @@ class Alarms extends Component {
         //this.props.setAlarm(null)
         gettingUserAlarms(this.context.token,this.context.site)
             .then(response => {
-                if (response["success"] === 0) {
+                if (response["status"] == "error" || response["status"] == "fail") {
+                    this.props.setError(true,response["message"])
                 }
                 else {
                     let data = response["data"]
@@ -49,15 +43,24 @@ class Alarms extends Component {
     }
 
     //General Methods
+    //handle the preparation to see the widget
+    handleIconPress(id) {
+        this.state.brutData.forEach(element => {
+            if (element["id"] == id) {
+                this.props.navigation.navigate('Alarms info',element)
+            }
+        });
+        
+    }
     //function to format the data of the choosen option
     dataProcessing(data) {
-
         if (data.length === 0) {
+            //First tile with the title
             let reformatedData = [{ separator: true, title: "You don't have any alarms" }]
             return reformatedData
         } else {
             let reformatedData = [{ separator: true, title: "" }]
-
+            //Buildiing the tiles with the data fetch
             data.forEach(element => {
                 if (element["status"]) {
                     reformatedData.push({
@@ -130,7 +133,7 @@ class Alarms extends Component {
                         accessoryRight={this.notifAction}
                     />}
                 />
-            </View>)
+           </View>)
     }
 
 }

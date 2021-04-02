@@ -18,7 +18,7 @@ public class DetoxTest {
     @Rule
     // Replace 'MainActivity' with the value of android:name entry in 
     // <activity> in AndroidManifest.xml
-    public ActivityTestRule<com.facebook.react.devsupport.DevSettingsActivity> mActivityRule = new ActivityTestRule<>(com.facebook.react.devsupport.DevSettingsActivity.class, false, false);
+    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(MainActivity.class, false, false);
 
     @Test
     public void runDetoxTests() {

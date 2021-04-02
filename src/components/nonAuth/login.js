@@ -72,8 +72,8 @@ class Login extends Component{
         return(
         
         <SafeAreaView level='4'>
-           <Image source={logo}/>
-           <Input type={"text"} required={true} status={this.state.statusLog} caption={this.state.captionLog} readonly={false} value={this.state.login} onChange={this.handleLogin} placeHolder={"Login"}></Input>
+           <Image testID='Logo' source={logo}/>
+           <Input testID='input' type={"text"} required={true} status={this.state.statusLog} caption={this.state.captionLog} readonly={false} value={this.state.login} onChange={this.handleLogin} placeHolder={"Login"}></Input>
            <Input 
             type={"password"} 
             required={true} 
@@ -84,9 +84,9 @@ class Login extends Component{
             onChange={this.handlePassword} 
             placeholder={"Password"}/>
             <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-           <Button onPress={() => this.handleSignin(this.state.login, this.state.password)}>Login</Button>
+           <Button testID='butt' onPress={() => this.handleSignin(this.state.login, this.state.password)}>Login</Button>
            <Button onPress={() => this.props.navigation.navigate('signup')}>SignUp</Button>
-           <Button onPress={() => this.props.navigation.navigate('reset')}>Forgot your password?</Button>
+           <Button testID='butt2' onPress={() => this.props.navigation.navigate('reset')}>Forgot your password?</Button>
            </View>
         </SafeAreaView>  )
     }

@@ -1,10 +1,13 @@
 rootProject.name = 'SeegmaV2'
-
-include ':unimodules-react-native-adapter'
-project(':unimodules-react-native-adapter').projectDir = new File(rootProject.projectDir, '../node_modules/@unimodules/react-native-adapter/android')
-
-apply from: '../node_modules/react-native-unimodules/gradle.groovy'
+//react-native-unimodule
+apply from: '../node_modules/react-native-unimodules/gradle.groovy'; 
 includeUnimodulesProjects()
+//unimodule core
+//include ':unimodules-core'
+//project(':unimodules-core').projectDir = new File(rootProject.projectDir, '../node_modules/@unimodules/core/android')
+//react native adapter
+//include ':unimodules-react-native-adapter'
+//project(':unimodules-react-native-adapter').projectDir = new File(rootProject.projectDir, '../node_modules/@unimodules/react-native-adapter/android')
 
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle");
 applyNativeModulesSettingsGradle(settings)

@@ -64,3 +64,5 @@ buck-out/
 web-build/
 coverage/
 
+android/app/release/app-release.apk
+android/java_pid1400.hprof

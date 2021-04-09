@@ -1,5 +1,9 @@
-sudo: false
-language: node_js
+os: linux
+language: android
+android:
+  components:
+    - build-tools-29.0.2
+    - android-30
 node_js:
 - '12'
 branches:
@@ -8,9 +12,12 @@ branches:
 cache:
   directories:
   - node_modules
-before_install:
-- npm update
+before_install: 
+  - yes | sdkmanager "platforms;android-30"
+  - yes | sdkmanager "build-tools;29.0.2"
+  - npm update
 install:
 - npm install
 script:
 - npm test
+- "./android/gradlew assembleRelease -p android/"

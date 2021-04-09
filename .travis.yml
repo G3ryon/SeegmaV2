@@ -17,6 +17,7 @@ before_install:
   - yes | sdkmanager "build-tools;29.0.2"
   - nvm install 12
   - npm update
+  - chmod +x gradlew
 install:
 - npm install
 script:

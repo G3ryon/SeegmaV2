@@ -22,4 +22,4 @@ install:
 - npm install
 script:
 - npm test
-- "./android/gradlew app:assembleDebug app:assembleAndroidTest -DtestBuildType=debug "
+- "./android/gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug -p android/"

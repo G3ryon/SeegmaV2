@@ -1,16 +1,16 @@
-os: linux
-language: android
-jdk: oraclejdk8
-android:
-  components:
-    - build-tools-29.0.2
-    - android-30
+sudo: false
+language: node_js
+node_js:
+- '8'
+branches:
+  only:
+  - master
+cache:
+  directories:
+  - node_modules
 before_install:
-  - yes | sdkmanager "platforms;android-30"
-  - yes | sdkmanager "build-tools;29.0.2"
-  - nvm install && nvm use
-  - npm install -g "npm@$(jq -r '.engines.npm' package.json)"
+- npm update
 install:
-  - npm ci
+- npm install
 script:
-  - "./android/gradlew assembleRelease -p android/"
+- npm test

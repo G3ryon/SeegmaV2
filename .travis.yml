@@ -15,6 +15,7 @@ cache:
 before_install: 
   - yes | sdkmanager "platforms;android-30"
   - yes | sdkmanager "build-tools;29.0.2"
+  - nvm install 12
   - npm update
 install:
 - npm install

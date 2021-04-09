@@ -28,7 +28,7 @@ test('Testing modal vanishing by button', async () => {
        fireEvent.press(button)}
       );
     await act( async () => {
-       const button = getByText('dissmis')
+       const button = getByText('Dismiss')
        fireEvent.press(button)}
       );  
     expect(queryByText('TestingModal')).toBeNull()
@@ -58,7 +58,7 @@ function ModalTest(){
       <ApplicationProvider mapping={mapping} theme={lightTheme}>
             <Button onPress={() => console.log("dd")}>backdrop</Button>
             <Button onPress={() => setVisible(true)}>display</Button>
-            <Modal visible={visible} onVisibility={setVisible} infos={<Text>TestingModal</Text>} exitText={"dissmis"} admitBackdrop={true} admitButton={true}/>
+            <Modal visible={visible} onVisibility={setVisible} infos={<Text>TestingModal</Text>} exitText={"Dismiss"} admitBackdrop={true} admitButton={true}/>
       </ApplicationProvider>
     );
   }

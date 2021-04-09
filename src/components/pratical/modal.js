@@ -32,10 +32,10 @@ class ModalCard extends Component {
             <Card>
             {this.props.infos}
             {this.props.children}
-            {this.props.admitButton && <Button onPress={() => this.handleVisibility(false)} >{this.props.exitText}</Button>} 
+            {this.props.admitButton && <Button testID={"dismiss_Button"} onPress={() => this.handleVisibility(false)} >Dismiss</Button>} 
             </Card>
             </Modal>
         );
     }
 }
-export default ModalCard;
+export default ModalCard;//

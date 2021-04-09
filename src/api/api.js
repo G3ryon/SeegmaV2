@@ -26,7 +26,8 @@ async function fecthing(redirection, data, type, headers ) {
       await fetch(url, {
         method: type,
         body: data,
-        headers: headers
+        headers: headers,
+        redirect: 'follow'
 
     }).then(response => response.text())
         .then(result => {returnedData = JSON.parse(result);})

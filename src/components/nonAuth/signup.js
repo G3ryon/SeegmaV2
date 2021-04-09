@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, LogBox } from 'react-native';
 import { Button,Text } from '@ui-kitten/components';
 import logo from '../../assets/logo.png';
 import Input from '../pratical/input.js';
@@ -15,12 +15,13 @@ class Signup extends Component{
     constructor(props){
         super(props);
         this.state = {
-            mail: "juju_beber@gmail.com",
-            password: "AZERTYUIOP1",
-            passwordbis: "AZERTYUIOP1",
-            username: "z",
+            mail: "",
+            password: "",
+            passwordbis: "",
+            username: "",
             isValidMail: null,
             isValidPass: [false,false,false],
+            visible:false,
 
 
         }
@@ -88,12 +89,13 @@ class Signup extends Component{
             return caption
         }
 
-
+        LogBox.ignoreAllLogs();
         return(
         <View>
-           <Image source={logo}/>
+           <Image source={logo} testID='logo_Register'/>
            <Text>Register a new account</Text>
            <Input 
+           testID='email' 
             type={"text"} 
             required={true} 
             status={this.state.statusMail} 
@@ -110,6 +112,7 @@ class Signup extends Component{
             placeholder={"Email"}/>
 
             <Input 
+            testID='username' 
             type={"text"} 
             required={true} 
             status={this.state.statusUser} 
@@ -126,6 +129,7 @@ class Signup extends Component{
             placeholder={"Username"}/>
 
             <Input 
+            testID='password1' 
             type={"password"} 
             required={true} 
             status={this.state.statusPass} 
@@ -144,6 +148,7 @@ class Signup extends Component{
             placeholder={"Password"}/>
 
             <Input 
+            testID='password2' 
             type={"password"} 
             required={true} 
             status={this.state.statusPassbis} 
@@ -154,11 +159,11 @@ class Signup extends Component{
             value={this.state.passwordbis} 
             onChange={this.handlePasswordbis} 
             placeholder={"Reapeat password"}/>
-
-            <Modal visible={this.state.visible} onVisibility={this.handleVisibility} infos={<Text>{this.state.msg}</Text>} exitText={"dissmis"} admitBackdrop={true} admitButton={true}/>
-
-           <Button disabled={(isValidUser && isValidUser)&&(isValidPass.every(Boolean))&&(isValidMail && isValidMail)&&this.samePass() ? false : true} onPress={() => this.handleSignup(this.state.mail,this.state.username, this.state.password)}>Submit</Button>
-           <Button onPress={() => this.props.navigation.navigate('login')}>I already have an account</Button>
+            <View testID="modal" >
+            <Modal visible={this.state.visible} onVisibility={this.handleVisibility} infos={<Text>{this.state.msg}</Text>} exitText={"Dismiss"} admitBackdrop={true} admitButton={true}/>
+            </View>
+           <Button testID='sub_Button'  disabled={(isValidUser && isValidUser)&&(isValidPass.every(Boolean))&&(isValidMail && isValidMail)&&this.samePass() ? false : true} onPress={() => this.handleSignup(this.state.mail,this.state.username, this.state.password)}>Submit</Button>
+           <Button testID='return_Button' onPress={() => this.props.navigation.navigate('login')}>I already have an account</Button>
         </View>)
     }
     

@@ -132,7 +132,7 @@ class Home extends Component {
     render() {
         return (
             <SafeAreaView>
-                <TilesView itemData={this.state.data}
+                <TilesView testID={"selection_Site"} itemData={this.state.data}
                     pressTile={this.handleTilePress}
                     pressIcon={this.handleIconPress}
                     headerComp={<TopNavigation

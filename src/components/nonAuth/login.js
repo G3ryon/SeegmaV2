@@ -19,8 +19,8 @@ class Login extends Component{
     constructor(props){
         super(props);
         this.state = {
-            password: "jujubeberhot",
-            login: "juju_beber",
+            password: "",
+            login: "",
             token: "",
         }
         this.handlePassword = this.handlePassword.bind(this);
@@ -38,6 +38,7 @@ class Login extends Component{
 
     //function for checking the sign in
     handleSignin(login, password) {
+        if(login.length == 0 || password.length < 8){
         //checking for the user length
         if(login.length == 0){
             this.setState({statusLog:"danger", captionLog: "You need to enter your username"})
@@ -45,7 +46,7 @@ class Login extends Component{
         //checking for the password length
         if(password.length < 8){
             this.setState({statusPass:"danger", captionPass: "Password should at least contain 8 symbols"})
-        }
+        }}
         //checking the login
         else{
         authentification(login, password)
@@ -72,9 +73,10 @@ class Login extends Component{
         return(
         
         <SafeAreaView level='4'>
-           <Image testID='Logo' source={logo}/>
-           <Input testID='input' type={"text"} required={true} status={this.state.statusLog} caption={this.state.captionLog} readonly={false} value={this.state.login} onChange={this.handleLogin} placeHolder={"Login"}></Input>
+           <Image testID='logo' source={logo}/>
+           <Input testID='loginID' type={"text"} required={true} status={this.state.statusLog} caption={this.state.captionLog} readonly={false} value={this.state.login} onChange={this.handleLogin} placeHolder={"Login"}></Input>
            <Input 
+            testID='password'
             type={"password"} 
             required={true} 
             status={this.state.statusPass} 
@@ -84,9 +86,9 @@ class Login extends Component{
             onChange={this.handlePassword} 
             placeholder={"Password"}/>
             <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-           <Button testID='butt' onPress={() => this.handleSignin(this.state.login, this.state.password)}>Login</Button>
-           <Button onPress={() => this.props.navigation.navigate('signup')}>SignUp</Button>
-           <Button testID='butt2' onPress={() => this.props.navigation.navigate('reset')}>Forgot your password?</Button>
+           <Button testID='login_Button' onPress={() => this.handleSignin(this.state.login, this.state.password)}>Login</Button>
+           <Button testID='register_Button' onPress={() => this.props.navigation.navigate('signup')}>SignUp</Button>
+           <Button testID='forget_Button' onPress={() => this.props.navigation.navigate('reset')}>Forgot your password?</Button>
            </View>
         </SafeAreaView>  )
     }
